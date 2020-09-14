@@ -12,6 +12,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginFormComponent } from './core/components/login-form/login-form.component';
 import { DashboardPageComponent } from './core/layouts/dashboard-page/dashboard-page.component';
 import { SideNavComponent } from './core/components/side-nav/side-nav.component';
+import { TimetablePageComponent } from './core/layouts/timetable-page/timetable-page.component';
+import { SettingsPageComponent } from './core/layouts/settings-page/settings-page.component';
 
 const ExtraModules = [
   FirebaseModule,
@@ -26,7 +28,9 @@ const ExtraModules = [
     LoginPageComponent,
     LoginFormComponent,
     DashboardPageComponent,
-    SideNavComponent
+    SideNavComponent,
+    TimetablePageComponent,
+    SettingsPageComponent
   ],
   imports: [
     BrowserModule,
