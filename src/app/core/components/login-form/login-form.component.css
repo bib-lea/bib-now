@@ -1,0 +1,23 @@
+/* Box */
+.form__wrapper {
+  width: 400px;
+  height: 600px;
+  padding: 1rem;
+}
+.form__wrapper > * {
+  width: 100%;
+}
+
+/* Header */
+.header__wrapper {
+  margin-bottom: 2rem;
+}
+
+/* Form Fields */
+.form-field__wrapper {
+  margin-bottom: 2rem;
+}
+
+.form-field__input {
+  width: 100%;
+}
