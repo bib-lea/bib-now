@@ -1,1 +1,84 @@
-<p>dashboard-page works!</p>
+<main
+  class="page__wrapper"
+  fxFill
+  gdAreas="side contents"
+  gdColumns="auto 1fr"
+  gdRows="1fr">
+  <aside
+    gdArea="side">
+    <div
+      class="sidebar__wrapper"
+      fxLayout="column"
+      fxLayoutAlign="start space-between">
+      <div
+        class="sidebar__logo">
+        <h1>bibnow</h1>
+        <span>seit 2020</span>
+      </div>
+      <a
+        class="sidebar__link"
+        href="./">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a
+        class="sidebar__link"
+        href="./">
+        <mat-icon>calendar_today</mat-icon>
+        <span>Stundenplan</span>
+      </a>
+      <a
+        class="sidebar__link"
+        href="./">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </a>
+    </div>
+  </aside>
+  <section>
+    <div
+      gdArea="contents"
+      class="contents__wrapper"
+      fxLayout="row wrap">
+      <mat-card
+        fxFlex="1 1 400px"
+        class="contents__card">
+        <!-- Card Header -->
+        <mat-card-header>
+          <div mat-card-avatar class="card__avatar"></div>
+          <mat-card-title>
+            Titel kommt hier
+          </mat-card-title>
+          <mat-card-subtitle>
+            Username
+          </mat-card-subtitle>
+        </mat-card-header>
+        <!-- Card Image -->
+        <img
+          src="https://www.taste-of-power.de/wp-content/uploads/2020/01/Skadi-nordische-Mythologie.jpg"
+          alt="Test"
+          mat-card-image>
+        <!-- Card Content -->
+        <mat-card-content>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. At blanditiis dignissimos ducimus eveniet explicabo id impedit minima repellendus!
+        </mat-card-content>
+        <!-- Buttons -->
+        <mat-card-actions
+          class="card__actions"
+          fxLayout="row"
+          fxLayoutAlign="end">
+          <button
+            class="card_button--like --animate-button"
+            mat-button>
+            <mat-icon>thumb_up_alt</mat-icon>
+          </button>
+          <button
+            class="card_button--share --animate-button"
+            mat-button>
+            <mat-icon>share</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+</main>
