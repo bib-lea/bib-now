@@ -8,17 +8,21 @@ import { FirebaseModule } from './shared/modules/firebase/firebase.module';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { LoginPageComponent } from './core/layouts/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginFormComponent } from './core/components/login-form/login-form.component';
 
 const ExtraModules = [
   FirebaseModule,
   MaterialModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  FlexLayoutModule
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
