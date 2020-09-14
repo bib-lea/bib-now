@@ -10,7 +10,7 @@
   <a
     *ngFor="let link of navLinks"
     class="sidebar__link"
-    href="./">
+    [href]="link.url">
     <mat-icon>
       {{ link.iconName }}
     </mat-icon>
@@ -18,4 +18,9 @@
       {{ link.name }}
     </span>
   </a>
+  <div
+    class="sidebar__footer">
+    <p>Jawoon Kim</p>
+    <p>Charlie Wiegand</p>
+  </div>
 </div>

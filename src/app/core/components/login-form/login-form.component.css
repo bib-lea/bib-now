@@ -1,8 +1,11 @@
 /* Box */
 .form__wrapper {
   width: 400px;
+  max-width: 80%;
   height: 600px;
+  max-height: 60%;
   padding: 1rem;
+  margin: 0 auto;
 }
 .form__wrapper > * {
   width: 100%;

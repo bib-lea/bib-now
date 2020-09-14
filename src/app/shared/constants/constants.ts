@@ -6,7 +6,7 @@ export const NAV_LINKS = [
   },
   {
     name: 'Stundenplan',
-    url: '/stundenplan',
+    url: '/timetable',
     iconName: 'calendar_today'
   },
   {
