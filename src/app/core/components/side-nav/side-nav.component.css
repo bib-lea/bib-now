@@ -1,0 +1,33 @@
+.sidebar__wrapper {
+  height: 100%;
+  width: 16rem;
+  padding: 2rem;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, .15);
+}
+/* Logo */
+.sidebar__logo {
+  margin-bottom: 3rem;
+}
+
+/* Link */
+.sidebar__link {
+  width: 100%;
+  height: 2rem;
+  text-decoration: none;
+  color: rgba(0, 0, 0, .25);
+  margin-bottom: 2rem;
+  transition: color 200ms ease-in;
+}
+.sidebar__link:hover {
+  color: rgba(0, 0, 0, .85);
+}
+
+.sidebar__link mat-icon {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+}
+
+.sidebar__link span {
+  margin-left: 1.5rem;
+}

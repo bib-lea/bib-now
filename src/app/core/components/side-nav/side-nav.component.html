@@ -1,0 +1,21 @@
+<div
+  class="sidebar__wrapper"
+  fxLayout="column"
+  fxLayoutAlign="start space-between">
+  <div
+    class="sidebar__logo">
+    <h1>bibnow</h1>
+    <span>seit 2020</span>
+  </div>
+  <a
+    *ngFor="let link of navLinks"
+    class="sidebar__link"
+    href="./">
+    <mat-icon>
+      {{ link.iconName }}
+    </mat-icon>
+    <span>
+      {{ link.name }}
+    </span>
+  </a>
+</div>
