@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { GoogleSigninDirective } from './google-signin.directive';
+import { EmailLoginComponent } from './email-login/email-login.component';
 
 
 @NgModule({
-  declarations: [GoogleSigninDirective],
+  declarations: [GoogleSigninDirective, EmailLoginComponent],
   imports: [
     CommonModule,
     UserRoutingModule
