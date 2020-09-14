@@ -1,0 +1,32 @@
+/* Container */
+
+.contents__wrapper {
+  padding: 4rem 5rem;
+}
+
+/* Cards */
+.card__avatar {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.card__actions {
+}
+
+.card_button--like {
+  width: 1rem;
+  padding: 0;
+}
+
+.card_button--share {
+  width: 1rem;
+  padding: 0;
+}
+
+.--animate-button {
+  color: #ECEFF1;
+  transition: color 200ms ease-in;
+}
+.--animate-button:hover {
+  color: rgba(0, 0, 0, .65);
+}
