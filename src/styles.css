@@ -14,5 +14,56 @@ body {
   width: 100%;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  background-color: #ECEFF1;
+  background-color: rgb(230, 230, 230);
+}
+
+.__button {
+  color: rgba(50, 50, 50, .5);
+  background-color: rgba(230, 230, 230, .9);
+  height: 3rem;
+  width: 6rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow:
+    -2px -2px 5px rgba(260, 260, 260, .8),
+    2px 2px 5px rgba(70, 70, 70, .2);
+
+  transition: box-shadow 100ms ease-in, color 100ms ease-in;
+  outline: none;
+}
+.__button:hover {
+  color: black;
+}
+.__button:active {
+  box-shadow:
+    -2px -2px 5px rgba(260, 260, 260, .8),
+    2px 2px 5px rgba(70, 70, 70, .2),
+    inset -2px -2px 5px rgba(260, 260, 260, .8),
+    inset 2px 2px 5px rgba(70, 70, 70, .2);
+}
+
+.__inset-wrapper {
+  padding: 2.5rem;
+  border-radius: 1rem;
+  border: 0;
+  box-shadow:
+    -2px -2px 5px rgba(260, 260, 260, .8),
+    2px 2px 5px rgba(70, 70, 70, .2),
+    inset -2px -2px 5px rgba(260, 260, 260, .8),
+    inset 2px 2px 5px rgba(70, 70, 70, .2);
+}
+
+.__input {
+  background-color: rgba(230, 230, 230, .9);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border: 0;
+  box-shadow:
+    -2px -2px 5px rgba(260, 260, 260, .8),
+    2px 2px 5px rgba(70, 70, 70, .2),
+    inset -2px -2px 5px rgba(260, 260, 260, .8),
+    inset 2px 2px 5px rgba(70, 70, 70, .2);
+  outline: none;
 }

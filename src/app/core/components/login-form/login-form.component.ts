@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,16 +10,23 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
-  emailControl: FormControl;
-  passwordControl: FormControl;
+  @Output() signUp = new EventEmitter<boolean>();
+
+  loginForm: FormGroup;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.emailControl = new FormControl('', []);
-    this.passwordControl = new FormControl('', []);
+    this.loginForm = new FormGroup({
+      email: new FormControl('', []),
+      password: new FormControl('', [])
+    });
+  }
+
+  onSignup(): void {
+    this.signUp.emit(true);
   }
 
   onLogin(): void {

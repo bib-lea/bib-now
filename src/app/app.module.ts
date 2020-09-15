@@ -14,6 +14,7 @@ import { DashboardPageComponent } from './core/layouts/dashboard-page/dashboard-
 import { SideNavComponent } from './core/components/side-nav/side-nav.component';
 import { TimetablePageComponent } from './core/layouts/timetable-page/timetable-page.component';
 import { SettingsPageComponent } from './core/layouts/settings-page/settings-page.component';
+import { SignupFormComponent } from './core/components/signup-form/signup-form.component';
 //Libraries für Firebase importieren
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -34,7 +35,8 @@ const ExtraModules = [
     DashboardPageComponent,
     SideNavComponent,
     TimetablePageComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
