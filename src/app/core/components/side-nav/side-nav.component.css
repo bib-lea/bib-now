@@ -2,18 +2,25 @@
   height: 100%;
   width: 16rem;
   padding: 2rem;
-  box-shadow: 5px 0 15px rgba(0, 0, 0, .15);
+  background-color: rgba(230, 230, 230, .9);
 }
 /* Logo */
 .sidebar__logo {
   margin-bottom: 3rem;
 }
+.sidebar__logo > h1 {
+  color: rgba(0, 0, 0, .7);
+}
+.sidebar__logo > span {
+  color: rgba(70, 70, 70, .5);
+}
 
 /* Link */
 .sidebar__link {
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   text-decoration: none;
+  text-align: center;
   color: rgba(0, 0, 0, .25);
   margin-bottom: 2rem;
   transition: color 200ms ease-in;
@@ -36,4 +43,5 @@
   margin-top: auto;
   color: rgba(0, 0, 0, .5);
   font-size: .8rem;
+  text-align: center;
 }

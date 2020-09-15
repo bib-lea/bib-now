@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
+
+  @Output() isSignup = new EventEmitter<boolean>();
 
   signupForm: FormGroup;
 
@@ -18,6 +20,10 @@ export class SignupFormComponent implements OnInit {
       password: new FormControl('', []),
       passwordReenter: new FormControl('', []),
     });
+  }
+
+  onBack(): void {
+    this.isSignup.emit(false);
   }
 
   onSubmit(): void {

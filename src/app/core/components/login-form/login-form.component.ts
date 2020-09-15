@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
-  @Output() signUp = new EventEmitter<boolean>();
+  @Output() isSignUp = new EventEmitter<boolean>();
 
   loginForm: FormGroup;
 
@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSignup(): void {
-    this.signUp.emit(true);
+    this.isSignUp.emit(true);
   }
 
   onLogin(): void {

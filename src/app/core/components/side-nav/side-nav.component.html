@@ -1,26 +1,25 @@
 <div
   class="sidebar__wrapper"
   fxLayout="column"
-  fxLayoutAlign="start space-between">
+  fxLayoutAlign="start center">
   <div
-    class="sidebar__logo">
+    class="sidebar__logo __inset-wrapper">
     <h1>bibnow</h1>
     <span>seit 2020</span>
   </div>
   <a
     *ngFor="let link of navLinks"
-    class="sidebar__link"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="sidebar__link __circle-button"
     [href]="link.url">
     <mat-icon>
       {{ link.iconName }}
     </mat-icon>
-    <span>
-      {{ link.name }}
-    </span>
   </a>
   <div
     class="sidebar__footer">
-    <p>Jawoon Kim</p>
     <p>Charlie Wiegand</p>
+    <p>Jawoon Kim</p>
   </div>
 </div>
