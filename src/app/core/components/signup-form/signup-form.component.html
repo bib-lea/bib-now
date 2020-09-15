@@ -15,8 +15,7 @@
   <form
     [formGroup]="signupForm"
     class="form-field__wrapper"
-    fxLayout="column"
-    #signup>
+    fxLayout="column">
     <input
       class="form-field__input __input"
       formControlName="email"
@@ -37,7 +36,12 @@
   <div
     class="buttons__wrapper"
     fxLayout="row"
-    fxLayoutAlign="end center">
+    fxLayoutAlign="space-between center">
+    <button
+      class="__button"
+      (click)="onBack()">
+      Back
+    </button>
     <button
       class="__button"
       (click)="onSubmit()">

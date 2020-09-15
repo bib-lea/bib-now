@@ -8,11 +8,9 @@ import {Router} from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  isSignup = true;
+  isSignup = false;
 
-  constructor(
-
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
 

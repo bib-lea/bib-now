@@ -8,7 +8,7 @@ import { SettingsPageComponent } from './core/layouts/settings-page/settings-pag
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
   {
