@@ -70,6 +70,7 @@ export class EmailLoginComponent implements OnInit {
       return true;
     } else {
       return this.password.value === this.passwordConfirm.value; //im sign-up form gibt es zurück ob passwort und passwort-bestätigung gleich sind
+
     }
   }
 
@@ -96,6 +97,7 @@ export class EmailLoginComponent implements OnInit {
      }
 
     this.loading = false; //loading-property auf true setzen
+    
   }
 }
 
