@@ -17,7 +17,7 @@
 
 /* Link */
 .sidebar__link {
-  width: 100%;
+  width: 70%;
   height: 3rem;
   text-decoration: none;
   text-align: center;
@@ -40,8 +40,13 @@
 }
 
 .sidebar__footer {
-  margin-top: auto;
   color: rgba(0, 0, 0, .5);
   font-size: .8rem;
   text-align: center;
+}
+
+.__button.--sign-out {
+  width: 70%;
+  margin-top: auto;
+  margin-bottom: 2rem;
 }

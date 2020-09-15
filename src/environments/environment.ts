@@ -12,8 +12,13 @@ export const environment = {
   storageBucket: "bibnow-testing.appspot.com",
   messagingSenderId: "101574135416",
   appId: "1:101574135416:web:9c8073ed4f34e45ac9e78d",
-  measurementId: "G-4PB9C5HP69"}  
+  measurementId: "G-4PB9C5HP69"}
 };
+
+export const actionCodeSettings = {
+  url: 'https://localhost:4200/dashboard',
+  handleCodeInApp: true
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

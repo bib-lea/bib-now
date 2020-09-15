@@ -3,6 +3,7 @@ import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthServiceService} from '../../../shared/services/auth-service.service';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login-form',
@@ -16,13 +17,25 @@ export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthServiceService,
+    private afAuth: AngularFireAuth
   ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', []),
       password: new FormControl('', [])
+    });
+
+    this.afAuth.onAuthStateChanged(user => {
+      if (user) {
+        console.log(user.email);
+        this.router.navigateByUrl('/dashboard');
+      }
+      else {
+        console.log("NICHT SIGNED-IN");
+      }
     });
   }
 
@@ -31,6 +44,9 @@ export class LoginFormComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.router.navigateByUrl('/dashboard');
+    let email = this.loginForm.value.email;
+    let password = this.loginForm.value.password;
+    const result = this.authService.onLogin(email, password);
+    console.log(result);
   }
 }
