@@ -7,6 +7,7 @@
     fxFill
     fxLayout="row"
     fxLayoutAlign="center center">
-    <app-login-form></app-login-form>
+    <app-login-form *ngIf="!isSignup" (signUp)="onRequest($event)"></app-login-form>
+    <app-signup-form *ngIf="isSignup"></app-signup-form>
   </section>
 </main>

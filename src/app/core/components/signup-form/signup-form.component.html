@@ -1,5 +1,4 @@
-<!-- LoginFormComponent => LoginPageCompoent -->
-
+<!-- SignUpFormComponent => LoginPageCompoent -->
 <div
   class="form__wrapper"
   fxLayout="column"
@@ -7,16 +6,17 @@
   <div
     class="header__wrapper">
     <h2>
-      BIBNOW
+      Registriere dich!
     </h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maxime quis quos voluptates!
     </p>
   </div>
   <form
-    [formGroup]="loginForm"
+    [formGroup]="signupForm"
     class="form-field__wrapper"
-    fxLayout="column">
+    fxLayout="column"
+    #signup>
     <input
       class="form-field__input __input"
       formControlName="email"
@@ -25,22 +25,23 @@
     <input
       class="form-field__input __input"
       formControlName="password"
-      placeholder="Password"
+      placeholder="Passwort"
       type="password">
+    <input
+      class="form-field__input __input"
+      matInput
+      formControlName="passwordReenter"
+      placeholder="Reenter Passwort"
+      type="text">
   </form>
   <div
     class="buttons__wrapper"
     fxLayout="row"
-    fxLayoutAlign="space-between center">
+    fxLayoutAlign="end center">
     <button
       class="__button"
-      (click)="onSignup()">
-      Sign-Up
-    </button>
-    <button
-      class="__button"
-      (click)="onLogin()">
-      Einloggen
+      (click)="onSubmit()">
+      Weiter
     </button>
   </div>
 </div>
