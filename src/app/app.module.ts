@@ -20,12 +20,19 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+//Firebase Admin
+import * as admin from 'firebase-admin';
 
 const ExtraModules = [
   MaterialModule,
   ReactiveFormsModule,
   FlexLayoutModule
 ];
+
+const Admin = admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: 'https://bibnow-testing.firebaseio.com'
+});
 
 @NgModule({
   declarations: [
@@ -42,7 +49,6 @@ const ExtraModules = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
