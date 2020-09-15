@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {AuthServiceService} from '../../../shared/services/auth-service.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -11,8 +12,11 @@ export class SignupFormComponent implements OnInit {
   @Output() isSignup = new EventEmitter<boolean>();
 
   signupForm: FormGroup;
+  authPromise: Promise<void>;
 
-  constructor() { }
+  constructor(
+    private authService: AuthServiceService
+  ) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -28,5 +32,7 @@ export class SignupFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.signupForm);
+    this.authPromise = this.authService.onSignUp(this.signupForm.value.email, this.signupForm.value.password);
+    this.authPromise.catch(err => console.log(err));
   }
 }

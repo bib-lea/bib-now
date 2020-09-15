@@ -2,6 +2,7 @@ import { EventEmitter } from '@angular/core';
 import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
+import {AuthServiceService} from '../../../shared/services/auth-service.service';
 
 @Component({
   selector: 'app-login-form',

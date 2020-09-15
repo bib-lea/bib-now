@@ -29,7 +29,6 @@
 
 /* Form Fields */
 .form-field__wrapper {
-  margin-bottom: 2rem;
   padding: 0 2rem;
 }
 
@@ -46,5 +45,6 @@
 
 /* Buttons */
 .buttons__wrapper {
+  margin-top: 1rem;
   padding: 0 2rem;
 }

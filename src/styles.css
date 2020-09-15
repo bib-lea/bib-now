@@ -23,11 +23,12 @@ body {
 .__button {
   color: rgba(50, 50, 50, .5);
   font-family: 'Montserrat', sans-serif;
+  font-size: .7rem;
   background-color: rgba(230, 230, 230, .9);
   height: 3rem;
   width: 6rem;
   cursor: pointer;
-  border: 0;
+  border: 2px solid rgba(230, 230, 230, .9);
   border-radius: 1rem;
   box-shadow:
     -2px -2px 5px rgba(260, 260, 260, .8),
@@ -98,7 +99,7 @@ body {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
-  border: 0;
+  border: 2px solid rgba(230, 230, 230, .9);
   box-shadow:
     -2px -2px 5px rgba(260, 260, 260, .8),
     2px 2px 5px rgba(70, 70, 70, .2),

@@ -5,13 +5,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthServiceService {
-
   //Servernachricht
   serverMessage: string;
 
   constructor(private afAuth: AngularFireAuth) { }
-
-  
 
   async onLogin( password: string, email: string){
     try {
@@ -37,6 +34,6 @@ export class AuthServiceService {
       this.serverMessage = err; //Servernachricht
     }
   }
-  
+
 }
 
