@@ -8,7 +8,7 @@ export class CrudService {
 
   constructor(public fireservices: AngularFirestore) { }
 
-  createPost( data){
+  createPost( data: any ){
     return this.fireservices.collection('Post').add(data);
   }
 
@@ -16,11 +16,11 @@ export class CrudService {
     return this.fireservices.collection('Post').snapshotChanges();
   }
 
-  updatePost(dataId, data){
+  updatePost(dataId: any, data: any){
     this.fireservices.doc('Post/' + dataId).update(data);
   }
 
-  deletePost(dataId){
+  deletePost(dataId: any){
     this.fireservices.doc('Post/' + dataId).delete();
   }
 }
