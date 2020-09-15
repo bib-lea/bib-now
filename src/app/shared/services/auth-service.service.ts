@@ -1,5 +1,7 @@
 import { Injectable} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import {actionCodeSettings, environment} from '../../../environments/environment';
+import {AngularFirestoreDocument, AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +10,25 @@ export class AuthServiceService {
   //Servernachricht
   serverMessage: string;
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afStore: AngularFirestore
+  ) { }
 
-  async onLogin( password: string, email: string){
-    try {
-      await this.afAuth.signInWithEmailAndPassword(email, password); //Kommunikation mit Firebase, LogIn mit email und passwort
-    }catch (err){
-      this.serverMessage = err; //Servernachricht
-    }
+  onLogin(email: string, password: string) {
+    //Kommunikation mit Firebase, LogIn mit email und passwort
+    this.afAuth.signInWithEmailAndPassword(email, password)
+      .catch(err => console.log(err.message));
   }
 
-  async onSignUp( password: string, email: string){
-    try {
-      await this.afAuth.createUserWithEmailAndPassword(email, password); //Kommunikation mit Firebase, LogIn mit email und passwort
-    }catch (err){
-      this.serverMessage = err; //Servernachricht
-    }
+  onSignUp(email: string, password: string){
+    this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then(result => {
+        this.setUserData(result.user);
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
   }
 
   async onPasswordReset(email: string) {
@@ -35,5 +40,18 @@ export class AuthServiceService {
     }
   }
 
+  setUserData(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afStore.doc('users/' + user.uid);
+    const userData: any = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
+  }
 }
 
