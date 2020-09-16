@@ -1,4 +1,4 @@
 export interface Post {
-  username?: string;
+  name?: string;
   content?: string;
 }

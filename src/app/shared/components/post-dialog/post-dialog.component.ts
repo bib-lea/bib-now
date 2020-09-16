@@ -32,7 +32,7 @@ export class PostDialogComponent implements OnInit {
 
   onPosten(): void {
     let post: Post = {
-      username: this.user ? this.user.email : 'Anonym',
+      name: this.user ? this.user.email : 'Anonym',
       content: this.contentControl.value
     };
 

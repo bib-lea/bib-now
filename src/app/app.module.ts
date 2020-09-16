@@ -1,6 +1,7 @@
 import { environment } from "../environments/environment";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { ForumComponent } from './core/components/forum/forum.component';
 import { CrudService } from "./shared/services/crud.service";
 import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
 import { PostDialogComponent } from './shared/components/post-dialog/post-dialog.component';
+import { ContentViewerComponent } from './core/components/content-viewer/content-viewer.component';
 
 const ExtraModules = [
   MaterialModule,
@@ -43,12 +45,14 @@ const ExtraModules = [
     SignupFormComponent,
     ForumComponent,
     TopBarComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    ContentViewerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth

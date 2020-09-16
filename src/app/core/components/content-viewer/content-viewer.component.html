@@ -1,0 +1,21 @@
+<div
+  class="cards__wrapper"
+  fxFill
+  fxLayout="row wrap"
+  fxLayoutAlign="start center">
+  <mat-card
+    *ngFor="let post of posts"
+    class="card__wrapper">
+    <mat-card-header>
+      <mat-card-title>
+        Title
+      </mat-card-title>
+      <mat-card-content>
+        {{ post.name }}
+      </mat-card-content>
+    </mat-card-header>
+    <mat-card-content>
+      {{ post.content }}
+    </mat-card-content>
+  </mat-card>
+</div>
