@@ -20,6 +20,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ForumComponent } from './core/components/forum/forum.component';
+import { CrudService } from "./shared/services/crud.service";
 
 const ExtraModules = [
   MaterialModule,
@@ -36,7 +38,8 @@ const ExtraModules = [
     SideNavComponent,
     TimetablePageComponent,
     SettingsPageComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ const ExtraModules = [
     AngularFireStorageModule, // storage
     ExtraModules
   ],
-  providers: [],
+  providers: [CrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
