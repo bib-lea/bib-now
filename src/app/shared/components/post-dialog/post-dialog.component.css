@@ -1,0 +1,13 @@
+.header__text {
+  padding: 0 1.5rem;
+  margin: 1rem 0;
+}
+
+.dialog__input-group {
+  margin: 2rem 0;
+}
+
+.dialog__button-group {
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+}

@@ -18,7 +18,6 @@ body {
   overflow: hidden;
 }
 
-/* Neumorphism */
 /* Buttons */
 .__button {
   color: rgb(240, 240, 240);
@@ -35,6 +34,9 @@ body {
 }
 .__button:hover {
   box-shadow: 2px 2px 4px rgba(70, 70, 70, .4);
+}
+.__button.--secondary {
+  background-color: #9EADA7;
 }
 
 /* Wrapper */
@@ -68,8 +70,9 @@ body {
   outline: none;
 }
 .__textarea {
-  border: 1px solid rgba(70, 70, 70, .8);
+  border: 1px solid rgba(70, 70, 70, .4);
   border-radius: 1rem;
-  padding: 1rem .5rem .5rem .5rem;
+  padding: 1rem .75rem 1rem .75rem;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
 }

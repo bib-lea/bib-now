@@ -1,10 +1,18 @@
-<h2 mat-dialog-title>
+<h2
+  mat-dialog-title
+  class="header__text">
   Post
 </h2>
+<p
+  class="header__text"
+  *ngIf="!user">
+  Nicht angemeldet.
+</p>
 <div
   mat-dialog-content
   class="dialog__input-group">
     <textarea
+      [formControl]="contentControl"
       rows="4"
       cols="50"
       class="__textarea"
@@ -12,20 +20,21 @@
       name="content"
       type="text"
       placeholder="Schreib was..."
-      formControlName=""
       autocomplete="off"
       required></textarea>
 </div>
 <div
+  class="dialog__button-group"
   mat-dialog-actions
   fxLayout="row"
   fxLayoutAlign="space-between center">
   <button
-    class="__button">
+    class="__button --secondary">
     Abbrechen
   </button>
   <button
-    class="__button">
+    class="__button"
+    (click)="onPosten()">
     Posten
   </button>
 
