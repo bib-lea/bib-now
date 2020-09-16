@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class SideNavComponent implements OnInit {
 
   navLinks: NavigationLink[];
+  user: any;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -22,8 +23,8 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.afAuth.onAuthStateChanged(user => {
-      console.log(user.email);
-    });
+      this.user = user;
+    }).catch(err => { throw err });
   }
 
   onSignOut(): void {

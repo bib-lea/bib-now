@@ -1,13 +1,17 @@
 <main
   class="page__wrapper"
   fxFill
-  gdAreas="side contents"
+  gdAreas="side top | side contents"
   gdColumns="auto 1fr"
-  gdRows="1fr">
+  gdRows="auto 1fr">
   <aside
     gdArea="side">
     <app-side-nav></app-side-nav>
   </aside>
+  <div
+    gdArea="top">
+    <app-top-bar></app-top-bar>
+  </div>
   <section
     gdArea="contents"
     class="contents__wrapper">

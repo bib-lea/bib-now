@@ -22,6 +22,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ForumComponent } from './core/components/forum/forum.component';
 import { CrudService } from "./shared/services/crud.service";
+import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
+import { PostDialogComponent } from './shared/components/post-dialog/post-dialog.component';
 
 const ExtraModules = [
   MaterialModule,
@@ -39,7 +41,9 @@ const ExtraModules = [
     TimetablePageComponent,
     SettingsPageComponent,
     SignupFormComponent,
-    ForumComponent
+    ForumComponent,
+    TopBarComponent,
+    PostDialogComponent
   ],
   imports: [
     BrowserModule,
