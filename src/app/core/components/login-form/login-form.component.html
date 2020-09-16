@@ -5,19 +5,15 @@
   class="form__wrapper"
   fxLayout="column"
   fxLayoutAlign="center start">
-  <div
-    class="header__wrapper">
-    <h2>
-      BIBNOW
-    </h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maxime quis quos voluptates!
-    </p>
-  </div>
   <form
     [formGroup]="loginForm"
     class="form-field__wrapper"
-    fxLayout="column">
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="1rem">
+    <p>
+      Sign-In
+    </p>
     <input
       class="form-field__input __input"
       formControlName="email"
@@ -31,21 +27,22 @@
     <a>
       Passwort zurücksetzen
     </a>
+    <div
+      class="buttons__wrapper"
+      fxLayout="row"
+      fxLayoutAlign="space-between center">
+      <button
+        class="__button"
+        (click)="onSignup()">
+        Sign-Up
+      </button>
+      <button
+        class="__button"
+        (click)="onLogin()">
+        Einloggen
+      </button>
+    </div>
   </form>
 
-  <div
-    class="buttons__wrapper"
-    fxLayout="row"
-    fxLayoutAlign="space-between center">
-    <button
-      class="__button"
-      (click)="onSignup()">
-      Sign-Up
-    </button>
-    <button
-      class="__button"
-      (click)="onLogin()">
-      Einloggen
-    </button>
-  </div>
+
 </div>

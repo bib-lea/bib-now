@@ -14,62 +14,27 @@ body {
   width: 100%;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  background-color: rgb(230, 230, 230);
+  background-color: #1F534F;
   overflow: hidden;
 }
 
 /* Neumorphism */
 /* Buttons */
 .__button {
-  color: rgba(50, 50, 50, .5);
+  color: rgb(240, 240, 240);
   font-family: 'Montserrat', sans-serif;
   font-size: .7rem;
-  background-color: rgba(230, 230, 230, .9);
+  background-color: #D14B4D;
+  border: 0;
   height: 3rem;
   width: 6rem;
   cursor: pointer;
-  border: 2px solid rgba(230, 230, 230, .9);
   border-radius: 1rem;
-  box-shadow:
-    -2px -2px 5px rgba(260, 260, 260, .8),
-    2px 2px 5px rgba(70, 70, 70, .2);
-  transition: box-shadow 100ms ease-in, color 100ms ease-in;
+  transition: box-shadow 200ms ease-in;
   outline: none;
 }
 .__button:hover {
-  color: black;
-}
-.__button:active {
-  box-shadow:
-    -2px -2px 5px rgba(260, 260, 260, .8),
-    2px 2px 5px rgba(70, 70, 70, .2),
-    inset -2px -2px 5px rgba(260, 260, 260, .8),
-    inset 2px 2px 5px rgba(70, 70, 70, .2);
-}
-.__circle-button {
-  color: rgba(50, 50, 50, .5);
-  background-color: rgba(230, 230, 230, .9);
-  cursor: pointer;
-  border: 2px solid rgba(230, 230, 230, .9);
-  border-radius: 1rem;
-  box-shadow:
-    -2px -2px 5px rgba(260, 260, 260, .8),
-    2px 2px 5px rgba(70, 70, 70, .2);
-
-  transition: box-shadow 100ms ease-in, color 100ms ease-in;
-  outline: none;
-}
-.__circle-button:hover {
-  color: green !important;
-}
-.__circle-button:active {
-  color: green;
-
-  box-shadow:
-    -2px -2px 5px rgba(260, 260, 260, .8),
-    2px 2px 5px rgba(70, 70, 70, .2),
-    inset -2px -2px 5px rgba(260, 260, 260, .8),
-    inset 2px 2px 5px rgba(70, 70, 70, .2);
+  box-shadow: 2px 2px 4px rgba(70, 70, 70, .4);
 }
 
 /* Wrapper */
@@ -95,16 +60,11 @@ body {
 
 /* Input */
 .__input {
-  background-color: rgba(230, 230, 230, .9);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 1rem;
-  border: 2px solid rgba(230, 230, 230, .9);
-  box-shadow:
-    -2px -2px 5px rgba(260, 260, 260, .8),
-    2px 2px 5px rgba(70, 70, 70, .2),
-    inset -2px -2px 5px rgba(260, 260, 260, .8),
-    inset 2px 2px 5px rgba(70, 70, 70, .2);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid rgba(70, 70, 70, .8);
+  padding: 1rem 0;
   outline: none;
 }
 

@@ -3,19 +3,14 @@
   class="form__wrapper"
   fxLayout="column"
   fxLayoutAlign="center start">
-  <div
-    class="header__wrapper">
-    <h2>
-      Registriere dich!
-    </h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut maxime quis quos voluptates!
-    </p>
-  </div>
   <form
     [formGroup]="signupForm"
     class="form-field__wrapper"
-    fxLayout="column">
+    fxLayout="column"
+    fxLayoutGap="1rem">
+    <p>
+      Sign Up
+    </p>
     <input
       class="form-field__input __input"
       formControlName="email"
@@ -34,20 +29,20 @@
       placeholder="Reenter Passwort"
       autocomplete="off"
       type="password">
+    <div
+      class="buttons__wrapper"
+      fxLayout="row"
+      fxLayoutAlign="space-between center">
+      <button
+        class="__button"
+        (click)="onBack()">
+        Back
+      </button>
+      <button
+        class="__button"
+        (click)="onSubmit()">
+        Weiter
+      </button>
+    </div>
   </form>
-  <div
-    class="buttons__wrapper"
-    fxLayout="row"
-    fxLayoutAlign="space-between center">
-    <button
-      class="__button"
-      (click)="onBack()">
-      Back
-    </button>
-    <button
-      class="__button"
-      (click)="onSubmit()">
-      Weiter
-    </button>
-  </div>
 </div>

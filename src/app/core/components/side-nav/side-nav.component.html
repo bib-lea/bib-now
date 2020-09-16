@@ -1,7 +1,7 @@
 <div
   class="sidebar__wrapper"
   fxLayout="column"
-  fxLayoutAlign="start center">
+  fxLayoutAlign="center center">
   <div
     class="sidebar__logo">
     <h1>bibnow</h1>
@@ -12,10 +12,15 @@
     fxLayout="row"
     fxLayoutAlign="center center"
     class="sidebar__link __circle-button"
+    (mouseenter)="link.isHovered = true"
+    (mouseleave)="link.isHovered = false"
     [href]="link.url">
     <mat-icon>
       {{ link.iconName }}
     </mat-icon>
+    <span *ngIf="link.isHovered">
+      {{ link.name }}
+    </span>
   </a>
   <button
     class="__button --sign-out"

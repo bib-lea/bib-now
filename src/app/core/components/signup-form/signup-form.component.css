@@ -27,15 +27,27 @@
 
 /* Form Fields */
 .form-field__wrapper {
-  margin-bottom: 2rem;
-  padding: 0 2rem;
+  height: auto;
+  padding: 2rem 2rem;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(70, 70, 70, .8);
+  border-radius: 2rem;
+}
+
+.form-field__wrapper p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .form-field__input {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 /* Buttons */
 .buttons__wrapper {
+  width: 100%;
+  margin-top: 3rem;
   padding: 0 2rem;
 }
