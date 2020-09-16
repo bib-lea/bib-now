@@ -5,14 +5,15 @@
 export const environment = {
   production: false,
   firebase: {
-  apiKey: "AIzaSyDxes0zBq2k6nz1tmQtMnSPe9PimXOH694",
-  authDomain: "bibnow-testing.firebaseapp.com",
-  databaseURL: "https://bibnow-testing.firebaseio.com",
-  projectId: "bibnow-testing",
-  storageBucket: "bibnow-testing.appspot.com",
-  messagingSenderId: "101574135416",
-  appId: "1:101574135416:web:9c8073ed4f34e45ac9e78d",
-  measurementId: "G-4PB9C5HP69"}
+    apiKey: "AIzaSyAEFD8SI6wXeCDKSJGMQ34nww_uWOpk2cY",
+    authDomain: "bib-now-274d1.firebaseapp.com",
+    databaseURL: "https://bib-now-274d1.firebaseio.com",
+    projectId: "bib-now-274d1",
+    storageBucket: "bib-now-274d1.appspot.com",
+    messagingSenderId: "398456730538",
+    appId: "1:398456730538:web:74d264126fa0b42779b1d3",
+    measurementId: "G-6B4DYDV8NR"
+}
 };
 
 export const actionCodeSettings = {

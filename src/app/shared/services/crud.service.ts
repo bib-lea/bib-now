@@ -11,7 +11,7 @@ export class CrudService {
   //CRUD
   
   createPost( data: any ){
-    return this.fireservices.collection('posts').add(data); //create
+    return this.fireservices.collection('posts').add(Object.assign({}, data)); //create
   }
 
   getPost(){
@@ -19,7 +19,7 @@ export class CrudService {
   }
 
   updatePost(dataId: any, data: any){
-    this.fireservices.doc('posts/' + dataId).update(data); //update
+    this.fireservices.doc('posts/' + dataId).update(Object.assign({}, data)); //update
   }
 
   deletePost(dataId: any){
