@@ -1,38 +1,53 @@
-<!-- LoginFormComponent => LoginPageCompoent -->
+<!--
 
-<script src="../signup-form/signup-form.component.ts"></script>
+ @LoginFormComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 15.09.2020
+
+ -->
 <div
   class="form__wrapper"
   fxLayout="column"
-  fxLayoutAlign="center start">
+  fxLayoutAlign="center center">
   <form
     [formGroup]="loginForm"
     class="form-field__wrapper"
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="1rem">
-    <p>
-      Sign-In
-    </p>
+    <!-- Input Email -->
+    <div
+      class="form-field__input-wrapper">
+      <div
+        id="form-field__label--email"
+        fxFlexAlign="start"></div>
+      <input
+        class="form-field __input --email"
+        formControlName="email"
+        type="text">
+      <span>
+        @edu.bib.de
+      </span>
+    </div>
+    <!-- Input Password -->
+    <div
+      id="form-field__label--password"
+      fxFlexAlign="start"></div>
     <input
-      class="form-field__input __input"
-      formControlName="email"
-      placeholder="E-Mail"
-      type="text">
-    <input
-      class="form-field__input __input"
+      class="form-field __input --password"
       formControlName="password"
-      placeholder="Password"
-      type="password">
+      type="password"
+      fxFlexAlign="start">
     <a>
       Passwort zurücksetzen
     </a>
+    <!-- Action Buttons -->
     <div
       class="buttons__wrapper"
       fxLayout="row"
       fxLayoutAlign="space-between center">
       <button
-        class="__button"
+        class="__button --secondary"
         (click)="onSignup()">
         Sign-Up
       </button>
@@ -43,6 +58,4 @@
       </button>
     </div>
   </form>
-
-
 </div>

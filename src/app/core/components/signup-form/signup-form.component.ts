@@ -12,6 +12,7 @@ export class SignupFormComponent implements OnInit {
 
   @Output() isSignup = new EventEmitter<boolean>();
 
+  reenter: boolean = false;
   signupForm: FormGroup;
   authPromise: Promise<void>;
 

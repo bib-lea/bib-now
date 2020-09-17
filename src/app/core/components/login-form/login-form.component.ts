@@ -4,11 +4,23 @@ import {FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthServiceService} from '../../../shared/services/auth-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  styleUrls: ['./login-form.component.css'],
+  animations: [
+    trigger('glow', [
+      transition('void => *', [
+        animate('2s infinite', keyframes([
+          style({ opacity: 0, offset: 0 }),
+          style({ opacity: 1, offset: 0.5 }),
+          style({ opacity: 0, offset: 1 })
+        ]))
+      ])
+    ])
+  ]
 })
 export class LoginFormComponent implements OnInit {
 
