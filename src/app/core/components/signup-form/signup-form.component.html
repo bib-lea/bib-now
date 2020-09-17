@@ -7,12 +7,13 @@
  -->
 <div
   class="form__wrapper"
-  fxLayout="column"
-  fxLayoutAlign="center center">
+  gdAreas="forms | buttons"
+  gdRows="1fr auto">
   <!-- Sign Up Form -->
   <form
     [formGroup]="signupForm"
     class="form-field__wrapper"
+    gdArea="forms"
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="1rem">
@@ -62,21 +63,22 @@
             {{ reenter ? 'stimmt überein.' : 'stimmt nicht überein.' }}
       </span>
     </div>
-    <!-- Action Buttons -->
-    <div
-      class="buttons__wrapper"
-      fxLayout="row"
-      fxLayoutAlign="space-between center">
-      <button
-        class="__button --secondary"
-        (click)="onBack()">
-        Zurück
-      </button>
-      <button
-        class="__button"
-        (click)="onSubmit()">
-        Anmelden
-      </button>
-    </div>
   </form>
+  <!-- Action Buttons -->
+  <div
+    class="buttons__wrapper"
+    gdArea="buttons"
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+    <button
+      class="__button --secondary"
+      (click)="onBack()">
+      Zurück
+    </button>
+    <button
+      class="__button"
+      (click)="onSubmit()">
+      Anmelden
+    </button>
+  </div>
 </div>
