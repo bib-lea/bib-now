@@ -24,7 +24,7 @@
 .form-field__wrapper {
   height: auto;
   padding: 4rem;
-  background-color: #2B2839;
+  background-color: transparent;
   border-radius: 2rem;
   position: relative;
 }
@@ -62,8 +62,8 @@
 /* Buttons Layout (Style from style.css) */
 .buttons__wrapper {
   width: 100%;
-  margin-top: 3rem;
-  padding: 0 2rem;
+  margin-top: 1rem;
+  padding: 0 4rem;
 }
 
 /* Forms Label Settings */
@@ -73,7 +73,7 @@
   top: 0;
   right: 0;
   color: rgba(250, 250, 250, 0.9);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 #form-field__label--password::before {
   content: "Passwort";
@@ -81,5 +81,5 @@
   top: 1rem;
   right: 0;
   color: rgba(250, 250, 250, 0.9);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }

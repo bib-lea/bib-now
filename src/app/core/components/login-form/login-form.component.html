@@ -11,6 +11,7 @@
   fxLayoutAlign="center center">
   <form
     [formGroup]="loginForm"
+    onSubmit="return false"
     class="form-field__wrapper"
     fxLayout="column"
     fxLayoutAlign="center center"
@@ -41,21 +42,24 @@
     <a>
       Passwort zurücksetzen
     </a>
-    <!-- Action Buttons -->
-    <div
-      class="buttons__wrapper"
-      fxLayout="row"
-      fxLayoutAlign="space-between center">
-      <button
-        class="__button --secondary"
-        (click)="onSignup()">
-        Sign-Up
-      </button>
-      <button
-        class="__button"
-        (click)="onLogin()">
-        Einloggen
-      </button>
-    </div>
+
   </form>
+  <!-- Action Buttons -->
+  <div
+    class="buttons__wrapper"
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+    <button
+      type="button"
+      class="__button --secondary"
+      (click)="onSignup()">
+      Sign-Up
+    </button>
+    <button
+      type="button"
+      class="__button"
+      (click)="onLogin()">
+      Einloggen
+    </button>
+  </div>
 </div>
