@@ -1,1 +1,108 @@
+/*
 
+  @Styles: LoginPageComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 14.09.2020
+
+*/
+
+/* Page Wrapper Settings */
+.page__logo-wrapper {
+  height: 45%;
+}
+.page__top-info {
+  padding: 2rem 3rem;
+  text-align: right;
+  color: rgba(230, 230, 230, .65);
+}
+.page__bottom-info {
+  padding: 2rem 3rem;
+  text-align: center;
+  color: rgba(230, 230, 230, .35);
+}
+
+/* Logo Settings */
+.page__logo-wrapper img {
+  max-width: 400px;
+}
+.page__logo-wrapper p {
+  color: rgba(250, 250, 250, .9);
+  font-weight: 100;
+  font-size: .8rem;
+  position: relative;
+  bottom: 3rem;
+}
+
+/* Neon-Animation */
+.logo__neon--pink::before {
+  position: absolute;
+  top: 7.5%;
+  right: 45%;
+  content: '';
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  background-color: #FE53BB;
+  z-index: 60;
+  filter: blur(60px);
+  opacity: 0.55;
+  animation: backGlow--red 15s ease infinite;
+}
+.logo__neon--blue::before {
+  position: absolute;
+  top: 17.5%;
+  left: 45%;
+  background-color: #08F7FE;
+  content: '';
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  z-index: 30;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: backGlow--blue 15s ease infinite;
+}
+@keyframes backGlow--red {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(-20%, 20%);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-20%, -20%);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(20%, 20%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+}
+@keyframes backGlow--blue {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.15;
+  }
+  25% {
+    transform: translate(20%, -20%);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(20%, 20%);
+    opacity: 0.15;
+  }
+  75% {
+    transform: translate(-20%, -20%);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.15;
+  }
+}

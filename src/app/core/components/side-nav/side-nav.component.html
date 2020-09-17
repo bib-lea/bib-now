@@ -1,12 +1,21 @@
+<!--
+
+ @SideNavComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 15.09.2020
+
+ -->
 <div
   class="sidebar__wrapper"
   fxLayout="column"
   fxLayoutAlign="center center">
+  <!-- Logo -->
   <div
-    class="sidebar__logo">
-    <h1>bibnow</h1>
-    <span>seit 2020</span>
+    class="sidebar__logo"
+    fxLayout="row"
+    fxLayoutAlign="center center">
   </div>
+  <!-- NAV-LINKS (shared/constants/constants.ts) -->
   <a
     *ngFor="let link of navLinks"
     fxLayout="row"
@@ -22,14 +31,16 @@
       {{ link.name }}
     </span>
   </a>
+  <!-- Sign-Out Button -->
   <button
     class="__button --sign-out"
     (click)="onSignOut()">
     Sign Out
   </button>
+  <!-- Navigation Footer -->
   <div
     class="sidebar__footer">
     <p>Charlie Wiegand</p>
-    <p>JawoonKim</p>
+    <p>Jawoon Kim</p>
   </div>
 </div>

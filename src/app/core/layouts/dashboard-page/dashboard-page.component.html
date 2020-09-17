@@ -1,15 +1,30 @@
+<!--
+
+ @Layout: SideNavComponent, TopBarComponent, ContentViewerComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 16.09.2020
+
+ -->
 <main
   class="page__wrapper"
   fxFill
-  gdAreas="side contents"
+  gdAreas="side top | side contents"
   gdColumns="auto 1fr"
-  gdRows="1fr">
+  gdRows="auto 1fr">
+  <!-- SideNavComponent -->
   <aside
     gdArea="side">
     <app-side-nav></app-side-nav>
   </aside>
+  <!-- TopBarComponent -->
+  <div
+    gdArea="top">
+    <app-top-bar></app-top-bar>
+  </div>
+  <!-- ContentViewerComponent -->
   <section
     gdArea="contents"
     class="contents__wrapper">
+    <app-content-viewer></app-content-viewer>
   </section>
 </main>

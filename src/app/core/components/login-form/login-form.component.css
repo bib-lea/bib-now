@@ -1,62 +1,85 @@
-/* Box */
+/*
+
+  @Styles: LoginFormComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 15.09.2020
+
+*/
+
+/* Wrapper Settings */
 .form__wrapper {
-  width: 500px;
+  width: 600px;
   max-width: 80%;
   height: 600px;
   max-height: 60%;
   padding: 1rem;
   margin: 0 auto;
+  z-index: -1;
 }
 .form__wrapper > * {
   width: 100%;
 }
 
-/* Header */
-.header__wrapper {
-  margin-bottom: 3rem;
-}
-.header__wrapper > * {
-  text-align: center;
-}
-.header__wrapper > h2 {
-  margin-bottom: 1rem;
-}
-.header__wrapper > p {
-  padding: 0 2rem;
-  font-size: .9rem;
-  color: rgba(70, 70, 70, .8);
-}
-
-/* Form Fields */
+/* Form-Fields Settings */
 .form-field__wrapper {
   height: auto;
-  padding: 2rem 2rem;
-  background-color: white;
-  box-shadow: 2px 2px 5px rgba(70, 70, 70, .8);
+  padding: 4rem;
+  background-color: transparent;
   border-radius: 2rem;
+  position: relative;
 }
-
 .form-field__wrapper p {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
 }
-
-.form-field__input {
+.form-field__input-wrapper {
   width: 100%;
 }
-
+.form-field__input-wrapper .--email {
+  width: 60%;
+}
+.form-field__input-wrapper span {
+  margin-left: 1rem;
+  font-weight: 300;
+  color: rgba(230, 230, 230, .6);
+}
+.form-field.__input.--password {
+  width: 60%;
+}
 .form-field__wrapper a {
   text-decoration: none;
-  margin-left: auto;
-  margin-top: 1rem;
+  margin-right: auto;
   font-size: .8rem;
-  color: rgba(70, 70, 70, .6);
+  color: rgba(250, 250, 250, .4);
+  transition: color 100ms ease-in;
+}
+.form-field__wrapper a:hover {
+  color: #FE53BB;
+  cursor: pointer;
 }
 
-/* Buttons */
+/* Buttons Layout (Style from style.css) */
 .buttons__wrapper {
   width: 100%;
-  margin-top: 3rem;
-  padding: 0 2rem;
+  margin-top: 1rem;
+  padding: 0 4rem;
+}
+
+/* Forms Label Settings */
+#form-field__label--email::before {
+  content: "E-Mail";
+  position: relative;
+  top: 0;
+  right: 0;
+  color: rgba(250, 250, 250, 0.9);
+  font-size: 1rem;
+}
+#form-field__label--password::before {
+  content: "Passwort";
+  position: relative;
+  top: 1rem;
+  right: 0;
+  color: rgba(250, 250, 250, 0.9);
+  font-size: 1rem;
 }

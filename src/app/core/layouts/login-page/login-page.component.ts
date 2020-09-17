@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
 
   }
 
-  onRequest(event): void {
+  onSwitch(event): void {
     this.isSignup = event;
   }
 }

@@ -1,0 +1,32 @@
+<!--
+
+ @ContentViewerComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 16.09.2020
+
+ -->
+<div
+  class="cards__wrapper"
+  fxFill
+  fxLayout="row wrap"
+  fxLayoutAlign="start center"
+  fxLayoutGap="2rem">
+  <!-- Posts Caroussel (Lazy Loading) -->
+  <mat-card
+    *ngFor="let post of posts"
+    class="card__wrapper">
+    <mat-card-header>
+      <div mat-card-avatar class="card__header-image"></div>
+      <mat-card-title>
+        Title
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ post.name }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      {{ post.content }}
+    </mat-card-content>
+  </mat-card>
+</div>

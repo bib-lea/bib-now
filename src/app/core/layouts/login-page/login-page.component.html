@@ -1,19 +1,59 @@
+<!--
+
+ @Layout: LoginFormComponent, SignupFormComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 15.09.2020
+
+ -->
 <main
   class="page__wrapper"
   fxFill
-  fxLayout="column"
-  fxLayoutAlign="center center">
+  gdAreas="top | form | bottom"
+  gdColumns="1fr"
+  gdRows="auto 1fr auto">
+  <!-- Top Info -->
+  <div
+    gdArea="top"
+    class="page__top-info">
+    <p>Beta</p>
+  </div>
+  <!-- Form Layout -->
   <section
     fxFill
-    fxLayout="row"
+    gdArea="form"
+    fxLayout="column"
     fxLayoutAlign="center center">
+    <div
+      class="logo__neon--pink"></div>
+    <div
+      class="logo__neon--blue"></div>
+    <div
+      class="page__logo-wrapper"
+      fxLayout="column"
+      fxLayoutAlign="end center">
+      <img
+        src="./assets/bibnow--1.png">
+      <p>
+        seit 2020
+      </p>
+    </div>
+    <!-- LoginFormComponent -->
     <app-login-form
+      fxLayout="column"
+      fxLayoutAlign="center center"
       *ngIf="!isSignup"
-      (isSignUp)="onRequest($event)">
+      (isSignUp)="onSwitch($event)">
     </app-login-form>
+    <!-- SignupFormComponent -->
     <app-signup-form
       *ngIf="isSignup"
-      (isSignup)="onRequest($event)">
+      (isSignup)="onSwitch($event)">
     </app-signup-form>
   </section>
+  <!-- Bottom Info -->
+  <div
+    gdArea="bottom"
+    class="page__bottom-info">
+    <p>bibnow © 2020 All rights reserved | PBT3H19A</p>
+  </div>
 </main>

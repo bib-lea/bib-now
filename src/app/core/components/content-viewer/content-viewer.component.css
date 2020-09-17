@@ -1,0 +1,19 @@
+/*
+
+  @Styles: ContentViewerComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 16.09.2020
+
+*/
+
+/* Card Settings */
+.card__header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.card__wrapper {
+  margin: 1rem;
+}
+.card__wrapper img {
+  width: 300px;
+}
