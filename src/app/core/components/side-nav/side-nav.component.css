@@ -11,7 +11,7 @@
   height: 100%;
   width: 16rem;
   padding: 2rem;
-  background-color: #1F534F;
+  background-color: var(--primary-background);
 }
 
 /* Logo Settings */
