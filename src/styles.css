@@ -1,55 +1,28 @@
+/* CSS Variablen */
+:root {
+  --primary-background: #2B2839;
+}
+
+/* Grundgerüst */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   width: 100vw;
   height: 100vh;
 }
-
 body {
   height: 100%;
   width: 100%;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  background-color: #F5F3F4;
+  background-color: var(--primary-background);
   overflow: hidden;
 }
 
-/* Buttons */
-.__button {
-  color: rgb(240, 240, 240);
-  font-family: 'Montserrat', sans-serif;
-  font-size: .7rem;
-  background-color: #D14B4D;
-  border: 0;
-  height: 3rem;
-  width: 6rem;
-  cursor: pointer;
-  border-radius: 1rem;
-  transition: box-shadow 200ms ease-in;
-  outline: none;
-}
-.__button:hover {
-  box-shadow: 2px 2px 4px rgba(70, 70, 70, .4);
-}
-.__button.--secondary {
-  background-color: #9EADA7;
-}
-
-/* Wrapper */
-.__inset-wrapper {
-  padding: 2.5rem;
-  border-radius: 1rem;
-  border: 0;
-  box-shadow:
-    -2px -2px 5px rgba(260, 260, 260, .8),
-    2px 2px 5px rgba(70, 70, 70, .2),
-    inset -2px -2px 5px rgba(260, 260, 260, .8),
-    inset 2px 2px 5px rgba(70, 70, 70, .2);
-}
+/* Wrapper Theme */
 .__main-wrapper {
   margin: 2rem;
   padding: 2.5rem;
@@ -60,19 +33,53 @@ body {
     18px 18px 30px rgba(70, 70, 70, .2);
 }
 
-/* Input */
+/* Buttons Theme */
+.__button {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 0;
+  height: 3rem;
+  width: 6rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: box-shadow 200ms ease-in;
+  outline: none;
+  box-shadow: 2px 2px 6px #1e181e;
+  background-image: linear-gradient(to top left, #FE53BB, #fdc8e6);
+}
+.__button:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+.__button.--secondary {
+  background-image: linear-gradient(to top left, #039be5, #08F7FE);
+  box-shadow: 2px 2px 6px #101121;
+}
+
+/* Input Theme */
 .__input {
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid rgba(70, 70, 70, .8);
-  padding: 1rem 0 .5rem 0;
+  border-bottom: 1px solid rgba(250, 250, 250, .5);
+  background-color: var(--primary-background);
+  padding: 1rem 0 .5rem .5rem;
   outline: none;
 }
 .__textarea {
   border: 1px solid rgba(70, 70, 70, .4);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 1rem .75rem 1rem .75rem;
   outline: none;
   font-family: 'Montserrat', sans-serif;
+  transition: box-shadow 100ms ease-in;
+}
+input, select, textarea{
+  color: #FFFFFF;
+  font-size: 1.1rem;
+}
+textarea:focus, input:focus {
+  color: #FFFFFF;
+  box-shadow: 2px 0 5px rgba(30, 30, 30, .1);
 }
