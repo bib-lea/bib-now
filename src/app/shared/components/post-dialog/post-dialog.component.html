@@ -1,13 +1,23 @@
+<!--
+
+ @PostDialogComponent (Dialog)
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 16.09.2020
+
+ -->
+<!-- Header -->
 <h2
   mat-dialog-title
   class="header__text">
   Post
 </h2>
 <p
+  mat-dialog-title
   class="header__text"
   *ngIf="!user">
   Nicht angemeldet.
 </p>
+<!-- Form -->
 <div
   mat-dialog-content
   class="dialog__input-group">
@@ -23,6 +33,7 @@
       autocomplete="off"
       required></textarea>
 </div>
+<!-- Action Buttons -->
 <div
   class="dialog__button-group"
   mat-dialog-actions
@@ -37,5 +48,4 @@
     (click)="onPosten()">
     Posten
   </button>
-
 </div>

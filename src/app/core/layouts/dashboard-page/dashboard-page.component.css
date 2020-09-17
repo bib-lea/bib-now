@@ -1,7 +1,13 @@
-/* Container */
+/*
 
+  @Styles: DashboardPageComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 15.09.2020
+
+*/
+
+/* Container */
 .contents__wrapper {
   padding: 4rem 5rem;
   background-color: rgba(240, 240, 240, .9);
 }
-

@@ -1,12 +1,23 @@
+/*
+
+  @Styles: PostDialogComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 15.09.2020
+
+*/
+
+/* Header Settings */
 .header__text {
   padding: 0 1.5rem;
   margin: 1rem 0;
 }
 
+/* Input Settings */
 .dialog__input-group {
   margin: 2rem 0;
 }
 
+/* Action Button Settings */
 .dialog__button-group {
   padding: 0 1.5rem;
   margin-bottom: 1rem;
