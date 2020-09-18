@@ -1,3 +1,10 @@
+<!--
+
+ @TopNavComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 17.09.2020
+
+ -->
 <div
   class="nav__wrapper"
   fxLayout="row"
@@ -12,15 +19,40 @@
   <div
     class="nav__menu">
     <a
+      class="nav__link"
       *ngFor="let link of links"
       (click)="onNavClick(link.url)">
       {{ link.name }}
     </a>
   </div>
   <div
+    class="nav__search-bar">
+    <mat-icon
+      class="search-bar__icon">search</mat-icon>
+    <input
+      class="search-bar__input"
+      tabindex="1"
+      name="search"
+      type="text"
+      placeholder="Suche Posts..."
+      autocomplete="off">
+  </div>
+  <div
     class="nav__profile">
+    <a
+      class="account __expand">
+      <mat-icon>
+        account_circle
+      </mat-icon>
+    </a>
+    <a
+      class="notification __expand">
+      <mat-icon>
+        forum
+      </mat-icon>
+    </a>
     <button
-      class="__button --flat">
+      class="nav __button --flat --logout">
       Sign Out
     </button>
   </div>

@@ -8,8 +8,9 @@
 
 /* Wrapper Settings */
 .nav__wrapper {
-  padding: 1.5rem 5rem;
+  padding: 1rem 5rem;
   box-shadow: 5px 5px 10px #2B2839EA;
+  background-image: linear-gradient(to right, #FE53BB31, #039be531);
 }
 
 /* Logo Settings */
@@ -24,19 +25,68 @@
 }
 
 /* Links */
-.nav__menu a {
+.nav__link {
   margin-right: 4rem;
-  color: #F5F3F435;
+  color: #F5F3F465;
   cursor: pointer;
   font-weight: 500;
+  transition: color 200ms ease;
+}
+.nav__link:hover {
+  color: #ECEFF1;
 }
 
-/* Profile */
-.nav__profile {
+/* Search Bar */
+.nav__search-bar {
   margin-left: auto;
+  position: relative;
+
 }
-.nav__profile button {
+.search-bar__input {
+  width: 22rem;
+  font-size: .8rem;
+  color: rgba(30, 30, 30, .8);
+  padding: .8rem .8rem .8rem 3rem;
+  border-radius: .8rem;
+  border: 0;
+  transition: box-shadow 200ms ease;
+}
+.search-bar__input:focus {
+  outline: none;
+  border: 0;
+  box-shadow:
+    inset -1px -1px 5px #08F7FEAA,
+    inset 2px 2px 5px #FE53BBAA;
+}
+.search-bar__icon {
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  color: #039be5;
+}
+
+
+/* Profile */
+.nav.__button {
   font-size: .9rem;
   font-weight: 300;
-  color: #F5F3F435;
+  color: #F5F3F455;
 }
+.nav.--logout:hover {
+  color: #FE53BB;
+  box-shadow: none;
+}
+.account.__expand, .notification.__expand {
+  vertical-align: middle;
+  color: rgba(250, 250, 250, .45);
+  margin-right: 2rem;
+  cursor: pointer;
+}
+.__expand mat-icon {
+  transition: text-shadow 200ms ease;
+}
+.__expand:hover mat-icon {
+  color: #039be5;
+  text-shadow: 0 0 10px #039be55A;
+}
+
