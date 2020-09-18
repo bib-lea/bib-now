@@ -101,7 +101,7 @@ export class PostDialogComponent implements OnInit {
 //       });
 //   }
 
-//   private resetControl(): void {
-//     this.contentControl.reset();
-//   }
+  private resetControl(): void {
+    this.contentControl.reset();
+  }
 }
