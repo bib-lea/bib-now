@@ -10,7 +10,7 @@ import {CrudService} from '../../../shared/services/crud.service';
 })
 export class ContentViewerComponent implements OnInit {
 
-  posts: any;
+  posts: Post[];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -19,18 +19,18 @@ export class ContentViewerComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.getPost().subscribe(data => {
+
       this.posts = data.map(e => {
         return {
           id: e.payload.doc.id,
-          isedit: false,
-          name: e.payload.doc.data()['name'],
-          content: e.payload.doc.data()['content']
-        };
-      });
+          ...e.payload.doc.data()
+        } as Post;
+      })
       console.log(this.posts);
     })
+  }
 
 
   }
 
-}
+

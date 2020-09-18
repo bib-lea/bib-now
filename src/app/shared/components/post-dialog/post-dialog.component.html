@@ -6,7 +6,7 @@
 
  -->
 <!-- Header -->
-<!-- <h2
+<h2
   mat-dialog-title
   class="header__text">
   Post
@@ -17,24 +17,37 @@
   *ngIf="!user">
   Nicht angemeldet.
 </p>
-Form -->
-<!-- <div
+<!--Form -->
+<div
   mat-dialog-content
   class="dialog__input-group">
+    <input type="text"
+    [formControl]="topic" 
+    placeholder="Enter Topic"
+    >
+    <input type="file"
+        id="file"
+        #userPhoto
+        (change)="upload($event)"
+        name="image"
+        autocomplete="off"
+        accept=".jpeg, .png, .jpg"
+        />
     <textarea
       [formControl]="contentControl"
       rows="4"
       cols="50"
       class="__textarea"
       tabindex="1"
+      [formControl]="content"
       name="content"
       type="text"
       placeholder="Schreib was..."
       autocomplete="off"
       required></textarea>
 </div>
-Action Buttons -->
-<!-- <div
+<!--Action Buttons -->
+<div
   class="dialog__button-group"
   mat-dialog-actions
   fxLayout="row"
@@ -48,4 +61,4 @@ Action Buttons -->
     (click)="onPosten()">
     Posten
   </button>
-</div> -->
+</div>
