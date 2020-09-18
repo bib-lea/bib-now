@@ -3,13 +3,22 @@
     <div class="row justify-content-center p-2">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" [formControl]="username" placeholder="Enter Username">
+        <input type="text" class="form-control" [formControl]="topic" placeholder="Enter Topic">
     </div>
     <div class="form-group">
         <input type="text" class="form-control" [formControl]="content" placeholder="Enter Content">
     </div>
+    <div class="form-group col-12">
+        <input type="file"
+        id="file"
+        #userPhoto
+        (change)="upload($event)"
+        name="image"
+        autocomplete="off"
+        />
+       </div>
     <div class="form-group">
-        <button class="btn btn-primary" (click)="createRecord()" [disabled]="!username || !content ">Create Post</button>
+        <button class="btn btn-primary" (click)="create()" [disabled]="!topic || !content ">Create Post</button>
     </div>
     <div class="form-group">
         <h4><b>{{message}}</b></h4>
@@ -20,7 +29,7 @@
             <h4>All Posts</h4>
         </div>
         
-        <div class="col-md-3" *ngFor ="let item of post">
+        <div class="col-md-3" *ngFor ="let item of posts">
             
             <div class="card" *ngIf="!item.isedit; else elseBlock">
                 <div class="card-body">

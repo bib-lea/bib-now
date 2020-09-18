@@ -9,11 +9,21 @@ import {AngularFirestoreDocument, AngularFirestore} from '@angular/fire/firestor
 export class AuthServiceService {
   //Servernachricht
   serverMessage: string;
+  authState: any = null;
 
   constructor(
     private afAuth: AngularFireAuth,
     private afStore: AngularFirestore
   ) { }
+
+  get authenticated(): boolean {
+    return this.authState !== null
+  }
+
+  get currentUserId(): string {
+    return this.authenticated ? this.authState.uid : null
+  }
+
 
   onLogin(email: string, password: string) {
     //Kommunikation mit Firebase, LogIn mit email und passwort

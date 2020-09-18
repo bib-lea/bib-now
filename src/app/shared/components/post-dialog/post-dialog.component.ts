@@ -30,23 +30,23 @@ export class PostDialogComponent implements OnInit {
     this.contentControl = new FormControl('', []);
   }
 
-  onPosten(): void {
-    let post: Post = {
-      name: this.user ? this.user.email : 'Anonym',
-      content: this.contentControl.value
-    };
+  // onPosten(): void {
+  //   let post: Post = {
+  //     name: this.user ? this.user.email : 'Anonym',
+  //     content: this.contentControl.value
+  //   };
 
-    this.crudService.createPost(post)
-      .then(res => {
-        console.log(res);
-        this.resetControl();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+//     this.crudService.createPost(post)
+//       .then(res => {
+//         console.log(res);
+//         this.resetControl();
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   }
 
-  private resetControl(): void {
-    this.contentControl.reset();
-  }
+//   private resetControl(): void {
+//     this.contentControl.reset();
+//   }
 }
