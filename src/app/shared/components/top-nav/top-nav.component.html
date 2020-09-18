@@ -1,0 +1,27 @@
+<div
+  class="nav__wrapper"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  fxLayoutGap="4rem">
+  <div
+    class="nav__logo">
+    <h2>
+      bibnow
+    </h2>
+  </div>
+  <div
+    class="nav__menu">
+    <a
+      *ngFor="let link of links"
+      (click)="onNavClick(link.url)">
+      {{ link.name }}
+    </a>
+  </div>
+  <div
+    class="nav__profile">
+    <button
+      class="__button --flat">
+      Sign Out
+    </button>
+  </div>
+</div>

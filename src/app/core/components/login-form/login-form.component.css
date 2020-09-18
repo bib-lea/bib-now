@@ -34,18 +34,23 @@
   font-weight: bold;
 }
 .form-field__input-wrapper {
-  width: 100%;
+  width: 20rem;
+  position: relative;
 }
 .form-field__input-wrapper .--email {
-  width: 60%;
+  width: 100%;
+  padding-right: 7rem;
 }
 .form-field__input-wrapper span {
+  position: absolute;
+  bottom: .5rem;
+  right: 0;
   margin-left: 1rem;
   font-weight: 300;
   color: rgba(230, 230, 230, .6);
 }
 .form-field.__input.--password {
-  width: 60%;
+  width: 100%;
 }
 .form-field__wrapper a {
   text-decoration: none;
@@ -61,9 +66,7 @@
 
 /* Buttons Layout (Style from style.css) */
 .buttons__wrapper {
-  width: 100%;
   margin-top: 1rem;
-  padding: 0 6rem;
 }
 
 /* Forms Label Settings */
@@ -78,7 +81,7 @@
 #form-field__label--password::before {
   content: "Passwort";
   position: relative;
-  top: 1rem;
+  top: 0;
   right: 0;
   color: rgba(250, 250, 250, 0.9);
   font-size: 1rem;

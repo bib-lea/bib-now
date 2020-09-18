@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -10,6 +9,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class LoginPageComponent implements OnInit {
 
   isSignup = false;
+  @Input() formState: string;
 
   constructor() { }
 
@@ -17,7 +17,16 @@ export class LoginPageComponent implements OnInit {
 
   }
 
-  onSwitch(event): void {
-    this.isSignup = event;
+  onSelect(event): void {
+    if (event.target.name === 'signup') {
+      this.formState = 'signup';
+    }
+    else {
+      this.formState = 'login';
+    }
+  }
+
+  onFormStateChanged(state): void {
+    this.formState = state;
   }
 }

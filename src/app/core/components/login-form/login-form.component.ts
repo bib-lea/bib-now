@@ -24,7 +24,7 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 })
 export class LoginFormComponent implements OnInit {
 
-  @Output() isSignUp = new EventEmitter<boolean>();
+  @Output() formState = new EventEmitter<string>();
 
   loginForm: FormGroup;
 
@@ -51,8 +51,8 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  onSignup(): void {
-    this.isSignUp.emit(true);
+  onBack(): void {
+    this.formState.emit('');
   }
 
   onLogin(): void {

@@ -6,6 +6,12 @@
 
 */
 
+/* Wrapper Settings */
+.viewer__wrapper {
+  background-color: #F5F3F4;
+  box-shadow: inset 0 5px 15px #2B2839EE;
+}
+
 /* Card Settings */
 .card__header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');

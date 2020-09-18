@@ -8,21 +8,21 @@
 <main
   class="page__wrapper"
   fxFill
-  gdAreas="top | form | bottom"
+  gdAreas="top | logo | form | bottom"
   gdColumns="1fr"
-  gdRows="auto 1fr auto">
+  gdRows="auto auto 1fr auto">
   <!-- Top Info -->
   <div
     gdArea="top"
-    class="page__top-info">
+    class="page__top-info"
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
     <p>Beta</p>
+    <p>Lernaufgabe @ 2020</p>
   </div>
-  <!-- Form Layout -->
-  <section
-    fxFill
-    gdArea="form"
-    fxLayout="column"
-    fxLayoutAlign="center center">
+  <!-- Logo -->
+  <div
+    gdArea="logo">
     <div
       class="logo__neon--pink"></div>
     <div
@@ -33,21 +33,53 @@
       fxLayoutAlign="end center">
       <img
         src="./assets/bibnow--1.png">
-      <p>
-        seit 2020
+      <p
+        *ngIf="formState === 'signup'"
+        class="logo__subtitle">
+        Please check your inbox and follow the link.
       </p>
+      <p
+        *ngIf="formState !== 'signup'"
+        class="logo__title">
+        Erzähle uns, was abgeht - <i>auf deine Art!</i>
+      </p>
+      <p
+        *ngIf="formState !== 'signup'"
+        class="logo__subtitle">
+        Poste was du willst, wie du willst. Jetzt mit <u>Bildern!</u>
+      </p>
+    </div>
+  </div>
+  <!-- Form Layout -->
+  <section
+    gdArea="form">
+    <!-- Buttons -->
+    <div
+      *ngIf="!formState"
+      class="form__buttons-wrapper"
+      fxLayout="column"
+      fxLayoutAlign="start center">
+      <button
+        name="signup"
+        class="form __button --secondary"
+        (click)="onSelect($event)">
+        Konto erstellen
+      </button>
+      <a
+        class="form__anmelden"
+        (click)="onSelect($event)">
+        Anmelden
+      </a>
     </div>
     <!-- LoginFormComponent -->
     <app-login-form
-      fxLayout="column"
-      fxLayoutAlign="space-between center"
-      *ngIf="!isSignup"
-      (isSignUp)="onSwitch($event)">
+      *ngIf="formState === 'login'"
+      (formState)="onFormStateChanged($event)">
     </app-login-form>
     <!-- SignupFormComponent -->
     <app-signup-form
-      *ngIf="isSignup"
-      (isSignup)="onSwitch($event)">
+      *ngIf="formState === 'signup'"
+      (formState)="onFormStateChanged($event)">
     </app-signup-form>
   </section>
   <!-- Bottom Info -->

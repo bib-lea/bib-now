@@ -7,6 +7,7 @@
  -->
 <div
   class="form__wrapper"
+  fxFill
   gdAreas="forms | buttons"
   gdRows="1fr auto">
   <!-- Sign Up Form -->
@@ -60,7 +61,12 @@
         fxFlexAlign="start">
       <span
         class="form-field__input-hint">
-            {{ reenter ? 'stimmt überein.' : 'stimmt nicht überein.' }}
+        <mat-icon
+          class="txt--pos"
+          *ngIf="reenter">check_circle_outline</mat-icon>
+        <mat-icon
+          class="txt--neg"
+          *ngIf="!reenter">not_interested</mat-icon>
       </span>
     </div>
   </form>
@@ -69,16 +75,17 @@
     class="buttons__wrapper"
     gdArea="buttons"
     fxLayout="row"
-    fxLayoutAlign="space-between center">
+    fxLayoutAlign="center center"
+    fxLayoutGap="8rem">
     <button
-      class="__button --secondary"
+      class="__button --flat"
       (click)="onBack()">
       Zurück
     </button>
     <button
-      class="__button"
+      class="__button --secondary"
       (click)="onSubmit()">
-      Anmelden
+      Sign-Up
     </button>
   </div>
 </div>

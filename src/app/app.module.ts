@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginFormComponent } from './core/components/login-form/login-form.component';
 import { DashboardPageComponent } from './core/layouts/dashboard-page/dashboard-page.component';
-import { SideNavComponent } from './core/components/side-nav/side-nav.component';
 import { TimetablePageComponent } from './core/layouts/timetable-page/timetable-page.component';
 import { SettingsPageComponent } from './core/layouts/settings-page/settings-page.component';
 import { SignupFormComponent } from './core/components/signup-form/signup-form.component';
@@ -23,9 +22,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ForumComponent } from './core/components/forum/forum.component';
 import { CrudService } from "./shared/services/crud.service";
-import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
 import { PostDialogComponent } from './shared/components/post-dialog/post-dialog.component';
 import { ContentViewerComponent } from './core/components/content-viewer/content-viewer.component';
+import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
 
 const ExtraModules = [
   MaterialModule,
@@ -39,14 +38,13 @@ const ExtraModules = [
     LoginPageComponent,
     LoginFormComponent,
     DashboardPageComponent,
-    SideNavComponent,
     TimetablePageComponent,
     SettingsPageComponent,
     SignupFormComponent,
     ForumComponent,
-    TopBarComponent,
     PostDialogComponent,
-    ContentViewerComponent
+    ContentViewerComponent,
+    TopNavComponent
   ],
   imports: [
     BrowserModule,

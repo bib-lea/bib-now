@@ -8,23 +8,17 @@
 <main
   class="page__wrapper"
   fxFill
-  gdAreas="side top | side contents"
-  gdColumns="auto 1fr"
+  gdAreas=" top | contents"
+  gdColumns="1fr"
   gdRows="auto 1fr">
-  <!-- SideNavComponent -->
-  <aside
-    gdArea="side">
-    <app-side-nav></app-side-nav>
-  </aside>
   <!-- TopBarComponent -->
   <div
     gdArea="top">
-    <app-top-bar></app-top-bar>
+    <app-top-nav></app-top-nav>
   </div>
   <!-- ContentViewerComponent -->
   <section
-    gdArea="contents"
-    class="contents__wrapper">
+    gdArea="contents">
     <app-content-viewer></app-content-viewer>
   </section>
 </main>

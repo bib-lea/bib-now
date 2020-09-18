@@ -10,7 +10,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class SignupFormComponent implements OnInit {
 
-  @Output() isSignup = new EventEmitter<boolean>();
+  @Output() formState = new EventEmitter<string>();
 
   reenter: boolean = false;
   signupForm: FormGroup;
@@ -30,7 +30,7 @@ export class SignupFormComponent implements OnInit {
   }
 
   onBack(): void {
-    this.isSignup.emit(false);
+    this.formState.emit('');
   }
 
   onSubmit(): void {

@@ -1,0 +1,42 @@
+/*
+
+  @Styles: TopNavComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 17.09.2020
+
+*/
+
+/* Wrapper Settings */
+.nav__wrapper {
+  padding: 1.5rem 5rem;
+  box-shadow: 5px 5px 10px #2B2839EA;
+}
+
+/* Logo Settings */
+.nav__logo {
+  padding-right: 5rem;
+  font-size: 1.5rem;
+}
+.nav__logo h2 {
+  background: linear-gradient(to top right, #039be5,  #FE53BB, #F5F3F4EA, #F5F3F4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Links */
+.nav__menu a {
+  margin-right: 4rem;
+  color: #F5F3F435;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Profile */
+.nav__profile {
+  margin-left: auto;
+}
+.nav__profile button {
+  font-size: .9rem;
+  font-weight: 300;
+  color: #F5F3F435;
+}

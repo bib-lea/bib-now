@@ -34,22 +34,26 @@
   font-weight: bold;
 }
 .form-field__input-wrapper {
-  width: 100%;
+  width: 20rem;
+  position: relative;
 }
 .form-field__input-wrapper .--email {
-  width: 60%;
+  width: 100%;
+  padding-right: 7rem;
 }
 .form-field__input-wrapper span {
+  position: absolute;
+  bottom: .5rem;
+  right: 0;
   margin-left: 1rem;
   font-weight: 300;
   color: rgba(230, 230, 230, .6);
 }
 .form-field.__input.--password {
-  width: 60%;
+  width: 100%;
 }
 .form-field.__input.--reenter {
-  width: 60%;
-  margin-top: 0.5rem;
+  width: 100%;
 }
 .form-field__wrapper a {
   text-decoration: none;
@@ -64,14 +68,14 @@
 }
 .form-field__input-hint {
   position: relative;
-  top: .5rem;
+  bottom: .5rem;
+  right: 0;
   font-size: .75rem;
 }
 
 /* Buttons Settings */
 .buttons__wrapper {
   width: 100%;
-  margin-top: 3rem;
   padding: 0 6rem;
 }
 
@@ -86,14 +90,14 @@
 #form-field__label--password::before {
   content: "Passwort";
   position: relative;
-  top: 1rem;
+  top: 0;
   right: 0;
   color: rgba(250, 250, 250, 0.9);
 }
 #form-field__label--reenter::before {
   content: "Reenter";
   position: relative;
-  top: 1rem;
+  top: 0;
   right: 0;
   color: rgba(250, 250, 250, 0.9);
 }
