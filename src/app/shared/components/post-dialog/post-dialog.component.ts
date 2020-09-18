@@ -43,9 +43,9 @@ export class PostDialogComponent implements OnInit {
 
   onPosten() {
     const postData = {
-      //author: this.auth.authState.displayName || this.auth.authState.email,
+      //author: this.afAuth.authState.displayName || this.auth.authState.email,
       author: '',
-      //authorId: this.auth.currentUserId,
+      //authorId: this.afAuth.currentUserId,
       authorId: '',
       content: this.content.value,
       image: this.image || null,
