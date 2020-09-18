@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import { Post } from "../models/post";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
+  postsCollection: AngularFirestoreCollection<Post>
+  postDoc: AngularFirestoreDocument<Post>
 
-  constructor(public fireservices: AngularFirestore) { }
+
+  constructor(public fireservices: AngularFirestore) {
+    this.postsCollection = this.fireservices.collection('posts', ref => ref.orderBy('published', 'desc'));
+  }
 
   //CRUD
   
