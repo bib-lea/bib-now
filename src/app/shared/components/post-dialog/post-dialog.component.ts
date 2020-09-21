@@ -24,19 +24,18 @@ export class PostDialogComponent implements OnInit {
     'Tutorium',
     'Q&A'
   ];
-  posts: Post[];
-  downloadURL: Observable<string>;
 
+  downloadURL: Observable<string>;
 
   image: string
   topic: FormControl;
   content: FormControl;
-  
+
   constructor(
     private afAuth: AngularFireAuth,
     private crudService: CrudService,
 
-    private selfRef: MatDialogRef<PostDialogComponent>
+    private selfRef: MatDialogRef<PostDialogComponent>,
     private storage: AngularFireStorage
   )
   {

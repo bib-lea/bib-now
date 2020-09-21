@@ -8,9 +8,6 @@ export interface Post {
   title?: string;
   datePosted?: string;
   id?: string;
-  user?: string;
   userId?: string;
-  topic?: string;
-  content?: string;
   image?: string;
 }

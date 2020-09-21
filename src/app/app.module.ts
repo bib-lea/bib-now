@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/modules/material/material.module';
-import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { LoginPageComponent } from './core/layouts/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -16,7 +15,6 @@ import { DashboardPageComponent } from './core/layouts/dashboard-page/dashboard-
 import { TimetablePageComponent } from './core/layouts/timetable-page/timetable-page.component';
 import { SettingsPageComponent } from './core/layouts/settings-page/settings-page.component';
 import { SignupFormComponent } from './core/components/signup-form/signup-form.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 //Libraries für Firebase importieren
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -37,7 +35,6 @@ const ExtraModules = [
   MaterialModule,
   ReactiveFormsModule,
   FlexLayoutModule,
-  CarouselModule
 ];
 
 @NgModule({
