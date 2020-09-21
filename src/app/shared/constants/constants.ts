@@ -1,5 +1,3 @@
-import {OwlOptions} from 'ngx-owl-carousel-o';
-
 export const NAV_LINKS = [
   {
     name: 'Forum',
@@ -15,7 +13,7 @@ export const NAV_LINKS = [
   }
 ];
 
-export const CAROUSEL_OPTIONS: OwlOptions = {
+export const CAROUSEL_OPTIONS = {
   loop: true,
   mouseDrag: false,
   touchDrag: false,

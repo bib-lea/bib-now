@@ -1,6 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import {Component, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthServiceService} from '../../../shared/services/auth-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
@@ -31,7 +31,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthServiceService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {

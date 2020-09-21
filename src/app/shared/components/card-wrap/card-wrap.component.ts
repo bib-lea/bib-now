@@ -2,9 +2,6 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges, ViewCh
 import { MatDialog } from '@angular/material/dialog';
 import {Post} from '../../models/post';
 import {ImageViewerComponent} from '../image-viewer/image-viewer.component';
-import {OwlOptions} from 'ngx-owl-carousel-o';
-import {CAROUSEL_OPTIONS} from '../../constants/constants';
-import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-card-wrap',
@@ -21,7 +18,7 @@ export class CardWrapComponent implements OnInit {
     }
   }
 
-  public options: OwlOptions;
+  public options;
   @Input() posts: Post[];
   @Input() direction: EventEmitter<string>;
 
@@ -29,8 +26,7 @@ export class CardWrapComponent implements OnInit {
     private imageViewer: MatDialog
   )
   {
-    this.options = CAROUSEL_OPTIONS;
-    //console.log('CARD_WRAP: '+ this.posts);
+    console.log('CARD_WRAP: '+ this.posts);
   }
 
   ngOnInit(): void {
