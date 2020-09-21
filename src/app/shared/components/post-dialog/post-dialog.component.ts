@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {CrudService} from '../../services/crud.service';
 import {Post} from '../../models/post';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from "rxjs";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
+import {DEFAULT_IMAGE_URL} from '../../constants/constants';
 
 @Component({
   selector: 'app-post-dialog',
@@ -14,12 +15,12 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./post-dialog.component.css']
 })
 export class PostDialogComponent implements OnInit {
-
   contentControl: FormControl;
   topicControl: FormControl;
   titleControl: FormControl;
   typeControl: FormControl;
 
+  isInvalid: boolean = false;
   user: any;
   posts: any[];
 
@@ -35,8 +36,11 @@ export class PostDialogComponent implements OnInit {
 
   downloadURL: Observable<string>;
 
-  dataPath: string;
-  dataFile: string;
+  dataPath: any;
+  dataFile: any;
+  get dataSize(){
+    return (this.dataFile.size / 1024).toFixed(2);
+  }
   imageURL: string;
 
   constructor(
@@ -54,40 +58,60 @@ export class PostDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contentControl = new FormControl('', []);
-    this.topicControl = new FormControl(this.topics[0], []);
-    this.typeControl = new FormControl(this.types[0], []);
-    this.titleControl = new FormControl('', []);
+    this.contentControl = new FormControl('', [
+      Validators.required
+    ]);
+    this.topicControl = new FormControl(this.topics[0], [
+      Validators.required
+    ]);
+    this.typeControl = new FormControl(this.types[0], [
+      Validators.required
+    ]);
+    this.titleControl = new FormControl('', [
+      Validators.required
+    ]);
   }
 
   async onPosten() {
     // BILDER SPEICHERUNG
-    const fileRef = this.storage.ref(this.dataPath);
-    const imageRef = this.storage.upload(this.dataPath, this.dataFile);
-    let promise = await imageRef
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.imageURL = url;
-              console.log('Image gespeichert.' + this.imageURL);
-            }
-            else {
-              console.log('Nicht gespeichert.' + this.imageURL);
-            }
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log('UPLOAD TASK SNAPSHOT: ' + url);
-        }
-      });
+    if (this.dataFile){
+      const fileRef = this.storage.ref(this.dataPath);
+      const imageRef = this.storage.upload(this.dataPath, this.dataFile);
+      let promise = await imageRef
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            // URL des Bildes wird heruntergeladen.
+            this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe(url => {
+              if (url) {
+                // Bilder werden hier gespeichert.
+                this.imageURL = url;
+                console.log('Image gespeichert.' + this.imageURL);
 
-    // POST SPEICHERUNG
-    this.createPost();
+                // Post wird hier gespeichert.
+                if (this.titleControl.invalid || this.contentControl.invalid || this.topicControl.invalid || this.typeControl.invalid) {
+                  this.isInvalid = true;
+                  console.log('Form ist nicht gültig.')
+                }
+                else {
+                  this.createPost();
+                }
+              }
+              else {
+                console.log('Nicht gespeichert.' + this.imageURL);
+              }
+            });
+          })
+        )
+        .subscribe(url => {
+          if (url) {
+            console.log('UPLOAD TASK SNAPSHOT: ' + url);
+          }
+        })
+    }
+
+
   }
 
   prepareImage(event) {
@@ -113,7 +137,7 @@ export class PostDialogComponent implements OnInit {
       type: this.typeControl.value,
       title: this.titleControl.value,
       content: this.contentControl.value,
-      imgUrl: this.imageURL || '',
+      imgUrl: this.imageURL || DEFAULT_IMAGE_URL
     }
 
     // POST SPEICHERUNG

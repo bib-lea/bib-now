@@ -12,7 +12,7 @@ export class CrudService {
 
 
   constructor(public fireservices: AngularFirestore) {
-    this.postsCollection = this.fireservices.collection('posts', ref => ref.orderBy('published', 'desc'));
+    this.postsCollection = this.fireservices.collection('posts', ref => ref.orderBy('datePosted', 'desc'));
   }
 
   //CRUD

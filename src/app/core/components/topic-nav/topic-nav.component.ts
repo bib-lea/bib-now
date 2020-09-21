@@ -21,7 +21,6 @@ export class TopicNavComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dialog.open(PostDialogComponent);
     if (!this.currentTopic)
     {
       this.currentTopic = this.topics[0];

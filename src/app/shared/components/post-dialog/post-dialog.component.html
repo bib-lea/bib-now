@@ -25,7 +25,7 @@
   <!-- Topic -->
   <select
     [formControl]="topicControl"
-    class="--type"
+    class="--topic"
     name="topic">
     <option
       *ngFor="let topic of topics"
@@ -40,41 +40,68 @@
       [value]="type">{{ type }}</option>
   </select>
   <!-- Title -->
-  <input
-    [formControl]="titleControl"
-    class="__input --title"
-    tabindex="2"
-    name="title"
-    type="text"
-    placeholder="Title"
-    autocomplete="off">
   <div
-    class="--label">
-    *Max 17 Characters.
+    fxLayout="column"
+    class="input__wrapper">
+    <input
+      [formControl]="titleControl"
+      class="__input --title"
+      tabindex="2"
+      name="title"
+      type="text"
+      placeholder="Title"
+      autocomplete="off">
+    <div
+      class="--error"
+      (keyup)="isInvalid = false"
+      *ngIf="isInvalid && titleControl.invalid">
+      *Title ist ein Pflichtfeld.
+    </div>
+    <div
+      class="--label">
+      *Max 17 Characters.
+    </div>
   </div>
   <!-- Content -->
-  <textarea
-    [formControl]="contentControl"
-    rows="4"
-    cols="50"
-    class="__textarea --content"
-    tabindex="1"
-    name="content"
-    type="text"
-    placeholder="Schreib was..."
-    autocomplete="off"
-    required></textarea>
+  <div
+    fxLayout="column"
+    class="input__wrapper">
+    <textarea
+      (keyup)="isInvalid = false"
+      [formControl]="contentControl"
+      rows="4"
+      cols="50"
+      class="__textarea --content"
+      tabindex="1"
+      name="content"
+      type="text"
+      placeholder="Schreib was..."
+      autocomplete="off"></textarea>
+    <div
+      class="--contentError --error"
+      *ngIf="isInvalid && contentControl.invalid">
+      *Content ist ein Pflichtfeld.
+    </div>
+  </div>
   <!-- Image -->
-  <input
-    type="file"
-    id="file"
-    class="--file"
-    #userPhoto
-    (change)="prepareImage($event)"
-    name="image"
-    autocomplete="off"
-    accept=".jpeg, .png, .jpg"
-    />
+  <div
+    fxLayout="row"
+    class="input__wrapper--file">
+    <div
+      class="--filePath">
+      {{ this.dataFile ? this.dataFile.name + ' (' + this.dataSize + ' KB)' : 'Keine Bilder ausgewählt' }}
+    </div>
+    <input
+      type="file"
+      id="file"
+      class="--file"
+      #userPhoto
+      (change)="prepareImage($event)"
+      name="image"
+      autocomplete="off"
+      accept=".jpeg, .png, .jpg"
+      />
+  </div>
 </div>
 <!--Action Buttons -->
 <div

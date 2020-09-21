@@ -25,20 +25,9 @@ export class CardWrapComponent implements OnInit {
   @Input() direction: EventEmitter<string>;
 
   constructor(
-    private imageViewer: MatDialog,
-    private crudService: CrudService
-  )
-  {
-    this.crudService.getPost().subscribe(data => {
-      this.posts = data.map(e => {
-          return {
-            id: e.payload.doc.id,
-            ...e.payload.doc.data()
-          } as Post;
-        })
-        console.log(this.posts);
-    })
-  }
+    private imageViewer: MatDialog
+  ){}
+
 
   ngOnInit(): void {
     console.log(this.direction);

@@ -81,3 +81,5 @@ export const TEST_POSTS = [
     title: 'Englisch Nachhilfe'
   }
 ];
+
+export const DEFAULT_IMAGE_URL = 'https://material.angular.io/assets/img/examples/shiba2.jpg';

@@ -109,6 +109,8 @@ textarea:focus, input:focus {
 }
 
 /* Dialog Styles */
-::ng-deep .mat-dialog-container {
+:host ::ng-deep mat-dialog-container.mat-dialog-container {
   z-index: 1000 !important;
+  border-radius: 2rem !important;
+  padding: 2rem !important;
 }
