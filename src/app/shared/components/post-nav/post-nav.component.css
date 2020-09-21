@@ -1,0 +1,18 @@
+/* Wrapper */
+.nav__wrapper {
+  padding: 3rem 0 1rem;
+}
+
+/* Buttons */
+.nav__button {
+  color: #F5F3F455;
+  cursor: pointer;
+  transition: text-shadow 150ms ease;
+}
+.nav__button mat-icon {
+  font-size: 3rem;
+}
+.nav__button:hover {
+  color: #FEBBBB;
+  text-shadow: 0 0 15px #FE53BB;
+}

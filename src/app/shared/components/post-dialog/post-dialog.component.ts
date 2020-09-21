@@ -3,10 +3,10 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {FormControl} from '@angular/forms';
 import {CrudService} from '../../services/crud.service';
 import {Post} from '../../models/post';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from "rxjs";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-post-dialog',
@@ -17,6 +17,13 @@ export class PostDialogComponent implements OnInit {
 
   contentControl: FormControl;
   user: any;
+  posts: any[];
+
+  types: string[] = [
+    'Fundbüro',
+    'Tutorium',
+    'Q&A'
+  ];
   posts: Post[];
   downloadURL: Observable<string>;
 
@@ -24,10 +31,12 @@ export class PostDialogComponent implements OnInit {
   image: string
   topic: FormControl;
   content: FormControl;
-
+  
   constructor(
     private afAuth: AngularFireAuth,
     private crudService: CrudService,
+
+    private selfRef: MatDialogRef<PostDialogComponent>
     private storage: AngularFireStorage
   )
   {
@@ -39,6 +48,22 @@ export class PostDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.contentControl = new FormControl('', []);
+  }
+
+  onPost(): void {
+    let post: Post = {
+      username: this.user ? this.user.email : 'Anonym',
+      content: this.contentControl.value
+    };
+
+    this.crudService.createPost(post)
+      .then(res => {
+        console.log(res);
+        this.resetControl();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   onPosten() {
@@ -85,21 +110,9 @@ export class PostDialogComponent implements OnInit {
         });
       }
 
-  // onPosten(): void {
-  //   let post: Post = {
-  //     name: this.user ? this.user.email : 'Anonym',
-  //     content: this.contentControl.value
-  //   };
-
-//     this.crudService.createPost(post)
-//       .then(res => {
-//         console.log(res);
-//         this.resetControl();
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }
+  onCancel(): void {
+    this.selfRef.close();
+  }
 
   private resetControl(): void {
     this.contentControl.reset();

@@ -1,0 +1,59 @@
+<div
+  [ngStyle]="trackHorizontal"
+  class="cards__wrapper"
+  fxLayout="row"
+  fxLayoutAlign="start center">
+  <!-- Cards -->
+  <div
+    *ngFor="let post of posts"
+    class="cards__card"
+    fxLayout="column"
+    fxLayoutAlign="start start">
+    <img
+      fxFlexAlign="center"
+      class="cards__img"
+      (click)="onImageView(post.imgUrl)"
+      [src]="post.imgUrl">
+    <p
+      class="cards__topic">
+      {{ post.topic }}
+    </p>
+    <p
+      [ngClass]="{'--suche': post.type === 'Suche'}"
+      class="cards__type">
+      {{ post.type }}
+    </p>
+    <p
+      class="cards__title">
+      {{ post.title }}
+    </p>
+    <p
+      class="cards__content">
+      Ab aliquam atque consequatur deserunt doloremque ducimus est eum, harum ipsa iure labore maiores molestiae molestias nisi officia placeat quis vitae voluptates?
+    </p>
+    <div
+      class="cards__footer"
+      fxLayout="row"
+      fxLayoutAlign="space-between center">
+      <div
+        class="cards__user">
+        <img
+          class="cards__user--img"
+          [src]="post.userImg ? post.userImg : 'https://www.w3schools.com/html/img_girl.jpg'">
+        <span
+          class="cards__user--name">
+            {{ post.username }}
+          </span>
+      </div>
+      <div
+        class="cards__date">
+        <mat-icon>access_time</mat-icon>
+        <span
+          class="cards__date--text">
+            Vor 1 Std.
+          </span>
+      </div>
+    </div>
+  </div>
+</div>
+

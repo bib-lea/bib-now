@@ -1,7 +1,12 @@
+import {Output, ViewChild} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { Post } from 'src/app/shared/models/post';
 import {CrudService} from '../../../shared/services/crud.service';
+import {Observable} from 'rxjs';
+import {TEST_POSTS} from '../../../shared/constants/constants';
+import {PostNavComponent} from '../../../shared/components/post-nav/post-nav.component';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-content-viewer',
@@ -11,6 +16,11 @@ import {CrudService} from '../../../shared/services/crud.service';
 export class ContentViewerComponent implements OnInit {
 
   posts: Post[];
+  currentTopic: string;
+  @Output() direction = new EventEmitter<string>();
+  @Output() filteredPosts: Post[];
+
+  @ViewChild('postNav') postNav: PostNavComponent;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -18,19 +28,19 @@ export class ContentViewerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.crudService.getPost().subscribe(data => {
-
-      this.posts = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data()
-        } as Post;
-      })
-      console.log(this.posts);
-    })
+    this.posts = TEST_POSTS;
+    this.filteredPosts = this.posts;
+  }
+  
+  onTopicChange(event): void {
+    this.currentTopic = event;
+    this.filteredPosts = this.posts;
+    console.log('CONTENT_VIEWER: ' + event);
+    //console.log(this.filteredPosts);
   }
 
-
+  onDirectionChange(event): void {
+    console.log('CONTENT_VIEWER:' + event);
+    this.direction.emit(event);
   }
-
-
+}

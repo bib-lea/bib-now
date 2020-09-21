@@ -70,10 +70,7 @@ body {
   color: rgba(250, 250, 250, .3);
   box-shadow: none;
 }
-.__button.--flat:hover {
-  color: #FE53BB;
-  box-shadow: none;
-}
+
 
 /* Input Theme */
 .__input {
@@ -95,7 +92,7 @@ body {
 }
 input, select, textarea {
   color: #FFFFFF;
-  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 textarea:focus, input:focus {
   color: #FFFFFF;
@@ -109,4 +106,9 @@ textarea:focus, input:focus {
 }
 .txt--neg {
   color: #FE53BB;
+}
+
+/* Dialog Styles */
+::ng-deep .mat-dialog-container {
+  z-index: 1000 !important;
 }
