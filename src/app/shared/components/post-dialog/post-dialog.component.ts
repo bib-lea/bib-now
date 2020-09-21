@@ -7,7 +7,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from "rxjs";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
+<<<<<<< HEAD
 import {DEFAULT_IMAGE_URL} from '../../constants/constants';
+=======
+import { AuthServiceService } from "../../services/auth-service.service";
+>>>>>>> f1ba86a7f87c3ca27d76ab5b759e5b942f55ced8
 
 @Component({
   selector: 'app-post-dialog',
@@ -46,6 +50,7 @@ export class PostDialogComponent implements OnInit {
   constructor(
     private afAuth: AngularFireAuth,
     private crudService: CrudService,
+    private authService: AuthServiceService,
 
     private selfRef: MatDialogRef<PostDialogComponent>,
     private storage: AngularFireStorage
@@ -129,9 +134,9 @@ export class PostDialogComponent implements OnInit {
   private createPost(): void {
     // DATEN
     const postData: Post = {
-      //author: this.afAuth.authState.displayName || this.auth.authState.email,
-      userEmail: this.user.email,
-      //authorId: this.afAuth.currentUserId
+      author: this.user.displayName || this.user.email,
+      //userEmail: this.user.email,
+      userId: this.authService.currentUserId,
       datePosted: Date.now(),
       topic: this.topicControl.value,
       type: this.typeControl.value,
