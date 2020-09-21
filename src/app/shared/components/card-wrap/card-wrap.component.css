@@ -1,0 +1,89 @@
+/* Wrapper */
+.cards__wrapper {
+  height: 75%;
+}
+
+/* Card */
+.cards__card {
+  position: relative;
+  height: 100%;
+  min-width: 20rem;
+  max-width: 20rem;
+  border-radius: 1rem;
+  background-color: #ECEFF1;
+  box-shadow: 0 5px 2px #2B2839;
+  padding: 6rem 2rem 2rem 2rem;
+  margin-right: 2rem;
+}
+.cards__card > p {
+  margin-bottom: .5rem;
+}
+
+.cards__img {
+  width: 80% !important;
+  max-height: 10rem !important;
+  object-fit: cover !important;
+  margin: 0 auto;
+  position: absolute !important;
+  top: -25%;
+  box-shadow: 0 2px 10px #2B2839;
+  background-color: transparent;
+  border-radius: 1rem;
+  opacity: .9;
+  filter: grayscale(1);
+  transition: opacity 200ms ease, filter 200ms ease, transform 200ms ease-in;
+  cursor: pointer;
+}
+.cards__img:hover {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-5%);
+}
+.cards__topic {
+  /* Pomegranate */
+  color: #2B28395A;
+  font-size: .9rem;
+}
+.cards__type {
+  color: #039be5;
+  font-size: .75rem;
+}
+.--suche {
+  color: #D43D61;
+}
+.cards__content {
+  font-size: .9rem;
+  font-weight: 300;
+}
+.cards__footer {
+  margin-top: auto;
+  width: 100%;
+}
+.cards__user--img {
+  object-fit: cover !important;
+  width: 1.8rem !important;
+  height: 1.8rem !important;
+  margin-right: .5rem;
+  vertical-align: middle;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px #2B2839;
+}
+.cards__user--name, .cards__date--text {
+  font-size: .75rem;
+  color: #2B283999;
+}
+.cards__date mat-icon {
+  vertical-align: middle;
+  color: #2B283925;
+}
+
+
+/* Animations */
+.slide--right {
+  transform: translateX(20%);
+  transition: transform 200ms ease;
+}
+.slide--left {
+  transform: translateX(-20%);
+  transition: transform 200ms ease;
+}

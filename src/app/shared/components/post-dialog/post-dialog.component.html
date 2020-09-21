@@ -13,25 +13,48 @@
 </h2>
 <p
   mat-dialog-title
-  class="header__text"
+  class="header__text --user"
   *ngIf="!user">
-  Nicht angemeldet.
+  Username: Nicht angemeldet.
 </p>
 <!-- Form -->
 <div
   mat-dialog-content
+  fxLayout="column"
+  fxLayoutGap="2rem"
   class="dialog__input-group">
-    <textarea
-      [formControl]="contentControl"
-      rows="4"
-      cols="50"
-      class="__textarea"
-      tabindex="1"
-      name="content"
-      type="text"
-      placeholder="Schreib was..."
-      autocomplete="off"
-      required></textarea>
+  <!-- Topic -->
+  <select
+    class="--type"
+    name="type">
+    <option
+      *ngFor="let type of types"
+      [value]="type">{{ type  }}</option>
+  </select>
+  <!-- Title -->
+  <input
+    class="__input --title"
+    tabindex="2"
+    name="title"
+    type="text"
+    placeholder="Title"
+    autocomplete="off">
+  <div
+    class="--label">
+    *Max 17 Characters.
+  </div>
+  <!-- Content -->
+  <textarea
+    [formControl]="contentControl"
+    rows="4"
+    cols="50"
+    class="__textarea --content"
+    tabindex="1"
+    name="content"
+    type="text"
+    placeholder="Schreib was..."
+    autocomplete="off"
+    required></textarea>
 </div>
 <!-- Action Buttons -->
 <div
@@ -40,12 +63,13 @@
   fxLayout="row"
   fxLayoutAlign="space-between center">
   <button
-    class="__button --secondary">
+    class="__button --flat --cancel"
+    (click)="onCancel()">
     Abbrechen
   </button>
   <button
-    class="__button"
-    (click)="onPosten()">
+    class="__button --flat --post"
+    (click)="onPost()">
     Posten
   </button>
 </div>

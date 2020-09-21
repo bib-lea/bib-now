@@ -15,7 +15,7 @@
 
 /* Logo Settings */
 .nav__logo {
-  padding-right: 5rem;
+  padding-right: 1rem;
   font-size: 1.5rem;
 }
 .nav__logo h2 {
@@ -38,7 +38,6 @@
 
 /* Search Bar */
 .nav__search-bar {
-  margin-left: auto;
   position: relative;
 
 }
@@ -67,6 +66,9 @@
 
 
 /* Profile */
+.nav__profile {
+  margin-left: auto;
+}
 .nav.__button {
   font-size: .9rem;
   font-weight: 300;

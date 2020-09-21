@@ -3,6 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {FormControl} from '@angular/forms';
 import {CrudService} from '../../services/crud.service';
 import {Post} from '../../models/post';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-post-dialog',
@@ -13,11 +14,18 @@ export class PostDialogComponent implements OnInit {
 
   contentControl: FormControl;
   user: any;
-  posts: Post[];
+  posts: any[];
+
+  types: string[] = [
+    'Fundbüro',
+    'Tutorium',
+    'Q&A'
+  ];
 
   constructor(
     private afAuth: AngularFireAuth,
-    private crudService: CrudService
+    private crudService: CrudService,
+    private selfRef: MatDialogRef<PostDialogComponent>
   )
   {
     this.afAuth.onAuthStateChanged(user => {
@@ -30,9 +38,9 @@ export class PostDialogComponent implements OnInit {
     this.contentControl = new FormControl('', []);
   }
 
-  onPosten(): void {
+  onPost(): void {
     let post: Post = {
-      name: this.user ? this.user.email : 'Anonym',
+      username: this.user ? this.user.email : 'Anonym',
       content: this.contentControl.value
     };
 
@@ -44,6 +52,10 @@ export class PostDialogComponent implements OnInit {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  onCancel(): void {
+    this.selfRef.close();
   }
 
   private resetControl(): void {

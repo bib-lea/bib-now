@@ -1,0 +1,78 @@
+.nav__wrapper {
+  width: 100%;
+  padding: 2rem 4rem 2.5rem 4rem;
+}
+
+.nav__link-group {
+  position: relative;
+}
+
+.nav__link {
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: 800;
+  color: #ECEFF155;
+  margin-right: 5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  transition: color 200ms ease-in;
+  cursor: pointer;
+}
+
+.nav__link-info {
+  font-weight: 300;
+  font-size: .8rem;
+  color: #ECEFF155;
+  position: absolute;
+  left: 1.7rem;
+  top: 2.5rem;
+}
+.nav__link-info.--tutor {
+  left: 2rem;
+}
+.--tutor.--number {
+  color: #039be5AF !important ;
+}
+.nav__link-info .--number {
+  color: #FE53BBAF;
+  padding: 0 .3rem;
+}
+.--active {
+  transition: text-shadow 1000ms ease;
+}
+/* Fundbüro Tab */
+.nav__link.--fb:not(.--active):hover {
+  color: #FE53BB55;
+}
+.--fb.--active {
+  text-shadow: 0 0 20px #FE53BB;
+  color: #FEDDDD;
+}
+
+/* Tutorium Tab */
+.nav__link.--tt:not(.--active):hover {
+  color: #039be555;
+}
+.--tt.--active {
+  text-shadow: 0 0 20px #039be5;
+  color: #CCCCFE;
+}
+.nav__actions {
+  margin-left: auto;
+}
+.--post {
+  height: auto;
+  width: auto;
+  padding: 1rem;
+  color: #CCCCFE55;
+  border: 0;
+  background: 0;
+  box-shadow: none;
+  font-size: 2rem;
+  font-weight: 800;
+  transition: color 200ms ease, text-shadow 1000ms ease;
+}
+.--post:hover {
+  color: #CCCCFE;
+  text-shadow: 0 0 15px #08F7FE;
+}

@@ -1,0 +1,28 @@
+<div
+  class="nav__wrapper"
+  fxLayout="row"
+  fxLayoutAlign="start center">
+  <div
+    *ngFor="let topic of topics"
+    class="nav__link-group">
+    <a
+      [ngClass]=
+      "{
+        '--active': topic === currentTopic,
+        '--tt': topic === 'Tutorium',
+        '--fb': topic === 'Fundbüro'
+      }"
+      (click)="onTopicClick(topic)"
+      class="nav__link">
+      {{ topic }}
+    </a>
+  </div>
+  <div
+    class="nav__actions">
+    <button
+      class="__button --post"
+      (click)="onPost()">
+      Posten
+    </button>
+  </div>
+</div>
