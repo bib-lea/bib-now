@@ -68,4 +68,24 @@
   resize: none;
 }
 
+/* Input Image */
+.--file {
+  width: 10rem;
+  margin-left: auto;
+  outline: none;
+  box-shadow: none;
+}
+.--file:focus {
+  border: 0;
+  box-shadow: none;
+}
+.--file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.--file::before {
+  color: rgba(50, 50, 50, .65);
+  content: '+ Bilder aussuchen...';
+  cursor: pointer;
+}
+
 

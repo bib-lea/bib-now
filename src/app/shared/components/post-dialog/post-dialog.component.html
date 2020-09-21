@@ -13,9 +13,8 @@
 </h2>
 <p
   mat-dialog-title
-  class="header__text --user"
-  *ngIf="!user">
-  Username: Nicht angemeldet.
+  class="header__text --user">
+  Username: {{ user ? user.email : 'Nicht angemeldet' }}
 </p>
 <!--Form -->
 <div
@@ -25,14 +24,24 @@
   class="dialog__input-group">
   <!-- Topic -->
   <select
+    [formControl]="topicControl"
+    class="--type"
+    name="topic">
+    <option
+      *ngFor="let topic of topics"
+      [value]="topic">{{ topic }}</option>
+  </select>
+  <!-- Type -->
+  <select
     class="--type"
     name="type">
     <option
       *ngFor="let type of types"
-      [value]="type">{{ type  }}</option>
+      [value]="type">{{ type }}</option>
   </select>
   <!-- Title -->
   <input
+    [formControl]="titleControl"
     class="__input --title"
     tabindex="2"
     name="title"
@@ -55,29 +64,17 @@
     placeholder="Schreib was..."
     autocomplete="off"
     required></textarea>
-    <input type="text"
-    [formControl]="topic" 
-    placeholder="Enter Topic"
-    >
-    <input type="file"
-        id="file"
-        #userPhoto
-        (change)="upload($event)"
-        name="image"
-        autocomplete="off"
-        accept=".jpeg, .png, .jpg"
-        />
-    <textarea
-      [formControl]="contentControl"
-      rows="4"
-      cols="50"
-      class="__textarea"
-      tabindex="1"
-      name="content"
-      type="text"
-      placeholder="Schreib was..."
-      autocomplete="off"
-      required></textarea>
+  <!-- Image -->
+  <input
+    type="file"
+    id="file"
+    class="--file"
+    #userPhoto
+    (change)="prepareImage($event)"
+    name="image"
+    autocomplete="off"
+    accept=".jpeg, .png, .jpg"
+    />
 </div>
 <!--Action Buttons -->
 <div
@@ -92,7 +89,7 @@
   </button>
   <button
     class="__button --flat --post"
-    (click)="onPost()">
+    (click)="onPosten()">
     Posten
   </button>
 </div>

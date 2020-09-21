@@ -16,10 +16,18 @@ import { finalize } from 'rxjs/operators';
 export class PostDialogComponent implements OnInit {
 
   contentControl: FormControl;
+  topicControl: FormControl;
+  titleControl: FormControl;
+  typeControl: FormControl;
+
   user: any;
   posts: any[];
 
   types: string[] = [
+    'Suche',
+    'Gefunden'
+  ];
+  topics: string[] = [
     'Fundbüro',
     'Tutorium',
     'Q&A'
@@ -27,9 +35,9 @@ export class PostDialogComponent implements OnInit {
 
   downloadURL: Observable<string>;
 
-  image: string
-  topic: FormControl;
-  content: FormControl;
+  dataPath: string;
+  dataFile: string;
+  imageURL: string;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -41,79 +49,85 @@ export class PostDialogComponent implements OnInit {
   {
     this.afAuth.onAuthStateChanged(user => {
       this.user = user;
-      console.log(this.user);
+      console.log(this.user.email);
     });
   }
 
   ngOnInit(): void {
     this.contentControl = new FormControl('', []);
+    this.topicControl = new FormControl(this.topics[0], []);
+    this.typeControl = new FormControl(this.types[0], []);
+    this.titleControl = new FormControl('', []);
   }
 
-  onPost(): void {
-    let post: Post = {
-      username: this.user ? this.user.email : 'Anonym',
-      content: this.contentControl.value
-    };
-
-    this.crudService.createPost(post)
-      .then(res => {
-        console.log(res);
-        this.resetControl();
-      })
-      .catch(err => {
-        console.log(err);
+  async onPosten() {
+    // BILDER SPEICHERUNG
+    const fileRef = this.storage.ref(this.dataPath);
+    const imageRef = this.storage.upload(this.dataPath, this.dataFile);
+    let promise = await imageRef
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.imageURL = url;
+              console.log('Image gespeichert.' + this.imageURL);
+            }
+            else {
+              console.log('Nicht gespeichert.' + this.imageURL);
+            }
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log('UPLOAD TASK SNAPSHOT: ' + url);
+        }
       });
+
+    // POST SPEICHERUNG
+    this.createPost();
   }
 
-  onPosten() {
-    const postData = {
-      //author: this.afAuth.authState.displayName || this.auth.authState.email,
-      author: '',
-      //authorId: this.afAuth.currentUserId,
-      authorId: '',
-      content: this.content.value,
-      image: this.image || null,
-      published: new Date(),
-      topic: this.topic.value
-    }
-    this.crudService.createPost(postData).then(res => {
-      this.topic.reset();
-      this.content.reset();
-      this.image = '';
-      console.log(res);
-    })}
-
-    upload(event) {
-      var n = Date.now();
-      const file = event.target.files[0];
-      const filePath = `posts/${n}`;
-      const fileRef = this.storage.ref(filePath);
-      const task = this.storage.upload(`posts/${n}`, file);
-      task
-        .snapshotChanges()
-        .pipe(
-          finalize(() => {
-            this.downloadURL = fileRef.getDownloadURL();
-            this.downloadURL.subscribe(url => {
-              if (url) {
-                this.image = url;
-              }
-              console.log(this.image);
-            });
-          })
-        )
-        .subscribe(url => {
-          if (url) {
-            console.log(url);
-          }
-        });
-      }
+  prepareImage(event) {
+    let n = Date.now();
+    this.dataFile = event.target.files[0];
+    this.dataPath = `posts/${n}`;
+    console.log(this.dataFile);
+    console.log(this.dataPath);
+  }
 
   onCancel(): void {
     this.selfRef.close();
   }
 
-  private resetControl(): void {
+  private createPost(): void {
+    // DATEN
+    const postData: Post = {
+      //author: this.afAuth.authState.displayName || this.auth.authState.email,
+      userEmail: this.user.email,
+      //authorId: this.afAuth.currentUserId
+      datePosted: Date.now(),
+      topic: this.topicControl.value,
+      type: this.typeControl.value,
+      title: this.titleControl.value,
+      content: this.contentControl.value,
+      imgUrl: this.imageURL || '',
+    }
+
+    // POST SPEICHERUNG
+    this.crudService.createPost(postData).then(res => {
+      this.resetControls();
+      console.log(res);
+    });
+  }
+
+  private resetControls(): void {
+    this.topicControl.reset();
     this.contentControl.reset();
+    this.titleControl.reset();
+    this.typeControl.reset();
+    this.imageURL = '';
   }
 }

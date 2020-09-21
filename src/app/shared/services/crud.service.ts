@@ -16,7 +16,7 @@ export class CrudService {
   }
 
   //CRUD
-  
+
   createPost( post: Post ){
     return this.fireservices.collection('posts').add(Object.assign({}, post)); //create
   }
@@ -25,9 +25,9 @@ export class CrudService {
     return this.postsCollection.snapshotChanges();
   }
 
-  updatePost( post: Post){
-    delete post.id;
-    this.fireservices.doc('posts/' + post.id).update(Object.assign({}, post)); //update
+  updatePost( post: Post ){
+    //delete post.id;
+    //this.fireservices.doc('posts/' + post.id).update(Object.assign({}, post)); //update
   }
 
   deletePost(postId: string){

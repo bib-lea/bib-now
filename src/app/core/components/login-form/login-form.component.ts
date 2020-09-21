@@ -33,12 +33,14 @@ export class LoginFormComponent implements OnInit {
     private authService: AuthServiceService,
     private afAuth: AngularFireAuth,
     private formBuilder: FormBuilder
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', []),
-      password: new FormControl('', [])
+    this.loginForm = this.formBuilder.group({
+      email: [''],
+      password: ['']
     });
 
     this.afAuth.onAuthStateChanged(user => {
@@ -57,9 +59,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onLogin(): void {
-    let email = this.loginForm.value.email;
-    let password = this.loginForm.value.password;
-    const result = this.authService.onLogin(email, password);
-    console.log(result);
+    console.log(this.loginForm);
+    let { email, password } = this.loginForm.value;
+    email += '@edu.bib.de';
+    this.authService.onLogin(email, password);
   }
+
 }

@@ -1,13 +1,12 @@
 export interface Post {
+  userId?: string;
   username?: string;
+  userEmail?: string;
   userImg?: string;
-  imgUrl?: string;
-  content?: string;
+  datePosted?: number;
   topic?: string;
   type?: string;
   title?: string;
-  datePosted?: string;
-  id?: string;
-  userId?: string;
-  image?: string;
+  content?: string;
+  imgUrl?: string;
 }

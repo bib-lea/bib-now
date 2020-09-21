@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges, ViewCh
 import { MatDialog } from '@angular/material/dialog';
 import {Post} from '../../models/post';
 import {ImageViewerComponent} from '../image-viewer/image-viewer.component';
+import {FormControl} from '@angular/forms';
+import {CrudService} from '../../services/crud.service';
 
 @Component({
   selector: 'app-card-wrap',
@@ -23,10 +25,19 @@ export class CardWrapComponent implements OnInit {
   @Input() direction: EventEmitter<string>;
 
   constructor(
-    private imageViewer: MatDialog
+    private imageViewer: MatDialog,
+    private crudService: CrudService
   )
   {
-    console.log('CARD_WRAP: '+ this.posts);
+    this.crudService.getPost().subscribe(data => {
+      this.posts = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+          } as Post;
+        })
+        console.log(this.posts);
+    })
   }
 
   ngOnInit(): void {

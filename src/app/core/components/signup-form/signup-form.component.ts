@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {AuthServiceService} from '../../../shared/services/auth-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 
@@ -18,14 +18,14 @@ export class SignupFormComponent implements OnInit {
 
   constructor(
     private authService: AuthServiceService,
-    private afAuth: AngularFireAuth
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.signupForm = new FormGroup({
-      email: new FormControl('', []),
-      password: new FormControl('', []),
-      passwordReenter: new FormControl('', []),
+    this.signupForm = this.formBuilder.group({
+      email: [''],
+      password: [''],
+      reenter: ['']
     });
   }
 
@@ -34,8 +34,9 @@ export class SignupFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let email = this.signupForm.value.email;
-    let password = this.signupForm.value.password;
+    let { email, password } = this.signupForm.value;
+    email += '@edu.bib.de';
+    console.log(email);
     this.authService.onSignUp(email, password);
   }
 }
