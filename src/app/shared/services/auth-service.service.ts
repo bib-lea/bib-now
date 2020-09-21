@@ -2,6 +2,7 @@ import { Injectable} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {actionCodeSettings, environment} from '../../../environments/environment';
 import {AngularFirestoreDocument, AngularFirestore} from '@angular/fire/firestore';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class AuthServiceService {
     private afStore: AngularFirestore
   ) { }
 
-  get authenticated(): boolean {
-    return this.authState !== null
+  authenticated() {
+    return this.afAuth.authState.pipe(first()).toPromise()
   }
 
   get currentUserId(): string {
