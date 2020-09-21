@@ -31,7 +31,7 @@ export class ContentViewerComponent implements OnInit {
     this.posts = TEST_POSTS;
     this.filteredPosts = this.posts;
   }
-
+  
   onTopicChange(event): void {
     this.currentTopic = event;
     this.filteredPosts = this.posts;

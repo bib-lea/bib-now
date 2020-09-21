@@ -1,28 +1,36 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import { Post } from "../models/post";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
+  postsCollection: AngularFirestoreCollection<Post>
+  postDoc: AngularFirestoreDocument<Post>
 
-  constructor(public fireservices: AngularFirestore) { }
+
+  constructor(public fireservices: AngularFirestore) {
+    this.postsCollection = this.fireservices.collection('posts', ref => ref.orderBy('published', 'desc'));
+  }
 
   //CRUD
   
-  createPost( data: any ){
-    return this.fireservices.collection('posts').add(Object.assign({}, data)); //create
+  createPost( post: Post ){
+    return this.fireservices.collection('posts').add(Object.assign({}, post)); //create
   }
 
   getPost(){
-    return this.fireservices.collection('posts').snapshotChanges(); //read
+    return this.postsCollection.snapshotChanges();
   }
 
-  updatePost(dataId: any, data: any){
-    this.fireservices.doc('posts/' + dataId).update(Object.assign({}, data)); //update
+  updatePost( post: Post){
+    delete post.id;
+    this.fireservices.doc('posts/' + post.id).update(Object.assign({}, post)); //update
   }
 
-  deletePost(dataId: any){
-    this.fireservices.doc('posts/' + dataId).delete(); //delete
+  deletePost(postId: string){
+    this.fireservices.doc('posts/' + postId).delete(); //delete
   }
 }
