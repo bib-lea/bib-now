@@ -1,6 +1,14 @@
-/* Wrapper */
+/*
+
+  @Styles: PostNavComponent (=> ContentViewerComponent)
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 18.09.2020
+
+*/
+
+/* Wrapper Settings */
 .nav__wrapper {
-  padding: 3rem 0 1rem;
+  position: relative;
 }
 
 /* Buttons */
@@ -8,6 +16,7 @@
   color: #F5F3F455;
   cursor: pointer;
   transition: text-shadow 150ms ease;
+  padding-right: 2rem;
 }
 .nav__button mat-icon {
   font-size: 3rem;

@@ -5,40 +5,91 @@
  @Erstellt am: 16.09.2020
 
  -->
-<!-- Header -->
-<h2
-  mat-dialog-title
-  class="header__text">
-  Post
-</h2>
-<p
-  mat-dialog-title
-  class="header__text --user">
-  Username: {{ user ? user.email : 'Nicht angemeldet' }}
-</p>
-<!--Form -->
+
 <div
-  mat-dialog-content
-  fxLayout="column"
-  fxLayoutGap="2rem"
-  class="dialog__input-group">
-  <!-- Topic -->
-  <select
-    [formControl]="topicControl"
-    class="--topic"
-    name="topic">
-    <option
-      *ngFor="let topic of topics"
-      [value]="topic">{{ topic }}</option>
-  </select>
-  <!-- Type -->
-  <select
-    class="--type"
-    name="type">
-    <option
-      *ngFor="let type of types"
-      [value]="type">{{ type }}</option>
-  </select>
+  class="dialog__wrapper">
+  <!-- Header -->
+  <h2
+    mat-dialog-title
+    class="header__text">
+    Post
+  </h2>
+  <p
+    mat-dialog-title
+    class="header__text --user">
+    Username: {{ user ? user.email : 'Nicht angemeldet' }}
+  </p>
+  <!--Form -->
+  <div
+    mat-dialog-content
+    fxLayout="column"
+    fxLayoutGap="2rem"
+    class="dialog__input-group">
+    <!-- Topics 6& Types -->
+    <div
+      class="buttons__wapper"
+      fxLayout="column">
+      <!-- Topics -->
+      <div
+        class="buttons__label">
+        Topics
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-around center"
+        class="topics__wrapper">
+        <a
+          *ngFor="let topic of topics"
+          (click)="onTopicSelect(topic)"
+          [ngClass]="{
+          '--fb': topic === 'Fundbüro',
+          '--tt': topic === 'Tutorium',
+          '--active': topic === currentTopic
+        }"
+          class="__button--flat">
+          {{ topic }}
+        </a>
+      </div>
+      <mat-divider></mat-divider>
+      <!-- Type: Fundbüro -->
+      <div
+        class="buttons__label --types">
+        Types
+      </div>
+      <div
+        *ngIf="currentTopic === 'Fundbüro'"
+        class="types__wapper"
+        fxLayout="row"
+        fxLayoutAlign="space-around center">
+        <a
+          *ngFor="let type of typesFB"
+          (click)="currentType = type"
+          [ngClass]="{
+          '--fb': currentTopic === 'Fundbüro',
+          '--active': type === currentType
+        }"
+          class="__button--flat --type">
+          {{ type }}
+        </a>
+      </div>
+      <!-- Type: Tutorium -->
+      <div
+        *ngIf="currentTopic === 'Tutorium'"
+        class="types__wapper"
+        fxLayout="row"
+        fxLayoutAlign="space-around center">
+        <a
+          *ngFor="let type of typesTT"
+          (click)="currentType = type"
+          [ngClass]="{
+          '--tt': currentTopic === 'Tutorium',
+          '--active': type === currentType
+        }"
+          class="__button--flat --type">
+          {{ type }}
+        </a>
+      </div>
+  </div>
   <!-- Title -->
   <div
     fxLayout="column"
@@ -46,7 +97,7 @@
     <input
       [formControl]="titleControl"
       class="__input --title"
-      tabindex="2"
+      tabindex="1"
       name="title"
       type="text"
       placeholder="Title"
@@ -66,17 +117,17 @@
   <div
     fxLayout="column"
     class="input__wrapper">
-    <textarea
-      (keyup)="isInvalid = false"
-      [formControl]="contentControl"
-      rows="4"
-      cols="50"
-      class="__textarea --content"
-      tabindex="1"
-      name="content"
-      type="text"
-      placeholder="Schreib was..."
-      autocomplete="off"></textarea>
+  <textarea
+    (keyup)="isInvalid = false"
+    [formControl]="contentControl"
+    rows="4"
+    cols="50"
+    class="__textarea --content"
+    tabindex="2"
+    name="content"
+    type="text"
+    placeholder="Schreib was..."
+    autocomplete="off"></textarea>
     <div
       class="--contentError --error"
       *ngIf="isInvalid && contentControl.invalid">
@@ -85,38 +136,39 @@
   </div>
   <!-- Image -->
   <div
-    fxLayout="row"
-    class="input__wrapper--file">
-    <div
-      class="--filePath">
-      {{ this.dataFile ? this.dataFile.name + ' (' + this.dataSize + ' KB)' : 'Keine Bilder ausgewählt' }}
-    </div>
-    <input
-      type="file"
-      id="file"
-      class="--file"
-      #userPhoto
-      (change)="prepareImage($event)"
-      name="image"
-      autocomplete="off"
-      accept=".jpeg, .png, .jpg"
+      fxLayout="row"
+      class="input__wrapper--file">
+      <div
+        class="--filePath">
+        {{ this.dataFile ? this.dataFile.name + ' (' + this.dataSize + ' KB)' : 'Keine Bilder ausgewählt' }}
+      </div>
+      <input
+        type="file"
+        id="file"
+        class="--file"
+        #userPhoto
+        (change)="prepareImage($event)"
+        name="image"
+        autocomplete="off"
+        accept=".jpeg, .png, .jpg"
       />
   </div>
-</div>
-<!--Action Buttons -->
-<div
-  class="dialog__button-group"
-  mat-dialog-actions
-  fxLayout="row"
-  fxLayoutAlign="space-between center">
-  <button
-    class="__button --flat --cancel"
-    (click)="onCancel()">
-    Abbrechen
-  </button>
-  <button
-    class="__button --flat --post"
-    (click)="onPosten()">
-    Posten
-  </button>
+  </div>
+  <!--Action Buttons -->
+  <div
+    class="dialog__button-group"
+    mat-dialog-actions
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+    <button
+      class="__button --flat --cancel"
+      (click)="onCancel()">
+      Abbrechen
+    </button>
+    <button
+      class="__button --flat --post"
+      (click)="onPosten()">
+      Posten
+    </button>
+  </div>
 </div>

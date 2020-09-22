@@ -1,23 +1,52 @@
+<!--
+
+ @CardWrapComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 18.09.2020
+
+ -->
 <div
   [ngStyle]="trackHorizontal"
   class="cards__wrapper"
   fxLayout="row"
-  fxLayoutAlign="start center">
+  fxLayoutAlign="center center">
   <!-- Cards -->
   <div
-    *ngFor="let post of posts"
+    *ngFor="let post of posts; let i = index"
+    [ngClass]=
+      "{
+        '--active': i === currentActivePost,
+        '--hovered': post.isHovered && i !== currentActivePost
+      }"
+    (mouseenter)="post.isHovered = true"
+    (mouseleave)="post.isHovered = false"
+    (click)="onCardClick(i)"
     class="cards__card"
     fxLayout="column"
     fxLayoutAlign="start start">
+    <!-- Image -->
     <img
       fxFlexAlign="center"
       class="cards__img"
+      [ngClass]="{'--active': i === currentActivePost}"
       (click)="onImageView(post.imgUrl)"
       [src]="post.imgUrl">
-    <p
-      class="cards__topic">
-      {{ post.topic }}
-    </p>
+    <!-- Topic -->
+    <div
+      class="header__wrapper"
+      fxLayout="row">
+      <p
+        class="cards__topic">
+        {{ post.topic }}
+      </p>
+      <button
+        *ngIf="userEmail === post.userEmail"
+        (click)="onDelete(post.id)"
+        class="--extra-actions">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <!-- Type -->
     <p
       [ngClass]="{'--suche': post.type === 'Suche'}"
       class="cards__type">
@@ -29,7 +58,7 @@
     </p>
     <p
       class="cards__content">
-      Ab aliquam atque consequatur deserunt doloremque ducimus est eum, harum ipsa iure labore maiores molestiae molestias nisi officia placeat quis vitae voluptates?
+      {{ post.content }}
     </p>
     <div
       class="cards__footer"

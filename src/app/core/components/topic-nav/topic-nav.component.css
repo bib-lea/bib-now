@@ -1,12 +1,21 @@
+/*
+
+  @Styles: TopicNavComponent
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 21.09.2020
+
+*/
+
+/* Wrapper Settings */
 .nav__wrapper {
   width: 100%;
-  padding: 2rem 4rem 2.5rem 4rem;
+  padding: 3rem 4rem 2.5rem 4rem;
 }
 
+/* Links */
 .nav__link-group {
   position: relative;
 }
-
 .nav__link {
   font-size: 2rem;
   text-decoration: none;
@@ -18,7 +27,6 @@
   transition: color 200ms ease-in;
   cursor: pointer;
 }
-
 .nav__link-info {
   font-weight: 300;
   font-size: .8rem;
@@ -40,6 +48,7 @@
 .--active {
   transition: text-shadow 1000ms ease;
 }
+
 /* Fundbüro Tab */
 .nav__link.--fb:not(.--active):hover {
   color: #FE53BB55;
@@ -57,6 +66,8 @@
   text-shadow: 0 0 20px #039be5;
   color: #CCCCFE;
 }
+
+/* Action Buttons */
 .nav__actions {
   margin-left: auto;
 }

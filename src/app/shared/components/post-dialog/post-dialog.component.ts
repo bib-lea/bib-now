@@ -16,27 +16,34 @@ import { AuthServiceService } from "../../services/auth-service.service";
   styleUrls: ['./post-dialog.component.css']
 })
 export class PostDialogComponent implements OnInit {
-  contentControl: FormControl;
-  topicControl: FormControl;
-  titleControl: FormControl;
-  typeControl: FormControl;
-
-  isInvalid: boolean = false;
+  // Werden geladen
   user: any;
   posts: any[];
 
-  types: string[] = [
+  // Form Data
+  currentTopic: string;
+  currentType: string;
+  contentControl: FormControl;
+  titleControl: FormControl;
+  isInvalid: boolean = false;
+
+  // Constants
+  typesFB: string[] = [
     'Suche',
     'Gefunden'
+  ];
+  typesTT: string[] = [
+    'Tutorium',
+    'Lerngruppe'
   ];
   topics: string[] = [
     'Fundbüro',
     'Tutorium',
-    'Q&A'
+    'Allgemein'
   ];
 
+  // Zum Speichern
   downloadURL: Observable<string>;
-
   dataPath: any;
   dataFile: any;
   get dataSize(){
@@ -53,6 +60,13 @@ export class PostDialogComponent implements OnInit {
     private storage: AngularFireStorage
   )
   {
+    this.contentControl = new FormControl('', [
+      Validators.required
+    ]);
+    this.titleControl = new FormControl('', [
+      Validators.required
+    ]);
+
     this.afAuth.onAuthStateChanged(user => {
       this.user = user;
       console.log(this.user.email);
@@ -60,28 +74,20 @@ export class PostDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contentControl = new FormControl('', [
-      Validators.required
-    ]);
-    this.topicControl = new FormControl(this.topics[0], [
-      Validators.required
-    ]);
-    this.typeControl = new FormControl(this.types[0], [
-      Validators.required
-    ]);
-    this.titleControl = new FormControl('', [
-      Validators.required
-    ]);
+    // Initial - Fundbüro
+    this.currentTopic = this.topics[0];
+    this.currentType = this.typesFB[0];
   }
 
   async onPosten() {
     // BILDER SPEICHERUNG
-    if (this.dataFile){
+    if (this.dataFile) {
       const fileRef = this.storage.ref(this.dataPath);
       const imageRef = this.storage.upload(this.dataPath, this.dataFile);
-      let promise = await imageRef
+      const promise = await imageRef
         .snapshotChanges()
         .pipe(
+          // Speicherung
           finalize(() => {
             // URL des Bildes wird heruntergeladen.
             this.downloadURL = fileRef.getDownloadURL();
@@ -89,43 +95,52 @@ export class PostDialogComponent implements OnInit {
               if (url) {
                 // Bilder werden hier gespeichert.
                 this.imageURL = url;
-                console.log('Image gespeichert.' + this.imageURL);
+                console.log('Image gespeichert. ' + this.imageURL);
 
-                // Post wird hier gespeichert.
-                if (this.titleControl.invalid || this.contentControl.invalid || this.topicControl.invalid || this.typeControl.invalid) {
+                if (this.titleControl.invalid || this.contentControl.invalid) {
                   this.isInvalid = true;
                   console.log('Form ist nicht gültig.')
                 }
-                else {
-                  this.createPost();
-                }
+                // Post wird hier gespeichert.
+                else { this.createPost() }
+                this.selfRef.close();
               }
               else {
-                console.log('Nicht gespeichert.' + this.imageURL);
+                console.log('Nicht gespeichert. ' + this.imageURL);
+                this.selfRef.close();
               }
             });
           })
+
         )
         .subscribe(url => {
-          if (url) {
-            console.log('UPLOAD TASK SNAPSHOT: ' + url);
-          }
-        })
+          // Task log
+          if (url) { console.log('UPLOAD TASK SNAPSHOT: ' + url) }
+        });
     }
+    else {
+      this.createPost();
+    }
+  }
 
+  onCancel(): void {
+    this.selfRef.close();
+  }
 
+  onTopicSelect(topic: string): void {
+    this.currentTopic = topic;
+    if (topic === 'Fundbüro'){
+      this.currentType = this.typesFB[0];
+    }
+    else if (topic === 'Tutorium'){
+      this.currentType = this.typesTT[0];
+    }
   }
 
   prepareImage(event) {
     let n = Date.now();
     this.dataFile = event.target.files[0];
     this.dataPath = `posts/${n}`;
-    console.log(this.dataFile);
-    console.log(this.dataPath);
-  }
-
-  onCancel(): void {
-    this.selfRef.close();
   }
 
   private createPost(): void {
@@ -133,10 +148,10 @@ export class PostDialogComponent implements OnInit {
     const postData: Post = {
       author: this.user.displayName || this.user.email,
       //userEmail: this.user.email,
-      userId: this.authService.currentUserId,
+      //userId: this.authService.currentUserId,
       datePosted: Date.now(),
-      topic: this.topicControl.value,
-      type: this.typeControl.value,
+      topic: this.currentTopic,
+      type: this.currentType,
       title: this.titleControl.value,
       content: this.contentControl.value,
       imgUrl: this.imageURL || DEFAULT_IMAGE_URL
@@ -150,10 +165,10 @@ export class PostDialogComponent implements OnInit {
   }
 
   private resetControls(): void {
-    this.topicControl.reset();
     this.contentControl.reset();
     this.titleControl.reset();
-    this.typeControl.reset();
+    this.currentType = '';
+    this.currentTopic = '';
     this.imageURL = '';
   }
 }

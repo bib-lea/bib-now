@@ -29,7 +29,9 @@ export class TopicNavComponent implements OnInit {
   }
 
   onPost(): void {
-    this.dialog.open(PostDialogComponent);
+    this.dialog.open(PostDialogComponent, {
+      panelClass: 'dialog__wrapper'
+    });
   }
 
   onTopicClick(event): void {

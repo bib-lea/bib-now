@@ -10,20 +10,15 @@
 .viewer__wrapper {
   background-color: #2B2839;
   box-shadow: inset 0 5px 10px #1e181e;
-  padding: 2% 10% 5% 10%;
+  padding: 0 0 5% 0;
   position: relative;
 }
-.viewer__title {
-  position: absolute;
-  right: 12%;
-  top: 5%;
-  color: #ECEFF155;
-  font-size: .6rem;
-  font-weight: 300;
+
+.viewer__nav {
+  width: 80%;
+  margin: 0 auto;
 }
-.viewer__title p:last-child {
-  margin-left: auto;
-}
+/* ABSOLUTES */
 .viewer__footer {
   position: absolute;
   bottom: 2%;
@@ -34,5 +29,18 @@
   color: #ECEFF155;
   text-align: center;
 }
-
-
+.side-cover {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.side-cover.--left {
+  background-image: linear-gradient(to right, #2B2839, #2B283988, transparent);
+  left: 0;
+}
+.side-cover.--right {
+  background-image: linear-gradient(to left, #2B2839, #2B283988, transparent);
+  right: 0;
+}

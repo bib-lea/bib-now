@@ -8,39 +8,33 @@
 <div
   class="viewer__wrapper"
   fxFill
-  gdAreas="topic | cards | post-nav"
-  gdRows="auto 1fr auto"
-  gdColumns="1fr">
-  <!-- ABSOLUTE -->
-  <div
-    class="viewer__title"
-    fxLayout="row">
-  </div>
+  fxLayout="column"
+  fxLayoutAlign="start center">
   <!-- TOPIC -->
   <app-topic-nav
-    (onTopicChange)="onTopicChange($event)"
-    gdArea="topic"></app-topic-nav>
+    class="viewer__nav"
+    (onTopicChange)="onTopicChange($event)"></app-topic-nav>
   <!-- CARDS -->
   <app-card-wrap
     id="viewer__cards"
     [direction]="direction"
-    [posts]="posts"
-    gdArea="cards"
-    fxFill
-    fxLayout="column"
-    fxLayoutAlign="end center"></app-card-wrap>
+    [posts]="posts"></app-card-wrap>
   <!-- POST NAV -->
   <app-post-nav
-    #postNav
-    (direction)="onDirectionChange($event)"
-    gdArea="post-nav">
+    (direction)="onDirectionChange($event)">
   </app-post-nav>
-  <!-- ABSOLUTE -->
+  <!-- ABSOLUTES -->
   <div
     class="viewer__footer">
     <p>
       bibnow © All rights reserved | bib International College
     </p>
+  </div>
+  <div
+    class="side-cover --left">
+  </div>
+  <div
+    class="side-cover --right">
   </div>
 </div>
 

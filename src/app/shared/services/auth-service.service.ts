@@ -21,9 +21,9 @@ export class AuthServiceService {
     return this.afAuth.authState.pipe(first()).toPromise()
   }
 
-  get currentUserId(): string {
-    return this.authenticated ? this.authState.uid : null
-  }
+  //get currentUserId(): string {
+  //  return this.authenticated ? this.authState.uid : null
+  //}
 
 
   onLogin(email: string, password: string) {

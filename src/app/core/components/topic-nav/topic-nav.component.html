@@ -1,7 +1,16 @@
+<!--
+
+ @TopicNavComponent
+ @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+ @Erstellt am: 21.09.2020
+
+ -->
+
 <div
   class="nav__wrapper"
   fxLayout="row"
   fxLayoutAlign="start center">
+  <!-- Topics -->
   <div
     *ngFor="let topic of topics"
     class="nav__link-group">
@@ -17,6 +26,7 @@
       {{ topic }}
     </a>
   </div>
+  <!-- Actions -->
   <div
     class="nav__actions">
     <button

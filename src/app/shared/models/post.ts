@@ -11,4 +11,6 @@ export interface Post {
   title?: string;
   content?: string;
   imgUrl?: string;
+  // Ab hier nur für Front-end
+  isHovered?: boolean;
 }

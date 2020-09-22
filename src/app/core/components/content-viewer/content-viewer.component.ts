@@ -4,6 +4,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import { Post } from 'src/app/shared/models/post';
 import {CrudService} from '../../../shared/services/crud.service';
 import { EventEmitter } from '@angular/core';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-content-viewer',

@@ -1,31 +1,63 @@
+/*
+
+  @Styles: CardWrapComponent (=> ContentViewerComponent)
+  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
+  @Erstellt am: 21.09.2020
+
+*/
+
 /* Wrapper */
 .cards__wrapper {
-  height: 75%;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
 }
 
 /* Card */
 .cards__card {
   position: relative;
-  height: 100%;
-  min-width: 20rem;
-  max-width: 20rem;
+  height: 25rem;
+  min-width: 17.5rem;
   border-radius: 1rem;
   background-color: #ECEFF1;
   box-shadow: 0 5px 2px #2B2839;
-  padding: 6rem 2rem 2rem 2rem;
+  padding: 9rem 2rem 2rem 2rem;
   margin-right: 2rem;
+  transition: opacity 200ms ease;
+}
+.cards__card:not(.--active) {
+  opacity: .3;
+  cursor: pointer;
+}
+.cards__card.--hovered {
+  opacity: .7;
 }
 .cards__card > p {
   margin-bottom: .5rem;
 }
 
+/* Card Header */
+.header__wrapper {
+  width: 100%;
+}
+.--extra-actions {
+  margin-left: auto;
+  color: #2B283955;
+  border: 0;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.--extra-actions:hover {
+  color: #D43D61AA;
+}
+
+/* Card Image */
 .cards__img {
   width: 80% !important;
-  max-height: 10rem !important;
+  height: 10rem;
   object-fit: cover !important;
   margin: 0 auto;
   position: absolute !important;
-  top: -25%;
+  top: -2rem;
   box-shadow: 0 2px 10px #2B2839;
   background-color: transparent;
   border-radius: 1rem;
@@ -34,10 +66,10 @@
   transition: opacity 200ms ease, filter 200ms ease, transform 200ms ease-in;
   cursor: pointer;
 }
-.cards__img:hover {
+.cards__img.--active {
   opacity: 1;
   filter: none;
-  transform: translateY(-5%);
+  transform: translateY(-2rem);
 }
 .cards__topic {
   /* Pomegranate */
