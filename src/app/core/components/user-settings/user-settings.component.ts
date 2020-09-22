@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AuthServiceService } from "../../../shared/services/auth-service.service";
 
 @Component({
   selector: 'app-user-settings',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(authService: AuthServiceService) { }
 
   ngOnInit(): void {
   }
+
+
+  
 
 }

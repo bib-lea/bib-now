@@ -11,6 +11,9 @@ import { Post } from "../../../shared/models/post";
 import { Observable } from "rxjs";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router'
+
+
 
 @Component({
   selector: 'app-forum',
@@ -19,6 +22,8 @@ import { finalize } from 'rxjs/operators';
 })
 export class ForumComponent implements OnInit {
   form: FormGroup;
+
+  editing: boolean = false;
 
   
 
@@ -32,7 +37,7 @@ export class ForumComponent implements OnInit {
 
   posts: Post[];
 
-  constructor(private crudservice: CrudService, private auth: AuthServiceService, private storage: AngularFireStorage) { }
+  constructor(private crudservice: CrudService, private auth: AuthServiceService, private storage: AngularFireStorage, private route: ActivatedRoute,) { }
 
 
 
@@ -74,9 +79,16 @@ create() {
 
 }
 
-update(post: Post) {
-  this.crudservice.updatePost(post);
+updatePost() {
+  const formData = {
+    title: this.topic.value,
+    content: this.content.value
+  }
+  const id = this.route.snapshot.paramMap.get('id')
+  this.crudservice.update(id, formData)
+  this.editing = false
 }
+
 
 delete(id: string) {
   this.crudservice.deletePost(id);

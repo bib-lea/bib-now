@@ -40,60 +40,19 @@
                   {{post.content}}
                 </p>
               </mat-card-content>
-              <button mat-icon-button (click)="editing=true">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button (click)="delete(post.id)">
-                <mat-icon>delete</mat-icon>
-              </button>
-      
+              <mat-card-actions *ngIf="auth.currentUserId === post.authorId">
+                <button mat-icon-button (click)="editing=true">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="delete(post.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+        
             </mat-card>
           </section>
         
-        <div class="col-md-3" *ngFor ="let item of posts">
-            
-            <div class="card" *ngIf="!item.isedit; else elseBlock">
-                <div class="card-body">
-                    <div class="card-title">
-                        Name: {{item.name}}
-                    </div>
-                    <div class="card-text">
-                       Content: {{item.content}}
-                    </div>
-                    <span>
-                        <a href="#" (click)="editRecord(item)" class="btn btn-primary btn-xs">Edit Post</a>
-                        <a href="#"  (click)="deleteRecord(item.id)" class="btn btn-danger btn-xs">Delete Post</a>
-                    </span>
-                </div>
-            </div>
-
-            <ng-template #elseBlock>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">
-                            Edit Post
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <input type="text" [(ngModel)]="item.editname" class="form-control">
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="text" [(ngModel)]="item.editcontent" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="#" class="btn btn-danger btn-xs" (click)="item.isedit = false">Cancel</a>
-                        <a href="#" class="btn btn-primary btn-xs" (click)="updateRecord(item)">Update Post</a>
-                   
-                    </div>
-                </div>
-            </ng-template>
-
-
-
-        </div>
+    
     </div>
 
 
