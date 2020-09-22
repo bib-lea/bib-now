@@ -1,0 +1,9 @@
+<p>user-settings works!</p>
+<input type="text" class="form-control" [formControl]="displayName" placeholder="Enter Content">
+<input type="file"
+    id="file"
+    #userPhoto
+    name="image"
+    autocomplete="off"
+/>
+<button (click)="Save()">Save</button>
