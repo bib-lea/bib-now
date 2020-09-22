@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { Post } from "../models/post";
 import { map } from 'rxjs/operators';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,12 @@ import { map } from 'rxjs/operators';
 export class CrudService {
   postsCollection: AngularFirestoreCollection<Post>
   postDoc: AngularFirestoreDocument<Post>
+  usersCollection: AngularFirestoreCollection<User>
 
 
   constructor(public fireservices: AngularFirestore) {
     this.postsCollection = this.fireservices.collection('posts', ref => ref.orderBy('datePosted', 'desc'));
+    this.usersCollection = this.fireservices.collection('users');
   }
 
   //CRUD

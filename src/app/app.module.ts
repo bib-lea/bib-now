@@ -33,6 +33,7 @@ import { UserSettingsComponent } from './core/components/user-settings/user-sett
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
 
 
+
 const ExtraModules = [
   MaterialModule,
   ReactiveFormsModule,
@@ -57,8 +58,7 @@ const ExtraModules = [
     ImageViewerComponent,
     PostNavComponent,
     UserSettingsComponent,
-    ConfirmationDialogComponent,
-    PostNavComponent
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
