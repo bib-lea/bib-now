@@ -25,10 +25,15 @@ export class CrudService {
     return this.postsCollection.snapshotChanges();
   }
 
-  updatePost( post: Post ){
-    //delete post.id;
-    //this.fireservices.doc('posts/' + post.id).update(Object.assign({}, post)); //update
+  getPostFromId(id: string) {
+    return this.fireservices.doc<Post>(`posts/${id}`)
   }
+
+
+  update(id: string, formData) {
+    return this.getPostFromId(id).update(formData)
+  }
+
 
   deletePost(postId: string){
     this.fireservices.doc('posts/' + postId).delete(); //delete
