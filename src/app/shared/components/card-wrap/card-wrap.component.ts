@@ -39,6 +39,7 @@ export class CardWrapComponent implements OnInit, OnChanges {
     this.afAuth.onAuthStateChanged(user => {
       this.user = user;
       this.userEmail = user.email;
+      console.log('CARDS(AUTH): ' + this.userEmail);
     })
   }
 

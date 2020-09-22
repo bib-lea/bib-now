@@ -10,6 +10,9 @@
   class="cards__wrapper"
   fxLayout="row"
   fxLayoutAlign="center center">
+  <div
+    class="no-data">
+  </div>
   <!-- Cards -->
   <div
     *ngFor="let post of posts; let i = index"
@@ -40,7 +43,6 @@
         {{ post.topic }}
       </p>
       <button
-        *ngIf="userEmail === post.userEmail"
         (click)="onDelete(post.id)"
         class="--extra-actions">
         <mat-icon>delete</mat-icon>

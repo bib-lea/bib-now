@@ -95,6 +95,7 @@
     fxLayout="column"
     class="input__wrapper">
     <input
+      (keyup)="isInvalid = false"
       [formControl]="titleControl"
       class="__input --title"
       tabindex="1"

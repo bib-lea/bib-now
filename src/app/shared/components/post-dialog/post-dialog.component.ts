@@ -81,7 +81,7 @@ export class PostDialogComponent implements OnInit {
 
   async onPosten() {
     // BILDER SPEICHERUNG
-    if (this.dataFile) {
+    if (this.dataFile && this.checkValidity()) {
       const fileRef = this.storage.ref(this.dataPath);
       const imageRef = this.storage.upload(this.dataPath, this.dataFile);
       const promise = await imageRef
@@ -97,29 +97,29 @@ export class PostDialogComponent implements OnInit {
                 this.imageURL = url;
                 console.log('Image gespeichert. ' + this.imageURL);
 
-                if (this.titleControl.invalid || this.contentControl.invalid) {
-                  this.isInvalid = true;
-                  console.log('Form ist nicht gültig.')
+                // Check Validatity
+                if (this.checkValidity()) {
+                  this.createPost();
                 }
-                // Post wird hier gespeichert.
-                else { this.createPost() }
-                this.selfRef.close();
-              }
-              else {
-                console.log('Nicht gespeichert. ' + this.imageURL);
-                this.selfRef.close();
+                else {
+                  this.isInvalid = true;
+                  console.log('Form ist nicht gültig.');
+                }
               }
             });
           })
-
         )
         .subscribe(url => {
           // Task log
           if (url) { console.log('UPLOAD TASK SNAPSHOT: ' + url) }
         });
     }
-    else {
+    else if (this.checkValidity()){
       this.createPost();
+      this.selfRef.close();
+    }
+    else {
+      this.isInvalid = true;
     }
   }
 
@@ -146,9 +146,8 @@ export class PostDialogComponent implements OnInit {
   private createPost(): void {
     // DATEN
     const postData: Post = {
-      author: this.user.displayName || this.user.email,
-      //userEmail: this.user.email,
-      //userId: this.authService.currentUserId,
+      userEmail: this.user.email,
+      username: this.user.displayName || this.user.email,
       datePosted: Date.now(),
       topic: this.currentTopic,
       type: this.currentType,
@@ -170,5 +169,9 @@ export class PostDialogComponent implements OnInit {
     this.currentType = '';
     this.currentTopic = '';
     this.imageURL = '';
+  }
+
+  private checkValidity(): boolean {
+    return this.titleControl.valid && this.contentControl.valid;
   }
 }

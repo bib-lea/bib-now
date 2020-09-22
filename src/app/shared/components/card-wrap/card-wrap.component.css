@@ -10,6 +10,14 @@
 .cards__wrapper {
   padding-top: 6rem;
   padding-bottom: 2rem;
+  position: relative;
+}
+
+/* Placeholder */
+.no-data {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 /* Card */
