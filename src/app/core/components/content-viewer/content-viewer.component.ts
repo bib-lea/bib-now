@@ -29,7 +29,8 @@ export class ContentViewerComponent implements OnInit {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
         } as Post
-      })
+      });
+      this.filterPostsByTopic();
     });
   }
 
@@ -38,7 +39,7 @@ export class ContentViewerComponent implements OnInit {
 
   onTopicChange(event): void {
     this.currentTopic = event;
-    this.filteredPosts = this.posts;
+    this.filterPostsByTopic();
     console.log('Topic changed: ' + event);
     //console.log(this.filteredPosts);
   }
@@ -46,5 +47,9 @@ export class ContentViewerComponent implements OnInit {
   onDirectionChange(event): void {
     console.log('Direction changed:' + event);
     this.direction.emit(event);
+  }
+
+  private filterPostsByTopic(): void {
+    this.filteredPosts = this.posts.filter(p => p.topic === this.currentTopic)
   }
 }

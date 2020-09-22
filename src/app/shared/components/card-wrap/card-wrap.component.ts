@@ -5,6 +5,7 @@ import { ImageViewerComponent } from '../image-viewer/image-viewer.component';
 import { User } from 'firebase';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {CrudService} from '../../services/crud.service';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-card-wrap',
@@ -15,7 +16,7 @@ export class CardWrapComponent implements OnInit, OnChanges {
   // Zur Track-Slide-Animation
   currentActivePost: number;
   translateValue: number = 0;
-  translateUnit: number = 19.5;
+  translateUnit: number = 24;
   get trackHorizontal(): any {
     return {
       'transform': `translateX(${this.translateValue}rem)`,
@@ -32,7 +33,7 @@ export class CardWrapComponent implements OnInit, OnChanges {
   @Input() direction: EventEmitter<string>;
 
   constructor(
-    private imageViewer: MatDialog,
+    private dialog: MatDialog,
     private afAuth: AngularFireAuth,
     private crudService: CrudService
   ){
@@ -58,17 +59,14 @@ export class CardWrapComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const initialActive = 2;
-    if (this.posts){
+    if (this.posts)
       this.posts.forEach(p => p.isHovered = false);
-    }
-    if (!this.currentActivePost){
-      this.currentActivePost = initialActive;
-    }
+    this.setInitialActive();
   }
 
   onImageView(url): void {
     console.log(url);
-    let ref = this.imageViewer.open(ImageViewerComponent, {
+    let ref = this.dialog.open(ImageViewerComponent, {
       data: {
         overflow: 'hidden',
         padding: 0,
@@ -83,7 +81,13 @@ export class CardWrapComponent implements OnInit, OnChanges {
   }
 
   onDelete(id): void {
-    this.crudService.deletePost(id);
+    const ref = this.dialog.open(ConfirmationDialogComponent);
+
+    ref.afterClosed().subscribe(res => {
+      if (res === 'confirmed'){
+        this.crudService.deletePost(id);
+      }
+    });
   }
 
   private resolveCurrentPosition(): void {
@@ -94,5 +98,16 @@ export class CardWrapComponent implements OnInit, OnChanges {
   private isSlideEnd(): boolean {
     return this.currentActivePost === 0
       || this.currentActivePost === this.posts.length - 1;
+  }
+
+  private setInitialActive(): void {
+    if (this.posts) {
+      this.currentActivePost = Math.floor(this.posts.length / 2.0);
+    }
+    else {
+      this.currentActivePost = 0;
+    }
+    console.log('CARDS');
+    console.log(this.currentActivePost);
   }
 }

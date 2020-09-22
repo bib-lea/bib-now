@@ -30,6 +30,7 @@ import { TopicNavComponent } from './core/components/topic-nav/topic-nav.compone
 import { ImageViewerComponent } from './shared/components/image-viewer/image-viewer.component';
 import { PostNavComponent } from './shared/components/post-nav/post-nav.component';
 import { UserSettingsComponent } from './core/components/user-settings/user-settings.component';
+import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
 
 
 const ExtraModules = [
@@ -55,7 +56,8 @@ const ExtraModules = [
     TopicNavComponent,
     ImageViewerComponent,
     PostNavComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

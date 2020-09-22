@@ -1,0 +1,23 @@
+<div
+  class="dialog__wrapper"
+  fxFill
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="2rem">
+  <p>Wirklich löschen?</p>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="buttons__wrapper">
+    <button
+      (click)="onCancel()"
+      class="__button --no">
+      Nein
+    </button>
+    <button
+      (click)="onConfirm()"
+      class="__button --okay">
+      Ja
+    </button>
+  </div>
+</div>

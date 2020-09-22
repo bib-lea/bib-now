@@ -43,6 +43,7 @@
         {{ post.topic }}
       </p>
       <button
+        *ngIf="userEmail === post.userEmail"
         (click)="onDelete(post.id)"
         class="--extra-actions">
         <mat-icon>delete</mat-icon>
@@ -73,7 +74,7 @@
           [src]="post.userImg ? post.userImg : 'https://www.w3schools.com/html/img_girl.jpg'">
         <span
           class="cards__user--name">
-            {{ post.username }}
+            {{ post.userEmail.split('@')[0] }}
           </span>
       </div>
       <div

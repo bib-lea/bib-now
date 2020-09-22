@@ -74,16 +74,21 @@
 .--post {
   height: auto;
   width: auto;
-  padding: 1rem;
+  padding: 1rem 2rem;
   color: #CCCCFE55;
   border: 0;
   background: 0;
-  box-shadow: none;
+  box-shadow:
+    2px 2px 5px #1e181eAA,
+    -2px -2px 5px #ECEFF11A;
   font-size: 2rem;
   font-weight: 800;
-  transition: color 200ms ease, text-shadow 1000ms ease;
+  transition: color 200ms ease, text-shadow 1000ms ease, box-shadow 400ms ease;
 }
 .--post:hover {
   color: #CCCCFE;
   text-shadow: 0 0 15px #08F7FE;
+  box-shadow:
+    -1px -1px 15px #039be5,
+    1px 1px 15px #FE53BBAA;
 }

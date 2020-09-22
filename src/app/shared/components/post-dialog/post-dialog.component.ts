@@ -100,6 +100,7 @@ export class PostDialogComponent implements OnInit {
                 // Check Validatity
                 if (this.checkValidity()) {
                   this.createPost();
+                  this.selfRef.close();
                 }
                 else {
                   this.isInvalid = true;

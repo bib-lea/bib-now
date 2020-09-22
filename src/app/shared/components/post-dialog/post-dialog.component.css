@@ -118,14 +118,25 @@
   margin-bottom: 1rem;
 }
 
-.--cancel, .--post {
+.--cancel {
   color: #2B283935;
 }
+.--post {
+  height: auto;
+  width: auto;
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: .9rem;
+  color: #1e181e55;
+  background-color: #039be522;
+}
 .--cancel:hover {
-  color: #2B2839;
+  color: #D43D61;
 }
 .--post:hover {
   color: #039be5;
+}
+.--post mat-icon {
+  vertical-align: middle;
 }
 
 .--content {

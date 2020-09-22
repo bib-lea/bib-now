@@ -18,7 +18,7 @@
   <app-card-wrap
     id="viewer__cards"
     [direction]="direction"
-    [posts]="posts"></app-card-wrap>
+    [posts]="filteredPosts"></app-card-wrap>
   <!-- POST NAV -->
   <app-post-nav
     (direction)="onDirectionChange($event)">

@@ -9,12 +9,14 @@ import { AuthServiceService } from "../../../shared/services/auth-service.servic
 })
 export class UserSettingsComponent implements OnInit {
 
+
+
   constructor(authService: AuthServiceService) { }
 
   ngOnInit(): void {
   }
 
 
-  
+
 
 }

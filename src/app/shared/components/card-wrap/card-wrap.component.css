@@ -11,6 +11,7 @@
   padding-top: 6rem;
   padding-bottom: 2rem;
   position: relative;
+  overflow: visible;
 }
 
 /* Placeholder */
@@ -24,7 +25,8 @@
 .cards__card {
   position: relative;
   height: 25rem;
-  min-width: 17.5rem;
+  min-width: 19rem;
+  max-width: 19rem;
   border-radius: 1rem;
   background-color: #ECEFF1;
   box-shadow: 0 5px 2px #2B2839;
@@ -37,7 +39,7 @@
   cursor: pointer;
 }
 .cards__card.--hovered {
-  opacity: .7;
+  opacity: .8;
 }
 .cards__card > p {
   margin-bottom: .5rem;
@@ -84,6 +86,7 @@
   color: #2B28395A;
   font-size: .9rem;
 }
+
 .cards__type {
   color: #039be5;
   font-size: .75rem;

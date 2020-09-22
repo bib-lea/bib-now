@@ -1,0 +1,17 @@
+/* Buttons */
+.dialog__wrapper {
+  padding: 1rem;
+}
+.__button.--okay, .__button.--no {
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+  color: #2B283922;
+}
+.--okay:hover {
+  color: #039be5;
+}
+.--no:hover {
+  color: #D43D61;
+}
+
