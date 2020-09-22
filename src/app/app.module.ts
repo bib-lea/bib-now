@@ -29,6 +29,7 @@ import { CardWrapComponent } from './shared/components/card-wrap/card-wrap.compo
 import { TopicNavComponent } from './core/components/topic-nav/topic-nav.component';
 import { ImageViewerComponent } from './shared/components/image-viewer/image-viewer.component';
 import { PostNavComponent } from './shared/components/post-nav/post-nav.component';
+import { UserSettingsComponent } from './core/components/user-settings/user-settings.component';
 
 
 const ExtraModules = [
@@ -53,7 +54,8 @@ const ExtraModules = [
     CardWrapComponent,
     TopicNavComponent,
     ImageViewerComponent,
-    PostNavComponent
+    PostNavComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
