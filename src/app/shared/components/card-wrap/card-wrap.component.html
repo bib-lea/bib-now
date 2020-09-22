@@ -82,7 +82,7 @@
         <mat-icon>access_time</mat-icon>
         <span
           class="cards__date--text">
-            {{ post.datePosted }}
+            {{ post.datePosted | date:"fullDate" }}
           </span>
       </div>
     </div>

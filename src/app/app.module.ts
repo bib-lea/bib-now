@@ -29,8 +29,12 @@ import { CardWrapComponent } from './shared/components/card-wrap/card-wrap.compo
 import { TopicNavComponent } from './core/components/topic-nav/topic-nav.component';
 import { ImageViewerComponent } from './shared/components/image-viewer/image-viewer.component';
 import { PostNavComponent } from './shared/components/post-nav/post-nav.component';
+<<<<<<< HEAD
 import { UserSettingsComponent } from './core/components/user-settings/user-settings.component';
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
+=======
+
+>>>>>>> f791a583e2c822d1bb5ea49e43aedff3ab40afd6
 
 
 const ExtraModules = [
@@ -55,9 +59,13 @@ const ExtraModules = [
     CardWrapComponent,
     TopicNavComponent,
     ImageViewerComponent,
+<<<<<<< HEAD
     PostNavComponent,
     UserSettingsComponent,
     ConfirmationDialogComponent
+=======
+    PostNavComponent
+>>>>>>> f791a583e2c822d1bb5ea49e43aedff3ab40afd6
   ],
   imports: [
     BrowserModule,
