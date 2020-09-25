@@ -12,16 +12,20 @@
   fxLayoutAlign="start center">
   <!-- TOPIC -->
   <app-topic-nav
+    [ngClass]="{'--mobile': isMobile}"
     class="viewer__nav"
+    [isMobile]="isMobile"
     (onTopicChange)="onTopicChange($event)"></app-topic-nav>
   <!-- CARDS -->
   <app-card-wrap
     id="viewer__cards"
+    [isMobile]="isMobile"
     [currentPage]="currentPage"
     [direction]="direction"
     [posts]="filteredPosts"></app-card-wrap>
   <!-- POST NAV -->
   <app-post-nav
+    *ngIf="!isMobile"
     [pagesCount]="pagesCount"
     (currentPage)="onPageChange($event)"
     (direction)="onDirectionChange($event)">

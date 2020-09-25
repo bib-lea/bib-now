@@ -17,6 +17,7 @@ export class ContentViewerComponent implements OnInit {
   posts: Post[] = [];
 
   @Input() search: EventEmitter<string>;
+  @Input() isMobile: boolean;
 
   @Output() isSearching = new EventEmitter<boolean>();
   @Output() direction = new EventEmitter<string>();

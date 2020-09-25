@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {PostDialogComponent} from '../../../shared/components/post-dialog/post-dialog.component';
@@ -9,6 +10,7 @@ import {PostDialogComponent} from '../../../shared/components/post-dialog/post-d
 })
 export class TopicNavComponent implements OnInit {
 
+  @Input() isMobile: boolean;
   @Output() onTopicChange = new EventEmitter<string>();
   currentTopic: string;
   topics: any[] = [

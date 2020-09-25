@@ -7,6 +7,7 @@ import {AuthServiceService} from '../../services/auth-service.service';
 import {PostDialogComponent} from '../post-dialog/post-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-top-nav',

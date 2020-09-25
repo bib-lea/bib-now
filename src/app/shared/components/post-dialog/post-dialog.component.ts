@@ -12,6 +12,7 @@ import { AuthServiceService } from "../../services/auth-service.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {MediaChange, MediaObserver} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-post-dialog',
@@ -22,6 +23,8 @@ export class PostDialogComponent implements OnInit {
   // Werden geladen
   user: any;
   posts: any[];
+  isMobile: boolean;
+  activeMediaQuery: string;
 
   // Form Data
   currentTopic: string;
@@ -61,7 +64,8 @@ export class PostDialogComponent implements OnInit {
 
     private selfRef: MatDialogRef<PostDialogComponent>,
     private snackBar: MatSnackBar,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private mediaObserver: MediaObserver
   )
   {
     this.contentControl = new FormControl('', [
@@ -79,6 +83,12 @@ export class PostDialogComponent implements OnInit {
       this.user = user;
       console.log(this.user.email);
     });
+
+    this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
+      const change = changes[0];
+      this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
+      this.isMobile = change.mqAlias === 'xs';
+    })
   }
 
   ngOnInit(): void {

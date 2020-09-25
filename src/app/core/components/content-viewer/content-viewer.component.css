@@ -17,6 +17,10 @@
   width: 80%;
   padding: 0 2rem;
 }
+.viewer__nav.--mobile {
+  width: 100%;
+  padding: 0;
+}
 /* ABSOLUTES */
 .viewer__footer {
   position: absolute;

@@ -26,8 +26,8 @@
   <section
     gdArea="contents">
     <app-content-viewer
-      [search]="search"
-      *ngIf="!isMobile">
+      [isMobile]="isMobile"
+      [search]="search">
     </app-content-viewer>
   </section>
 </main>

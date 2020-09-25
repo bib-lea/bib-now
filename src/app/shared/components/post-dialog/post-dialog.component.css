@@ -18,6 +18,9 @@
   font: 800 3rem 'Montserrat', sans-serif !important;
   opacity: .5;
 }
+.header__text.--mobile {
+  font: 800 2rem 'Montserrat', sans-serif !important;
+}
 .header__text span.--sub {
   font: 500 .8rem 'Montserrat', sans-serif !important;
   margin-left: auto;
@@ -37,13 +40,23 @@
     inset 2px 2px 5px rgba(30, 30, 30, .1),
     inset -2px -2px 5px rgba(230, 230, 230, .1);*/
 }
+.__button--flat.--mobile {
+  font-size: .7rem !important;
+  padding: 0 .3rem;
+}
 .topics__wrapper {
   margin-bottom: 1rem;
   padding-left: 2rem;
 }
+.topics__wrapper.--mobile {
+  padding: 0;
+}
 .types__wapper {
   margin-top: 1rem;
   padding-left: 2rem;
+}
+.types__wapper.--mobile {
+  padding: 0;
 }
 .buttons__label {
   position: absolute;
@@ -170,6 +183,9 @@
   padding: 0 1.5rem;
   margin-bottom: 1rem;
 }
+.dialog__button-group.--mobile {
+  padding: 0;
+}
 
 .--cancel {
   color: #2B283935;
@@ -220,6 +236,9 @@
 .--filePath.--exist {
   color: #039be5;
 }
+.--file.--mobile {
+  margin: 1rem 0 0 0;
+}
 
 .--error {
   margin: 0;
@@ -234,4 +253,7 @@
   position: relative;
   left: 1rem;
   font-size: .8rem;
+}
+.--filePath.--mobile {
+  left: 0;
 }

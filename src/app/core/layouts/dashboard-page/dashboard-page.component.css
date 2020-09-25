@@ -13,3 +13,6 @@
   background-color: rgba(240, 240, 240, .9);
 }
 
+.contents__wrapper section {
+  overflow-y: scroll;
+}

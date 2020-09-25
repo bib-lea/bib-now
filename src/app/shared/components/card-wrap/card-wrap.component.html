@@ -7,18 +7,20 @@
  -->
 <div
   *ngIf="displayedPosts"
-  [@cardsEnter]="displayedPosts.length"
-  [ngStyle]="trackHorizontal"
+  [@cardsEnter]="!isMobile && displayedPosts.length"
+  [ngStyle]="!isMobile && trackHorizontal"
   class="cards__wrapper"
   fxLayout="row"
+  fxLayout.xs="row wrap"
   fxLayoutAlign="center center">
   <!-- Cards -->
   <div
     *ngFor="let post of displayedPosts; let i = index"
     [ngClass]=
       "{
-        '--active': i === currentActivePost,
-        '--hovered': post.isHovered && i !== currentActivePost
+        '--active': i === currentActivePost && !isMobile,
+        '--hovered': post.isHovered && i !== currentActivePost && !isMobile,
+        '--mobile': isMobile
       }"
     (mouseenter)="post.isHovered = true"
     (mouseleave)="post.isHovered = false"

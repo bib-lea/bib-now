@@ -11,9 +11,11 @@
   <!-- Header -->
   <h2
     mat-dialog-title
+    ngClass.xs="--mobile"
     class="header__text">
     Posten
     <span
+      *ngIf="!isMobile"
       class="--sub">
       @ bibnow
     </span>
@@ -31,9 +33,10 @@
       <!-- Topics -->
       <div
         class="buttons__label">
-        Thema
+        {{ isMobile ? '' : 'Thema' }}
       </div>
       <div
+        ngClass.xs="--mobile"
         fxLayout="row"
         fxLayoutAlign="space-around center"
         class="topics__wrapper">
@@ -44,7 +47,8 @@
           '--fb': topic === 'Fundbüro',
           '--tt': topic === 'Tutorium',
           '--ag': topic === 'Allgemein',
-          '--active': topic === currentTopic
+          '--active': topic === currentTopic,
+          '--mobile': isMobile
         }"
           class="__button--flat">
           {{ topic }}
@@ -53,11 +57,12 @@
       <mat-divider></mat-divider>
       <!-- Type: Fundbüro -->
       <div
-        *ngIf="currentTopic === 'Fundbüro' || currentTopic === 'Tutorium'"
+        *ngIf="(currentTopic === 'Fundbüro' || currentTopic === 'Tutorium')"
         class="buttons__label --types">
-        Typen
+        {{ isMobile ? '' : 'Typen' }}
       </div>
       <div
+        ngClass.xs="--mobile"
         *ngIf="currentTopic === 'Fundbüro'"
         class="types__wapper"
         fxLayout="row"
@@ -76,6 +81,7 @@
       <!-- Type: Tutorium -->
       <div
         *ngIf="currentTopic === 'Tutorium'"
+        ngClass.xs="--mobile"
         class="types__wapper"
         fxLayout="row"
         fxLayoutAlign="space-around center">
@@ -198,9 +204,14 @@
   <!-- Image -->
   <div
       fxLayout="row"
+      fxLayout.xs="column"
       class="input__wrapper--file">
       <div
-        [ngClass]="{'--exist': this.dataFile}"
+        [ngClass]=
+          "{
+            '--exist': this.dataFile,
+            '--mobile': isMobile
+          }"
         class="--filePath">
         {{ this.dataFile ? this.dataFile.name + ' (' + this.dataSize + ' KB)' : 'Keine Bilder ausgewählt' }}
       </div>
@@ -208,7 +219,7 @@
         type="file"
         id="file"
         class="--file"
-        #userPhoto
+        ngClass.xs="--mobile"
         (change)="prepareImage($event)"
         name="image"
         autocomplete="off"
@@ -218,6 +229,7 @@
   </div>
   <!--Action Buttons -->
   <div
+    ngClass.xs="--mobile"
     class="dialog__button-group"
     mat-dialog-actions
     fxLayout="row"

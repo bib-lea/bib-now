@@ -56,6 +56,7 @@ export class CardWrapComponent implements OnInit, OnChanges {
   _posts: Post[];
   @Input() currentPage: any;
   @Input() direction: any;
+  @Input() isMobile: boolean;
 
   constructor(
     private dialog: MatDialog,

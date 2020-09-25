@@ -7,19 +7,23 @@
  -->
 
 <div
+  [ngClass]="{'--mobile': isMobile}"
   class="nav__wrapper"
   fxLayout="row"
   fxLayoutAlign="start center">
   <!-- Topics -->
   <div
     *ngFor="let topic of topics"
+    fxLayout="row"
+    fxLayoutAlign="center center"
     class="nav__link-group">
     <a
       [ngClass]=
       "{
         '--active': topic === currentTopic,
         '--tt': topic === 'Tutorium',
-        '--fb': topic === 'Fundbüro'
+        '--fb': topic === 'Fundbüro',
+        '--mobile': isMobile
       }"
       (click)="onTopicClick(topic)"
       class="nav__link">

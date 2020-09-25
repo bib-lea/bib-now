@@ -37,12 +37,16 @@
   margin-right: 2rem;
   transition: opacity 200ms ease;
 }
-.cards__card:not(.--active) {
+.cards__card.--mobile {
+  margin: 0 0 4rem 0;
+
+}
+.cards__card:not(.--active.--mobile) {
   opacity: .3;
   transition: opacity 200ms ease;
   cursor: pointer;
 }
-.cards__card.--hovered {
+.cards__card.--hovered:not(.--mobile) {
   opacity: .8;
 }
 .cards__card > p {
@@ -88,6 +92,9 @@
   opacity: 1;
   filter: none;
   transform: translateY(-2rem);
+}
+.--mobile .cards__img {
+  transform: none !important;
 }
 .cards__topic {
   /* Pomegranate */
