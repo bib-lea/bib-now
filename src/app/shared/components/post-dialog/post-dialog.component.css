@@ -211,9 +211,8 @@
   border: 0;
   box-shadow: none;
 }
-.--file::-webkit-file-upload-button {
-  visibility: hidden;
-}
+
+
 .--file::before {
   color: rgba(50, 50, 50, .65);
   content: '+ Bilder aussuchen...';

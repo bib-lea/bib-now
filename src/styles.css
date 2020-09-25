@@ -102,6 +102,9 @@ textarea:focus, input:focus {
 input:focus::placeholder {
   color: transparent;
 }
+::-webkit-file-upload-button {
+  visibility: hidden;
+}
 .no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
