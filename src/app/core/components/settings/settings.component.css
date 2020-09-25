@@ -32,6 +32,7 @@
 .--username {
   padding: 1rem;
   border-radius: 1rem;
+  color: #2B2839;
 }
 .forms__wrapper .status--no {
   position: absolute;
@@ -59,3 +60,5 @@
 .__mytt:hover {
   color: #ECEFF1;
 }
+
+

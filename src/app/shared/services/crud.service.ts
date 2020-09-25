@@ -3,6 +3,7 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import { Post } from "../models/post";
 import { map } from 'rxjs/operators';
 import { User } from 'firebase';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,17 @@ export class CrudService {
   }
 
 
-  update(id: string, formData) {
+  updatePost(id: string, formData) {
     return this.getPostFromId(id).update(formData)
   }
 
+  updateUser(id: string, formData) {
+    return this.fireservices.doc<User>(`users/${id}`).update(formData);
+  }
+
+  getUserById(id: string): Observable<User> {
+    return this.fireservices.doc<User>(`users/${id}`).valueChanges();
+  }
 
   deletePost(postId: string){
     this.fireservices.doc('posts/' + postId).delete(); //delete
