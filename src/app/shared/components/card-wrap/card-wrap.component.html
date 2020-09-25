@@ -110,7 +110,7 @@
       <!-- Subscribe Button (Tutorium Only) -->
       <div
         fxFlex="1 0 100%"
-        *ngIf="post.topic === 'Tutorium'"
+        *ngIf="post.topic === 'Tutorium' && post.userEmail !== userEmail"
         class="cards__subscribe">
         <button
           class="__button --flat --subscribe">
@@ -118,7 +118,7 @@
         </button>
       </div>
       <button
-        *ngIf="post.topic !== 'Tutorium' && post.userEmail === userEmail"
+        *ngIf="post.userEmail === userEmail"
         (click)="onDelete(post.id)"
         class="--extra-actions">
         <mat-icon>delete</mat-icon>

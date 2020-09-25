@@ -16,11 +16,10 @@
   padding: 0 .6rem;
   margin: 1rem 0;
   font: 800 3rem 'Montserrat', sans-serif !important;
-  opacity: .2;
+  opacity: .5;
 }
 .header__text span.--sub {
-  font: 300 .8rem 'Montserrat', sans-serif !important;
-  opacity: .9 !important;
+  font: 500 .8rem 'Montserrat', sans-serif !important;
   margin-left: auto;
 }
 .--user {
@@ -184,7 +183,7 @@
   background-color: #039be522;
 }
 .--cancel:hover {
-  color: #D43D61;
+  color: #D43D61AA;
 }
 .--post:hover {
   color: #039be5;
