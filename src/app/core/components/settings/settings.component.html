@@ -19,21 +19,27 @@
     </p>
   </div>
   <div
-    *ngIf="!user || !user.displayName"
     fxLayout="row"
     fxLayoutAlign="start center"
     fxLayoutGap="2rem"
     class="forms__wrapper">
     <span>
-      Anzeigename:
+      Anzeigename: {{ user && user.displayName ? user.displayName : '' }}
     </span>
     <form
+      *ngIf="user && !user.displayName"
       [formGroup]="settingsForm">
       <input
         class="--username"
         formControlName="username"
         placeholder="Username"
         type="text">
+      <button
+        (click)="onConfirm()"
+        type="button"
+        class="--confirm">
+        Bestätigen
+      </button>
     </form>
     <span
       class="status--no">

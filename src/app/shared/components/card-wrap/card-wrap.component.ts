@@ -45,10 +45,6 @@ export class CardWrapComponent implements OnInit, OnChanges {
   user: User;
   userEmail: string;
   username: string;
-  get tempName() {
-    const [ firstname, lastname ] = this.userEmail.split('@')[0].split('.');
-    return firstname[0].toUpperCase() + firstname.slice(1) + ' ' + lastname[0].toUpperCase() + lastname.slice(1);
-  }
 
   // Sliced Posts
   displayedPosts: Post[] = [];
@@ -174,5 +170,10 @@ export class CardWrapComponent implements OnInit, OnChanges {
 
     // Bring zum Start zurück
     this.translateValue = 0;
+  }
+
+  getTempName(post: Post): string {
+    const [ firstname, lastname ] = post.userEmail.split('@')[0].split('.');
+    return firstname[0].toUpperCase() + firstname.slice(1) + ' ' + lastname[0].toUpperCase() + lastname.slice(1);
   }
 }

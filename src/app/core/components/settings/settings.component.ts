@@ -4,6 +4,7 @@ import {CrudService} from '../../../shared/services/crud.service';
 import {Post} from '../../../shared/models/post';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-settings',
@@ -14,6 +15,7 @@ export class SettingsComponent implements OnInit, AfterContentChecked {
 
   // Firebase
   user: User;
+  userDisplayname: string;
 
   settingsForm: FormGroup;
   myTT: Post[];
@@ -22,14 +24,20 @@ export class SettingsComponent implements OnInit, AfterContentChecked {
   constructor(
     private fb: FormBuilder,
     private crudService: CrudService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.afAuth.onAuthStateChanged(user => {
-      if (user)
+      if (user){
         this.user = user;
+      }
     }).then(() => {});
+    this.crudService.getUserById(this.user.uid).subscribe(user => {
+      console.log(user);
+    });
+
     this.settingsForm = this.fb.group({
       username: ''
     })
@@ -49,5 +57,14 @@ export class SettingsComponent implements OnInit, AfterContentChecked {
         this._allPosts.filter(p => p.userEmail === this.user.email && p.topic === 'Tutorium');
       }
      }});
+  }
+
+  onConfirm(): void {
+    if (this.user){
+      const promise = this.crudService.updateUser(this.user.uid, {
+        displayName: this.settingsForm.value.username
+      })
+      this.snackBar.open('Username wurde aktualisiert.', 'Schließen');
+    }
   }
 }

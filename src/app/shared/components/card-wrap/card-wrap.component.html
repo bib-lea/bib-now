@@ -62,7 +62,7 @@
           [src]="post.userImg ? post.userImg : 'https://www.w3schools.com/html/img_girl.jpg'">
         <span
           clasS="cards__user--name">
-          {{ tempName }}
+          {{ getTempName(post) }}
         </span>
       </div>
       <!-- Hover Info -->
@@ -73,7 +73,7 @@
         <span>
           Kontakt:
           <span (click)="onCopy()" class="--email">
-          {{ userEmail ? userEmail : 'wird geladen...' }}
+          {{ post ? post.userEmail : 'wird geladen...' }}
           </span>
         </span>
         <mat-icon
@@ -118,7 +118,7 @@
         </button>
       </div>
       <button
-        *ngIf="userEmail !== post.userEmail"
+        *ngIf="post.topic !== 'Tutorium' && post.userEmail === userEmail"
         (click)="onDelete(post.id)"
         class="--extra-actions">
         <mat-icon>delete</mat-icon>

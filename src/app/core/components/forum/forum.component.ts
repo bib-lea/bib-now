@@ -25,7 +25,7 @@ export class ForumComponent implements OnInit {
 
   editing: boolean = false;
 
-  
+
 
   downloadURL: Observable<string>;
 
@@ -45,7 +45,7 @@ export class ForumComponent implements OnInit {
 
     this.topic = new FormControl('');
     this.content = new FormControl('');
-    
+
     this.crudservice.getPost().subscribe(data => {
 
       this.posts = data.map(e => {
@@ -85,7 +85,7 @@ updatePost() {
     content: this.content.value
   }
   const id = this.route.snapshot.paramMap.get('id')
-  this.crudservice.update(id, formData)
+  this.crudservice.updatePost(id, formData)
   this.editing = false
 }
 
@@ -125,7 +125,7 @@ upload(event) {
   //     name: this.topic.value,
   //     content: this.content.value
   //   };
-   
+
   //   this.crudservice.createPost(record).then(res => {
 
   //     this.topic.reset();
@@ -137,7 +137,7 @@ upload(event) {
   //     console.log(error);
   //   }
   //   );
-    
+
   // }
 
   // editRecord(record){
