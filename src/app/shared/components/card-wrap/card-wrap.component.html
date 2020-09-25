@@ -6,16 +6,15 @@
 
  -->
 <div
+  *ngIf="displayedPosts"
+  [@cardsEnter]="displayedPosts.length"
   [ngStyle]="trackHorizontal"
   class="cards__wrapper"
   fxLayout="row"
   fxLayoutAlign="center center">
-  <div
-    class="no-data">
-  </div>
   <!-- Cards -->
   <div
-    *ngFor="let post of posts; let i = index"
+    *ngFor="let post of displayedPosts; let i = index"
     [ngClass]=
       "{
         '--active': i === currentActivePost,
@@ -33,28 +32,57 @@
       class="cards__img"
       [ngClass]="{'--active': i === currentActivePost}"
       (click)="onImageView(post.imgUrl)"
-      [src]="post.imgUrl">
+      [src]="post.imgUrl ? post.imgUrl : 'https://www.w3schools.com/html/img_girl.jpg'">
     <!-- Topic -->
     <div
       class="header__wrapper"
       fxLayout="row">
-      <p
-        class="cards__topic">
-        {{ post.topic }}
-      </p>
-      <button
-        *ngIf="userEmail === post.userEmail"
-        (click)="onDelete(post.id)"
-        class="--extra-actions">
-        <mat-icon>delete</mat-icon>
-      </button>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center start"
+        fxLayoutGap=".4 rem"
+        class="topic__wrapper">
+        <p
+          class="cards__topic">
+          {{ post.topic }}
+        </p>
+        <p
+          [ngClass]="{'--suche': post.type === 'Suche'}"
+          class="cards__type">
+          {{ post.type }}
+        </p>
+      </div>
+      <div
+        class="cards__user"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap=".3rem">
+        <img
+          class="cards__user--img"
+          [src]="post.userImg ? post.userImg : 'https://www.w3schools.com/html/img_girl.jpg'">
+        <span
+          clasS="cards__user--name">
+          {{ tempName }}
+        </span>
+      </div>
+      <!-- Hover Info -->
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="user__hover-info">
+        <span>
+          Kontakt:
+          <span (click)="onCopy()" class="--email">
+          {{ userEmail ? userEmail : 'wird geladen...' }}
+          </span>
+        </span>
+        <mat-icon
+          (click)="onCopy()">
+          file_copy
+        </mat-icon>
+      </div>
     </div>
     <!-- Type -->
-    <p
-      [ngClass]="{'--suche': post.type === 'Suche'}"
-      class="cards__type">
-      {{ post.type }}
-    </p>
     <p
       class="cards__title">
       {{ post.title }}
@@ -66,26 +94,49 @@
     <div
       class="cards__footer"
       fxLayout="row"
-      fxLayoutAlign="space-between center">
+      fxLayoutAlign="start center"
+      fxLayoutGap="2rem">
+      <!-- DATE -->
       <div
-        class="cards__user">
-        <img
-          class="cards__user--img"
-          [src]="post.userImg ? post.userImg : 'https://www.w3schools.com/html/img_girl.jpg'">
-        <span
-          class="cards__user--name">
-            {{ post.userEmail.split('@')[0] }}
-          </span>
-      </div>
-      <div
-        class="cards__date">
-        <mat-icon>access_time</mat-icon>
+        *ngIf="post.topic !== 'Tutorium'"
+        class="cards__date"
+        fxLayout="row">
         <span
           class="cards__date--text">
+          <mat-icon>access_time</mat-icon>
             {{ post.datePosted | date:"fullDate" }}
           </span>
       </div>
+      <!-- Subscribe Button (Tutorium Only) -->
+      <div
+        fxFlex="1 0 100%"
+        *ngIf="post.topic === 'Tutorium'"
+        class="cards__subscribe">
+        <button
+          class="__button --flat --subscribe">
+          Abonnieren
+        </button>
+      </div>
+      <button
+        *ngIf="userEmail !== post.userEmail"
+        (click)="onDelete(post.id)"
+        class="--extra-actions">
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
   </div>
 </div>
 
+<!-- No Data -->
+<div
+  *ngIf="!displayedPosts || displayedPosts.length === 0"
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  fxLayoutGap="2rem"
+  class="no-data">
+  <img
+    src="./assets/bibnow--0.png">
+  <p>
+    Leider haben wir nichts gefunden.
+  </p>
+</div>

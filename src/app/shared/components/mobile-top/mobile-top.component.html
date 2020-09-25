@@ -1,0 +1,33 @@
+<div
+  class="nav__wrapper"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  fxLayoutGap="2rem">
+  <div
+    class="nav__profile">
+    <mat-icon>
+      account_circle
+    </mat-icon>
+  </div>
+  <div
+    fxFlex="1 0 auto"
+    class="nav__search-bar">
+    <mat-icon
+      class="search-bar__icon">search</mat-icon>
+    <input
+      class="search-bar__input"
+      tabindex="1"
+      name="search"
+      type="text"
+      placeholder="Suche Posts..."
+      autocomplete="off">
+  </div>
+  <div
+    class="nav__post">
+    <button
+      class="__button --post"
+      (click)="onPost()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+</div>

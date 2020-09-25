@@ -7,14 +7,13 @@
  -->
 <div
   class="form__wrapper"
-  fxFill
-  gdAreas="forms | buttons"
-  gdRows="1fr auto">
+  fxLayout="column"
+  fxLayoutAlign="center center">
   <!-- Sign Up Form -->
   <form
+    [ngClass]="{'--mobile': isMobile}"
     [formGroup]="signupForm"
     class="form-field__wrapper"
-    gdArea="forms"
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="1rem">
@@ -72,8 +71,8 @@
   </form>
   <!-- Action Buttons -->
   <div
+    [ngClass]="{'--mobile': isMobile}"
     class="buttons__wrapper"
-    gdArea="buttons"
     fxLayout="row"
     fxLayoutAlign="center center"
     fxLayoutGap="8rem">

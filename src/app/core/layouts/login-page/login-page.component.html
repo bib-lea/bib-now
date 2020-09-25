@@ -10,9 +10,12 @@
   fxFill
   gdAreas="top | logo | form | bottom"
   gdColumns="1fr"
-  gdRows="auto auto 1fr auto">
+  gdRows="auto auto 1fr auto"
+  gdAreas.xs="logo | form"
+  gdRows.xs="auto 1fr">
   <!-- Top Info -->
   <div
+    *ngIf="!isMobile"
     gdArea="top"
     class="page__top-info"
     fxLayout="row"
@@ -20,8 +23,9 @@
     <p>Beta</p>
     <p>Lernaufgabe @ 2020</p>
   </div>
-  <!-- Logo -->
+  <!-- Logo (Desktop) -->
   <div
+    *ngIf="!isMobile"
     gdArea="logo">
     <div
       class="logo__neon--pink"></div>
@@ -32,7 +36,8 @@
       fxLayout="column"
       fxLayoutAlign="end center">
       <img
-        src="./assets/bibnow--1.png">
+        src="./assets/bibnow--1.png"
+        alt="bib now logo">
       <p
         *ngIf="formState === 'signup'"
         class="logo__subtitle">
@@ -50,6 +55,24 @@
       </p>
     </div>
   </div>
+  <!-- Logo (Mobile) -->
+  <div
+    *ngIf="isMobile"
+    gdArea="logo"
+    fxLayout="column"
+    fxLayoutAlign="end center">
+    <div
+      class="page__logo-wrapper --mobile">
+      <img
+        class="--mobile"
+        src="./assets/bibnow--1.png"
+        alt="bib now logo">
+    </div>
+    <div
+      class="logo__subtitle">
+      Lernaufgabe @ bib International College
+    </div>
+  </div>
   <!-- Form Layout -->
   <section
     gdArea="form">
@@ -58,7 +81,8 @@
       *ngIf="!formState"
       class="form__buttons-wrapper"
       fxLayout="column"
-      fxLayoutAlign="start center">
+      fxLayoutAlign="start center"
+      fxLayoutAlign.xs="center center">
       <button
         name="signup"
         class="form __button --secondary"
@@ -73,17 +97,20 @@
     </div>
     <!-- LoginFormComponent -->
     <app-login-form
+      [isMobile]="isMobile"
       *ngIf="formState === 'login'"
       (formState)="onFormStateChanged($event)">
     </app-login-form>
     <!-- SignupFormComponent -->
     <app-signup-form
+      [isMobile]="isMobile"
       *ngIf="formState === 'signup'"
       (formState)="onFormStateChanged($event)">
     </app-signup-form>
   </section>
   <!-- Bottom Info -->
   <div
+    *ngIf="!isMobile"
     gdArea="bottom"
     class="page__bottom-info">
     <p>bibnow © 2020 All rights reserved | PBT3H19A</p>

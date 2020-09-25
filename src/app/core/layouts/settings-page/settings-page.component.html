@@ -8,18 +8,17 @@
 <main
   class="page__wrapper"
   fxFill
-  gdAreas="side contents"
-  gdColumns="auto 1fr"
-  gdRows="1fr">
-  <aside
-    gdArea="side">
-  </aside>
-  <section>
-    <div
-      gdArea="contents"
-      class="contents__wrapper"
-      fxLayout="row wrap">
-      <h1>SETTINGS PAGE</h1>
-    </div>
+  gdAreas=" top | settings"
+  gdColumns="1fr"
+  gdRows="auto 1fr">
+  <!-- TopBarComponent -->
+  <div
+    gdArea="top">
+    <app-top-nav></app-top-nav>
+  </div>
+  <!-- ContentViewerComponent -->
+  <section
+    gdArea="settings">
+    <app-settings></app-settings>
   </section>
 </main>

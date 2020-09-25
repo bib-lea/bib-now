@@ -99,7 +99,16 @@ textarea:focus, input:focus {
   border-bottom: 1px solid #FE53BBEA;
   box-shadow: 2px 0 5px rgba(30, 30, 30, .1);
 }
-
+input:focus::placeholder {
+  color: transparent;
+}
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 /* Text Colors */
 .txt--pos {
   color: #039be5;

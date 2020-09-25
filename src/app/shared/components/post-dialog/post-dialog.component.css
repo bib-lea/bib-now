@@ -15,6 +15,13 @@
 .header__text {
   padding: 0 .6rem;
   margin: 1rem 0;
+  font: 800 3rem 'Montserrat', sans-serif !important;
+  opacity: .2;
+}
+.header__text span.--sub {
+  font: 300 .8rem 'Montserrat', sans-serif !important;
+  opacity: .9 !important;
+  margin-left: auto;
 }
 .--user {
   font-size: .8rem;
@@ -62,15 +69,49 @@
 .__button--flat.--tt:hover {
   color: #039be555;
 }
+.__button--flat.--ag:hover {
+  color: #DD8CDD55;
+}
 .__button--flat.--fb.--active {
   color: #FE53BB88;
 }
 .__button--flat.--tt.--active {
   color: #039be588;
 }
+.__button--flat.--ag.--active {
+  color: #DD8cDD88;
+}
 .--type {
   font-size: .8rem;
   opacity: .8;
+}
+/* Tags (Allgemein) */
+.tags__wrapper {
+  width: 100%;
+}
+.--tag {
+  color: #2B2839;
+  background-color: #2B283911;
+  display: inline-block;
+  height: 2rem;
+  font-size: .7rem;
+  border-radius: .5rem;
+  padding: .4rem .8rem;
+  margin-top: .8rem;
+  margin-right: .5rem;
+  vertical-align: middle;
+}
+.__tags.__input {
+  text-align: center;
+  color: #FE53BB;
+  font-size: .8rem;
+  width: 100%;
+  border-bottom: #2B283955;
+  padding: 1rem 1rem 0 0;
+}
+.__tags.__input:focus {
+  box-shadow: none;
+  color: #2B2839CC;
 }
 
 /* Input Settings */
@@ -111,7 +152,20 @@
   position: relative;
   bottom: 2rem !important;
 }
-
+.--termin {
+  font-size: 1.2rem;
+  font-weight: 800;
+  opacity: .5;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.--tutorium {
+  color: #039be5;
+}
+.__input.--title.--ex {
+  width: 10rem;
+  margin-left: auto;
+}
 /* Action Button Settings */
 .dialog__button-group {
   padding: 0 1.5rem;
@@ -164,6 +218,9 @@
   color: rgba(50, 50, 50, .65);
   content: '+ Bilder aussuchen...';
   cursor: pointer;
+}
+.--filePath.--exist {
+  color: #039be5;
 }
 
 .--error {

@@ -1,0 +1,73 @@
+<div
+  fxFill
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  class="settings__wrapper">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="header__wrapper">
+    <h1>
+      Profil
+    </h1>
+    <p>
+      Eingeloggt als:
+      <span
+        class="--email">
+        {{ user ? user.email : 'Wird geladen...' }}
+      </span>
+    </p>
+  </div>
+  <div
+    *ngIf="!user || !user.displayName"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="2rem"
+    class="forms__wrapper">
+    <span>
+      Anzeigename:
+    </span>
+    <form
+      [formGroup]="settingsForm">
+      <input
+        class="--username"
+        formControlName="username"
+        placeholder="Username"
+        type="text">
+    </form>
+    <span
+      class="status--no">
+      Nicht angegeben.
+    </span>
+  </div>
+  <div
+    fxLayout="column"
+    class="mytt__wrapper">
+    <p
+      class="--title">
+      Meine Tutoriums
+    </p>
+    <div
+      *ngFor="let tutor of myTT"
+      fxLayout="row"
+      fxLayoutGap="3rem"
+      class="__mytt">
+      <span
+        fxFlex="1 0 20%">
+        {{ tutor.userEmail }}
+      </span>
+      <span
+        fxFlex="1 0 30%">
+        {{ tutor.title }}
+      </span>
+      <span
+        fxFlex="1 0 30%">
+        {{ tutor.content }}
+      </span>
+      <span
+        fxFlex="1 0 20%">
+        {{ tutor.datePosted | date: 'dd/MM/yyyy' }}
+      </span>
+    </div>
+  </div>
+</div>

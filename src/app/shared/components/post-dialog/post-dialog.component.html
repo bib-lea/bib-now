@@ -12,13 +12,12 @@
   <h2
     mat-dialog-title
     class="header__text">
-    Post
+    Posten
+    <span
+      class="--sub">
+      @ bibnow
+    </span>
   </h2>
-  <p
-    mat-dialog-title
-    class="header__text --user">
-    Username: {{ user ? user.email : 'Nicht angemeldet' }}
-  </p>
   <!--Form -->
   <div
     mat-dialog-content
@@ -44,6 +43,7 @@
           [ngClass]="{
           '--fb': topic === 'Fundbüro',
           '--tt': topic === 'Tutorium',
+          '--ag': topic === 'Allgemein',
           '--active': topic === currentTopic
         }"
           class="__button--flat">
@@ -53,6 +53,7 @@
       <mat-divider></mat-divider>
       <!-- Type: Fundbüro -->
       <div
+        *ngIf="currentTopic === 'Fundbüro' || currentTopic === 'Tutorium'"
         class="buttons__label --types">
         Types
       </div>
@@ -89,6 +90,31 @@
           {{ type }}
         </a>
       </div>
+      <!-- Tags: Allgemein -->
+      <div
+        *ngIf="currentTopic === 'Allgemein'"
+        class="tags__wrapper"
+        fxLayout="column"
+        fxLayoutAlign="center start">
+        <input
+          fxFlex="1 0 auto"
+          class="__tags __input"
+          name="tags"
+          type="text"
+          placeholder="Tags: (Komma zum Hinzufügen)"
+          [formControl]="tagsControl"
+          autocomplete="off">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="center end"
+          class="__tags">
+          <div
+            *ngFor="let tag of tagsAG"
+            class="--tag">
+            <p>{{tag}}</p>
+          </div>
+        </div>
+      </div>
   </div>
   <!-- Title -->
   <div
@@ -118,28 +144,63 @@
   <div
     fxLayout="column"
     class="input__wrapper">
-  <textarea
-    (keyup)="isInvalid = false"
-    [formControl]="contentControl"
-    rows="4"
-    cols="50"
-    class="__textarea --content"
-    tabindex="2"
-    name="content"
-    type="text"
-    placeholder="Schreib was..."
-    autocomplete="off"></textarea>
+    <textarea
+      (keyup)="isInvalid = false"
+      [formControl]="contentControl"
+      rows="4"
+      cols="50"
+      class="__textarea --content"
+      tabindex="2"
+      name="content"
+      type="text"
+      placeholder="Schreib was..."
+      autocomplete="off">
+    </textarea>
     <div
       class="--contentError --error"
       *ngIf="isInvalid && contentControl.invalid">
       *Content ist ein Pflichtfeld.
     </div>
   </div>
+  <!-- Nächster Termin (Tutorium) -->
+    <div
+      *ngIf="currentTopic === 'Tutorium'"
+      fxLayout="column"
+      class="input__wrapper">
+      <p
+        class="--termin">
+        <span
+          class="--tutorium">
+          Tutorium:
+        </span>
+        Nächster Termin
+      </p>
+      <input
+        (keyup)="isInvalid = false"
+        [formControl]="nextBlockControl"
+        class="__input --title --ex"
+        tabindex="1"
+        name="next"
+        type="date"
+        placeholder="Title"
+        autocomplete="off">
+      <div
+        class="--error"
+        (keyup)="isInvalid = false"
+        *ngIf="isInvalid && titleControl.invalid">
+        *Nächster Termin ist ein Pflichtfeld.
+      </div>
+      <div
+        class="--label">
+        *
+      </div>
+    </div>
   <!-- Image -->
   <div
       fxLayout="row"
       class="input__wrapper--file">
       <div
+        [ngClass]="{'--exist': this.dataFile}"
         class="--filePath">
         {{ this.dataFile ? this.dataFile.name + ' (' + this.dataSize + ' KB)' : 'Keine Bilder ausgewählt' }}
       </div>

@@ -11,6 +11,7 @@
   fxLayoutAlign="start center"
   fxLayoutGap="4rem">
   <div
+    (click)="onHome()"
     class="nav__logo">
     <h2>
       bibnow
@@ -21,6 +22,7 @@
     <mat-icon
       class="search-bar__icon">search</mat-icon>
     <input
+      [formControl]="searchControl"
       class="search-bar__input"
       tabindex="1"
       name="search"
@@ -40,8 +42,19 @@
   </div>
   -->
   <div
+    class="nav__post">
+    <button
+      class="__button --post"
+      (click)="onPost()">
+      <mat-icon>edit</mat-icon>
+      <span>Posten</span>
+    </button>
+  </div>
+
+  <div
     class="nav__profile">
     <a
+      (click)="onProfile()"
       class="account __expand">
       <mat-icon>
         account_circle

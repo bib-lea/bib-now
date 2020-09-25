@@ -8,10 +8,6 @@
 
 /* Wrapper Settings */
 .form__wrapper {
-  width: 700px;
-  max-width: 80%;
-  height: 600px;
-  max-height: 60%;
   padding: 1rem;
   margin: 0 auto;
   z-index: 10;
@@ -27,6 +23,9 @@
   background-color: transparent;
   border-radius: 2rem;
   position: relative;
+}
+.form-field__wrapper.--mobile {
+  padding: 4rem 0 0 0;
 }
 .form-field__wrapper p {
   text-align: center;

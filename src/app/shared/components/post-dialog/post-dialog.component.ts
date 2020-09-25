@@ -7,8 +7,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from "rxjs";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
-import {DEFAULT_IMAGE_URL} from '../../constants/constants';
+import {DEFAULT_IMAGE_URL, TOPICS, TYPES} from '../../constants/constants';
 import { AuthServiceService } from "../../services/auth-service.service";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
 
 @Component({
   selector: 'app-post-dialog',
@@ -25,31 +28,31 @@ export class PostDialogComponent implements OnInit {
   currentType: string;
   contentControl: FormControl;
   titleControl: FormControl;
+  tagsControl: FormControl;
+  nextBlockControl: FormControl;
   isInvalid: boolean = false;
 
   // Constants
-  typesFB: string[] = [
-    'Suche',
-    'Gefunden'
-  ];
-  typesTT: string[] = [
-    'Tutorium',
-    'Lerngruppe'
-  ];
-  topics: string[] = [
-    'Fundbüro',
-    'Tutorium',
-    'Allgemein'
-  ];
+  typesFB: string[] = TYPES.FB;
+  typesTT: string[] = TYPES.TT;
+  topics: string[] = TOPICS;
+  tagsAG: string[] = [];
 
   // Zum Speichern
   downloadURL: Observable<string>;
   dataPath: any;
   dataFile: any;
+  imageURL: string;
   get dataSize(){
     return (this.dataFile.size / 1024).toFixed(2);
   }
-  imageURL: string;
+
+  // Mat Settings
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -57,6 +60,7 @@ export class PostDialogComponent implements OnInit {
     private authService: AuthServiceService,
 
     private selfRef: MatDialogRef<PostDialogComponent>,
+    private snackBar: MatSnackBar,
     private storage: AngularFireStorage
   )
   {
@@ -65,6 +69,10 @@ export class PostDialogComponent implements OnInit {
     ]);
     this.titleControl = new FormControl('', [
       Validators.required
+    ]);
+    this.tagsControl = new FormControl('', [
+    ]);
+    this.nextBlockControl = new FormControl('', [
     ]);
 
     this.afAuth.onAuthStateChanged(user => {
@@ -77,6 +85,16 @@ export class PostDialogComponent implements OnInit {
     // Initial - Fundbüro
     this.currentTopic = this.topics[0];
     this.currentType = this.typesFB[0];
+    this.tagsControl.valueChanges.subscribe(tag => {
+      let word: string;
+      if (tag && tag.includes(',')){
+        word = tag.split(',')[0];
+        if (word && this.tagsAG.length < 4) {
+          this.tagsAG.push(word);
+          this.tagsControl.reset();
+        }
+      } else return;
+    })
   }
 
   async onPosten() {
@@ -100,10 +118,16 @@ export class PostDialogComponent implements OnInit {
                 // Check Validatity
                 if (this.checkValidity()) {
                   this.createPost();
+                  this.snackBar.open('Dein Post wurde erfolgreich hochgeladen.', 'Schließen', {
+                    duration: 3000
+                  });
                   this.selfRef.close();
                 }
                 else {
                   this.isInvalid = true;
+                  this.snackBar.open('Fehlgeschlagen. Es wurde möglicherweise nicht gespeichert.', '', {
+                    duration: 2000
+                  });
                   console.log('Form ist nicht gültig.');
                 }
               }
@@ -117,6 +141,9 @@ export class PostDialogComponent implements OnInit {
     }
     else if (this.checkValidity()){
       this.createPost();
+      this.snackBar.open('Erfolgreich. (Ohne Bild)', 'Schließen', {
+        duration: 3000
+      });
       this.selfRef.close();
     }
     else {

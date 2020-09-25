@@ -11,31 +11,35 @@
   padding-top: 6rem;
   padding-bottom: 2rem;
   position: relative;
-  overflow: visible;
 }
 
-/* Placeholder */
 .no-data {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  color: #ECEFF1;
+  min-height: 24.5rem;
+}
+.no-data img {
+  max-width: 180px;
+}
+.no-data p {
+  font-size: .8rem;
 }
 
 /* Card */
 .cards__card {
   position: relative;
-  height: 25rem;
+  height: 24rem;
   min-width: 19rem;
   max-width: 19rem;
   border-radius: 1rem;
   background-color: #ECEFF1;
   box-shadow: 0 5px 2px #2B2839;
-  padding: 9rem 2rem 2rem 2rem;
+  padding: 8rem 2rem 2rem 2rem;
   margin-right: 2rem;
   transition: opacity 200ms ease;
 }
 .cards__card:not(.--active) {
   opacity: .3;
+  transition: opacity 200ms ease;
   cursor: pointer;
 }
 .cards__card.--hovered {
@@ -47,7 +51,10 @@
 
 /* Card Header */
 .header__wrapper {
+  padding-top: 1rem;
   width: 100%;
+  margin-bottom: 1.2rem;
+  position: relative;
 }
 .--extra-actions {
   margin-left: auto;
@@ -55,6 +62,7 @@
   border: 0;
   font-size: .9rem;
   cursor: pointer;
+  outline: none;
 }
 .--extra-actions:hover {
   color: #D43D61AA;
@@ -83,13 +91,13 @@
 }
 .cards__topic {
   /* Pomegranate */
-  color: #2B28395A;
+  color: #2B2839AA;
   font-size: .9rem;
 }
 
 .cards__type {
   color: #039be5;
-  font-size: .75rem;
+  font-size: .9rem;
 }
 .--suche {
   color: #D43D61;
@@ -102,31 +110,86 @@
   margin-top: auto;
   width: 100%;
 }
+.cards__user {
+  margin-left: auto;
+}
 .cards__user--img {
   object-fit: cover !important;
-  width: 1.8rem !important;
-  height: 1.8rem !important;
-  margin-right: .5rem;
+  width: 2rem !important;
+  height: 2rem !important;
+  margin-right: .2rem;
   vertical-align: middle;
   border-radius: 50%;
   box-shadow: 0 2px 2px #2B2839;
+  cursor: pointer;
 }
-.cards__user--name, .cards__date--text {
-  font-size: .75rem;
-  color: #2B283999;
+.user__hover-info, .user__hover-info * {
+  display: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.user__hover-info > span {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.--active .header__wrapper:hover .user__hover-info * {
+  display: block;
+  opacity: .9;
+}
+.--active .header__wrapper:hover .user__hover-info {
+  display: block;
+  background-color: #ECEFF1;
+  padding: 1.5rem;
+  min-width: 15rem;
+  max-width: 20rem;
+  height: 50px;
+  position: absolute;
+  top: -3rem;
+  right: -12rem;
+  z-index: 9000;
+  border-radius: .5rem;
+  box-shadow: 1px 1px 3px rgba(30, 30, 30, .8);
+  font-size: .8rem;
+  color: #2B2839CC;
+  opacity: 1;
+}
+.user__hover-info:hover {
+  display: block;
+  cursor: pointer;
+}
+.user__hover-info mat-icon {
+  color: #2B2839CC;
+  cursor: pointer;
+  margin-left: auto;
+}
+.cards__date--text {
+  font-size: .6rem;
+  color: #2B2839CC;
+  text-align: left;
+}
+.cards__user--name {
+  padding-top: .3rem;
+  font-size: .6rem;
 }
 .cards__date mat-icon {
   vertical-align: middle;
   color: #2B283925;
 }
-
-
-/* Animations */
-.slide--right {
-  transform: translateX(20%);
-  transition: transform 200ms ease;
+.user__hover-info > span {
+  font-size: .8rem;
+  color: #2B2839;
 }
-.slide--left {
-  transform: translateX(-20%);
-  transition: transform 200ms ease;
+.--email {
+  color: #039be5;
+}
+
+/* Subscribe Button */
+.__button.--subscribe {
+  color: #2B283955;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: .5rem;
+}
+.--active .__button.--subscribe:hover {
+  color: #036be5EE;
 }

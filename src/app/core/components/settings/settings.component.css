@@ -1,0 +1,61 @@
+/* Wrapper */
+.settings__wrapper {
+  background-color: #2B2839;
+  box-shadow: inset 0 5px 10px #1e181e;
+  padding: 6rem 20%;
+  color: #ECEFF1;
+}
+
+/* Header */
+.header__wrapper {
+  font-size: 2rem;
+  width: 100%;
+}
+.header__wrapper p {
+  font-size: .7rem;
+  opacity: .8;
+}
+.--email {
+  color: #15AbF5;
+}
+
+/* Forms */
+.forms__wrapper {
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+}
+.forms__wrapper span {
+  opacity: .8;
+  font-size: 1.1rem;
+}
+.--username {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.forms__wrapper .status--no {
+  position: absolute;
+  left: 17rem;
+  top: 1rem;
+  font-size: .8rem;
+  color: #FE53BB;
+}
+
+/* Tutoriums */
+.mytt__wrapper {
+  width: 100%;
+  padding: 2rem;
+}
+.--title {
+  font-size: 1.1rem;
+  opacity: .8;
+  margin-bottom: 2rem;
+}
+.__mytt {
+  width: 100%;
+  color: #ECEFF1AA;
+  padding: 1rem;
+}
+.__mytt:hover {
+  color: #ECEFF1;
+}

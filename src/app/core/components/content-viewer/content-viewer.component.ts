@@ -1,4 +1,4 @@
-import {Output, ViewChild} from '@angular/core';
+import {Input, Output, ViewChild} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { Post } from 'src/app/shared/models/post';
@@ -14,9 +14,16 @@ import { User } from 'firebase';
 export class ContentViewerComponent implements OnInit {
 
   currentTopic: string;
-  @Output() posts: Post[];
+  posts: Post[] = [];
+
+  @Input() search: EventEmitter<string>;
+
+  @Output() isSearching = new EventEmitter<boolean>();
   @Output() direction = new EventEmitter<string>();
-  @Output() filteredPosts: Post[];
+  @Output() currentPage = new EventEmitter<number>();
+  @Output() filteredPosts = new EventEmitter<Post[]>();
+  @Output() pagesCount = new EventEmitter<number>();
+  _filteredPostsCount: number;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -24,24 +31,37 @@ export class ContentViewerComponent implements OnInit {
   ) {
     this.crudService.getPost().subscribe(data => {
       this.posts = data.map(e => {
-        console.log(e);
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
         } as Post
       });
-      this.filterPostsByTopic();
+      this.emitPostsByTopic();
     });
   }
 
   ngOnInit(): void {
+    // Search Sub
+    this.search.subscribe(val => {
+      if (val && val.length > 2){
+        const keyword = val.toLowerCase();
+        const filtered = this.posts.filter(p =>
+            (p.title.toLowerCase().includes(val)
+              || p.content.toLowerCase().includes(val)
+              || p.userEmail.toLowerCase().includes(val))
+            && p.topic === this.currentTopic);
+        this._filteredPostsCount = filtered.length;
+        this.filteredPosts.emit(filtered);
+        this.updatePagesCount();
+      } else {
+        this.emitPostsByTopic();
+      }
+    })
   }
 
   onTopicChange(event): void {
     this.currentTopic = event;
-    this.filterPostsByTopic();
-    console.log('Topic changed: ' + event);
-    //console.log(this.filteredPosts);
+    this.emitPostsByTopic();
   }
 
   onDirectionChange(event): void {
@@ -49,7 +69,18 @@ export class ContentViewerComponent implements OnInit {
     this.direction.emit(event);
   }
 
-  private filterPostsByTopic(): void {
-    this.filteredPosts = this.posts.filter(p => p.topic === this.currentTopic)
+  onPageChange(event): void {
+    this.currentPage.emit(event);
+  }
+
+  private emitPostsByTopic(): void {
+    let filtered = this.posts.filter(p => p.topic === this.currentTopic);
+    this._filteredPostsCount = filtered.length;
+    this.filteredPosts.emit(filtered);
+    this.updatePagesCount();
+  }
+
+  private updatePagesCount(): void {
+    this.pagesCount.emit(Math.ceil(this._filteredPostsCount / 5));
   }
 }

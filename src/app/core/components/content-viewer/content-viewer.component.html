@@ -17,10 +17,13 @@
   <!-- CARDS -->
   <app-card-wrap
     id="viewer__cards"
+    [currentPage]="currentPage"
     [direction]="direction"
     [posts]="filteredPosts"></app-card-wrap>
   <!-- POST NAV -->
   <app-post-nav
+    [pagesCount]="pagesCount"
+    (currentPage)="onPageChange($event)"
     (direction)="onDirectionChange($event)">
   </app-post-nav>
   <!-- ABSOLUTES -->

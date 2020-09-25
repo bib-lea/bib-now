@@ -10,18 +10,55 @@
 .nav__wrapper {
   position: relative;
 }
+.pagination__wrapper {
+  width: 100%;
+}
+.directions__wrapper {
+  width: 100%;
+  position: relative;
+}
 
 /* Buttons */
 .nav__button {
   color: #F5F3F455;
   cursor: pointer;
   transition: text-shadow 150ms ease;
-  padding-right: 2rem;
+  margin-right: 2rem;
+}
+.--right {
+  position: relative;
+  right: -20px;
+}
+.nav__button:last-child {
+  margin-right: 0;
 }
 .nav__button mat-icon {
-  font-size: 3rem;
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
 }
 .nav__button:hover {
   color: #FEBBBB;
   text-shadow: 0 0 15px #FE53BB;
+}
+
+/* Pagination */
+.pagination__wrapper {
+  padding-bottom: 2rem;
+}
+.__page {
+  color: #ECEFF1;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-right: 2rem;
+  cursor: pointer;
+  transition: font-weight 200ms ease, font-size 200ms ease;
+}
+.__page:last-child {
+  margin-right: 0;
+}
+.__page.--active {
+  color: #FECCCC;
+  font-weight: 800;
+  text-shadow: 0 0 5px #FEA3DDCC;
 }

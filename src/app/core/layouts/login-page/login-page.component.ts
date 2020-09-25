@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MediaChange, MediaObserver} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-login-page',
@@ -8,10 +9,19 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class LoginPageComponent implements OnInit {
 
-  isSignup = false;
+  isMobile: boolean;
+  activeMediaQuery = '';
   @Input() formState: string;
 
-  constructor() { }
+  constructor(
+    private mediaObserver: MediaObserver
+  ) {
+    this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
+      const change = changes[0];
+      this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
+      this.isMobile = change.mqAlias === 'xs';
+    })
+  }
 
   ngOnInit(): void {
 

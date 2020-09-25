@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {AuthServiceService} from '../../../shared/services/auth-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-signup-form',
@@ -11,6 +12,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class SignupFormComponent implements OnInit {
 
   @Output() formState = new EventEmitter<string>();
+  @Input() isMobile: boolean;
 
   reenter: boolean = false;
   signupForm: FormGroup;

@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Input } from '@angular/core';
 import {Component, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -25,6 +25,7 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 export class LoginFormComponent implements OnInit {
 
   @Output() formState = new EventEmitter<string>();
+  @Input() isMobile: boolean;
 
   loginForm: FormGroup;
 

@@ -14,11 +14,23 @@
   <!-- TopBarComponent -->
   <div
     gdArea="top">
-    <app-top-nav></app-top-nav>
+    <app-top-nav
+      (search)="onSearch($event)"
+      *ngIf="!isMobile">
+    </app-top-nav>
+    <app-mobile-top
+      *ngIf="isMobile">
+    </app-mobile-top>
   </div>
   <!-- ContentViewerComponent -->
   <section
     gdArea="contents">
-    <app-content-viewer></app-content-viewer>
+    <app-content-viewer
+      [search]="search"
+      *ngIf="!isMobile">
+    </app-content-viewer>
+    <app-scroll-feed
+      *ngIf="isMobile">
+    </app-scroll-feed>
   </section>
 </main>

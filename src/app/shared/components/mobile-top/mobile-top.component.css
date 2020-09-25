@@ -1,49 +1,17 @@
-/*
-
-  @Styles: TopNavComponent
-  @Authors: Jawoon Kim, Charlie Wiegand (PBT3H19A)
-  @Erstellt am: 17.09.2020
-
-*/
-
-/* Wrapper Settings */
 .nav__wrapper {
-  padding: 1rem 5rem;
+  padding: .5rem 1rem;
   box-shadow: 5px 5px 10px #2B2839EA;
   background-image: linear-gradient(to right, #FE53BB31, #039be531);
-}
-
-/* Logo Settings */
-.nav__logo {
-  padding-right: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.nav__logo h2 {
-  background: linear-gradient(to top right, #039be5,  #FE53BB, #F5F3F4EA, #F5F3F4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Links */
-.nav__link {
-  margin-right: 4rem;
-  color: #F5F3F465;
-  cursor: pointer;
-  font-weight: 500;
-  transition: color 200ms ease;
-}
-.nav__link:hover {
-  color: #ECEFF1;
+  width: 100%;
 }
 
 /* Search Bar */
 .nav__search-bar {
   position: relative;
-
+  margin: 0;
 }
 .search-bar__input {
-  width: 22rem;
+  width: 100%;
   font-size: .8rem;
   color: rgba(30, 30, 30, .8);
   padding: .8rem .8rem .8rem 3rem;
@@ -77,14 +45,11 @@
   transition: box-shadow 200ms ease-in;
   animation: 15000ms glowInfinite linear infinite;
 }
-.--post span {
-  margin-left: .5rem;
-  text-shadow: none;
-}
 .--post mat-icon {
   vertical-align: middle;
-  position: relative;
-  top: -2px;
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
 }
 .--post:hover {
   color: #08F7FE;
@@ -92,7 +57,14 @@
 
 /* Profile */
 .nav__profile {
-  margin-left: auto;
+  margin-right: auto;
+}
+.nav__profile mat-icon {
+  color: #ECEFF1AA;
+  cursor: pointer;
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
 }
 .nav.__button {
   font-size: .9rem;
@@ -103,34 +75,9 @@
   color: #FE53BB;
   box-shadow: none;
 }
-.account.__expand, .notification.__expand {
+.account.__expand {
   vertical-align: middle;
   color: rgba(250, 250, 250, .45);
   margin-right: 2rem;
   cursor: pointer;
-}
-.__expand mat-icon {
-  transition: text-shadow 200ms ease;
-}
-.__expand:hover mat-icon {
-  color: #039be5;
-  text-shadow: 0 0 10px #039be55A;
-}
-
-@keyframes glowInfinite {
-  0% {
-    color: #ECEFF1;
-  }
-  25% {
-    color: #039be5;
-  }
-  50% {
-    color: #FE53BB;
-  }
-  25% {
-    color: #08F7FE;
-  }
-  0% {
-    color: #ECEFF1;
-  }
 }

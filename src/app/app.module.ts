@@ -31,6 +31,9 @@ import { ImageViewerComponent } from './shared/components/image-viewer/image-vie
 import { PostNavComponent } from './shared/components/post-nav/post-nav.component';
 import { UserSettingsComponent } from './core/components/user-settings/user-settings.component';
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
+import { PlaceholderComponent } from './shared/components/placeholder/placeholder.component';
+import { SettingsComponent } from './core/components/settings/settings.component';
+import { MobileTopComponent } from './shared/components/mobile-top/mobile-top.component';
 
 
 
@@ -58,7 +61,10 @@ const ExtraModules = [
     ImageViewerComponent,
     PostNavComponent,
     UserSettingsComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    PlaceholderComponent,
+    SettingsComponent,
+    MobileTopComponent,
   ],
   imports: [
     BrowserModule,

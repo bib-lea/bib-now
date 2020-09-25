@@ -16,9 +16,7 @@ export class TopicNavComponent implements OnInit {
     'Tutorium'
   ];
 
-  constructor(
-    private dialog: MatDialog
-  ) { }
+  constructor(){}
 
   ngOnInit(): void {
     if (!this.currentTopic)
@@ -26,12 +24,6 @@ export class TopicNavComponent implements OnInit {
       this.currentTopic = this.topics[0];
       this.onTopicChange.emit(this.currentTopic);
     }
-  }
-
-  onPost(): void {
-    this.dialog.open(PostDialogComponent, {
-      panelClass: 'dialog__wrapper'
-    });
   }
 
   onTopicClick(event): void {

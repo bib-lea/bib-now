@@ -17,7 +17,7 @@
   position: relative;
 }
 .nav__link {
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-decoration: none;
   font-weight: 800;
   color: #ECEFF155;
@@ -75,7 +75,7 @@
   height: auto;
   width: auto;
   padding: 1rem 2rem;
-  color: #CCCCFE55;
+  color: #CCCCFE;
   border: 0;
   background: 0;
   box-shadow:
@@ -86,7 +86,6 @@
   transition: color 200ms ease, text-shadow 1000ms ease, box-shadow 400ms ease;
 }
 .--post:hover {
-  color: #CCCCFE;
   text-shadow: 0 0 15px #08F7FE;
   box-shadow:
     -1px -1px 15px #039be5,

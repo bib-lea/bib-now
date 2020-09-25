@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import {MediaChange, MediaObserver} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPageComponent implements OnInit {
 
-  constructor() { }
+  search = new EventEmitter<string>();
+  activeMediaQuery = '';
+  isMobile: boolean;
+
+  constructor(
+    private mediaObserver: MediaObserver
+  ) {
+    this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
+      const change = changes[0];
+      this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
+      this.isMobile = change.mqAlias === 'xs';
+    })
+  }
 
   ngOnInit(): void {
   }
 
+  onSearch(event): void {
+    this.search.emit(event);
+  }
 }

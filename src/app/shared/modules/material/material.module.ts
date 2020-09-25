@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const MatModules = [
   MatButtonModule,
-  MatInputModule,
-  MatFormFieldModule,
   MatIconModule,
-  MatCardModule,
   MatDialogModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSnackBarModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 @NgModule({

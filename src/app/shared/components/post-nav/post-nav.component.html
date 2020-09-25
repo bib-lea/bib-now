@@ -6,23 +6,41 @@
 
  -->
 <div
-  class="nav__wrapper"
-  fxLayout="row"
-  fxLayoutAlign="center center">
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="nav__wrapper">
   <div
-    id="left"
-    class="nav__button --left"
-    (click)="direction.emit('left')">
-    <mat-icon>
-      arrow_back_ios
-    </mat-icon>
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="pagination__wrapper">
+    <a
+      *ngFor="let page of counter(_pagesCount); let i = index"
+      [ngClass]="{'--active': i === _currentPage}"
+      (click)="onPageChange(i)"
+      class="__page">
+      {{ i + 1 }}
+    </a>
   </div>
   <div
-    id="right"
-    class="nav__button --right"
-    (click)="direction.emit('right')">
-    <mat-icon>
-      arrow_forward_ios
-    </mat-icon>
+    *ngIf="hasNoData"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="directions__wrapper">
+    <div
+      id="left"
+      class="nav__button --left no-select"
+      (click)="direction.emit('left')">
+      <mat-icon>
+        arrow_back_ios
+      </mat-icon>
+    </div>
+    <div
+      id="right"
+      class="nav__button --right no-select"
+      (click)="direction.emit('right')">
+      <mat-icon>
+        arrow_forward_ios
+      </mat-icon>
+    </div>
   </div>
 </div>
