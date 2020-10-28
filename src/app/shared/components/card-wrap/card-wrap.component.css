@@ -39,9 +39,9 @@
 }
 .cards__card.--mobile {
   margin: 0 0 4rem 0;
-
+  opacity: 1 !important; 
 }
-.cards__card:not(.--active.--mobile) {
+.cards__card:not(.--active) {
   opacity: .3;
   transition: opacity 200ms ease;
   cursor: pointer;

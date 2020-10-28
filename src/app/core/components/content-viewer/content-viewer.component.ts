@@ -18,7 +18,8 @@ export class ContentViewerComponent implements OnInit {
 
   @Input() search: EventEmitter<string>;
   @Input() isMobile: boolean;
-
+  
+  @Output() mobileMode: boolean;
   @Output() isSearching = new EventEmitter<boolean>();
   @Output() direction = new EventEmitter<string>();
   @Output() currentPage = new EventEmitter<number>();
@@ -57,7 +58,8 @@ export class ContentViewerComponent implements OnInit {
       } else {
         this.emitPostsByTopic();
       }
-    })
+    });
+    this.mobileMode = this.isMobile;
   }
 
   onTopicChange(event): void {

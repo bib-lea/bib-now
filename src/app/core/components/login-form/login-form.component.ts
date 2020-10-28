@@ -46,7 +46,6 @@ export class LoginFormComponent implements OnInit {
 
     this.afAuth.onAuthStateChanged(user => {
       if (user) {
-        console.log(user.email);
         this.router.navigateByUrl('/dashboard');
       }
       else {
@@ -60,7 +59,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   onLogin(): void {
-    console.log(this.loginForm);
     let { email, password } = this.loginForm.value;
     email += '@edu.bib.de';
     this.authService.onLogin(email, password);

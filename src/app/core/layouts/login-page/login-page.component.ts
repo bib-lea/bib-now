@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 import {Component, Input, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MediaChange, MediaObserver} from '@angular/flex-layout';
@@ -14,13 +16,25 @@ export class LoginPageComponent implements OnInit {
   @Input() formState: string;
 
   constructor(
-    private mediaObserver: MediaObserver
+    private mediaObserver: MediaObserver,
+    private afAuth: AngularFireAuth,
+    private router: Router
   ) {
     this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
       const change = changes[0];
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
       this.isMobile = change.mqAlias === 'xs';
-    })
+    });
+    this.afAuth.onAuthStateChanged(user => {
+      if (user)
+      {
+        console.log("eingeloggt.");
+      }
+      else
+      {
+        console.log("Nicht angemeldet.");
+      }
+    });
   }
 
   ngOnInit(): void {

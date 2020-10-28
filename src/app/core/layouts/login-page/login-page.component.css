@@ -53,6 +53,7 @@
   max-width: 300px;
 }
 .logo__subtitle {
+  margin-top: 1rem;
   color: rgba(250, 250, 250, .75);
   font-size: .8rem;
 }

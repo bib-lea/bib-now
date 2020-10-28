@@ -7,7 +7,7 @@
  -->
 <div
   *ngIf="displayedPosts"
-  [@cardsEnter]="!isMobile && displayedPosts.length"
+  [@cardsEnter]="displayedPosts.length"
   [ngStyle]="!isMobile && trackHorizontal"
   class="cards__wrapper"
   fxLayout="row"
@@ -61,7 +61,7 @@
         fxLayoutGap=".3rem">
         <img
           class="cards__user--img"
-          [src]="post.userImg ? post.userImg : 'https://www.w3schools.com/html/img_girl.jpg'">
+          [src]="post.userImg ? post.userImg : 'https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg'">
         <span
           clasS="cards__user--name">
           {{ getTempName(post) }}

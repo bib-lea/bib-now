@@ -36,9 +36,11 @@ export class AuthServiceService {
     this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
         this.setUserData(result.user);
+        return result.user;
       })
       .catch(err => {
         console.log(err.message);
+        return null;
       });
   }
 

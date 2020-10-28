@@ -46,12 +46,12 @@
       <p
         *ngIf="formState !== 'signup'"
         class="logo__title">
-        Erzähle uns, was abgeht - <i>auf deine Art!</i>
+        Das Forum für <u>Alle</u>
       </p>
       <p
         *ngIf="formState !== 'signup'"
         class="logo__subtitle">
-        Poste was du willst, wie du willst. Jetzt mit <u>Bildern!</u>
+        Fundbüro, Tutorium, <i>...und noch vieles!</i>
       </p>
     </div>
   </div>
@@ -110,7 +110,7 @@
   </section>
   <!-- Bottom Info -->
   <div
-    *ngIf="!isMobile"
+    *ngIf="!isMobile && !formState"
     gdArea="bottom"
     class="page__bottom-info">
     <p>bibnow © 2020 All rights reserved | PBT3H19A</p>

@@ -1,3 +1,4 @@
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Post } from '../../models/post';
@@ -66,6 +67,8 @@ export class CardWrapComponent implements OnInit, OnChanges {
   ){}
 
   ngOnInit(): void {
+    this.startIndex = 0;
+    this.maximalDisplayed = 5;
     // Auth Sub
     this.afAuth.onAuthStateChanged(user => {
       this.user = user;
@@ -73,10 +76,17 @@ export class CardWrapComponent implements OnInit, OnChanges {
     });
     // Content Sub
     this.posts.subscribe(posts => {
-      this.startIndex = 0;
-      this.maximalDisplayed = 5;
       let endIndex = this.startIndex + this.maximalDisplayed;
       this._posts = posts;
+      if (this.isMobile)
+      {
+        this.maximalDisplayed = this._posts.length;
+      }
+      else
+      {
+        this.maximalDisplayed = 5;
+      }
+
       this.displayedPosts = this._posts.slice(this.startIndex, endIndex);
       this.setInitialActive();
     });
@@ -110,7 +120,8 @@ export class CardWrapComponent implements OnInit, OnChanges {
     const initialActive = 2;
     if (this.posts){
       this.posts.forEach(p => p.isHovered = false);
-    }
+    };
+
   }
 
   onImageView(url): void {
@@ -140,7 +151,7 @@ export class CardWrapComponent implements OnInit, OnChanges {
   onCopy(): void {
     let listener = (e: ClipboardEvent) => {
       let clipboard = e.clipboardData || window['clipboardData'];
-      clipboard.setData('text', this.userEmail);
+      clipboard.setData('text', this._posts[this.currentActivePost].userEmail);
       e.preventDefault();
     };
 

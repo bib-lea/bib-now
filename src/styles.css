@@ -20,7 +20,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: #2B2839;
   overflow: hidden;
-  overflow-y: scroll;
 }
 
 /* Wrapper Theme */
@@ -126,4 +125,11 @@ input:focus::placeholder {
   overflow: hidden;
   border-radius: 2rem;
   width: 40rem;
+}
+
+@media screen and (max-width: 480px)
+{
+  body {
+    overflow-y: scroll;
+  }
 }

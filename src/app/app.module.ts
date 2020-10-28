@@ -20,7 +20,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { ForumComponent } from './core/components/forum/forum.component';
 import { CrudService } from "./shared/services/crud.service";
 import { PostDialogComponent } from './shared/components/post-dialog/post-dialog.component';
 import { ContentViewerComponent } from './core/components/content-viewer/content-viewer.component';
@@ -29,7 +28,6 @@ import { CardWrapComponent } from './shared/components/card-wrap/card-wrap.compo
 import { TopicNavComponent } from './core/components/topic-nav/topic-nav.component';
 import { ImageViewerComponent } from './shared/components/image-viewer/image-viewer.component';
 import { PostNavComponent } from './shared/components/post-nav/post-nav.component';
-import { UserSettingsComponent } from './core/components/user-settings/user-settings.component';
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
 import { PlaceholderComponent } from './shared/components/placeholder/placeholder.component';
 import { SettingsComponent } from './core/components/settings/settings.component';
@@ -52,7 +50,6 @@ const ExtraModules = [
     TimetablePageComponent,
     SettingsPageComponent,
     SignupFormComponent,
-    ForumComponent,
     PostDialogComponent,
     ContentViewerComponent,
     TopNavComponent,
@@ -60,7 +57,6 @@ const ExtraModules = [
     TopicNavComponent,
     ImageViewerComponent,
     PostNavComponent,
-    UserSettingsComponent,
     ConfirmationDialogComponent,
     PlaceholderComponent,
     SettingsComponent,
